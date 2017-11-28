@@ -1,0 +1,35 @@
+papers:
+  level:
+    item: 339
+    data: 0
+    durability: 0
+    name: "&6&lMetamagia"
+    lore:
+    - "&5&lLivello: &6&l%lvl%"
+    - " "
+    - "&3Questa Metamagia assegna all''oggetto magico una"
+    - "&3restrizione del suo uso da parte del Mago,"
+    - "&3che deve avere minimo il livello indicato."
+  effectArea:
+    item: 339
+    data: 0
+    durability: 0
+    name: "&6&lMetamagia"
+    lore:
+    - "&5&lArea d'' Effetto: &6&l%area%"
+    - "&5&lDistanza: &6&l%distance%"
+    - " "
+    - "&3Questa Metamagia assegna all''oggetto magico"
+    - "&3un'area d'effetto specifica."
+    - "&3Per maggiori info, consultare la Guida Magica."
+  power:
+    item: 339
+    data: 0
+    durability: 0
+    name: "&6&lMetamagia"
+    lore:
+    - "&5&lPotenza: &6&l%power%"
+    - " "
+    - "&3Questa Metamagia assegna all''oggetto magico una"
+    - "&3potenza che andra'' a moltiplicarsi al livello del Mago"
+    - "&3e al tipo dell''oggetto magico."

@@ -1,0 +1,45 @@
+#Name of the magic alter
+alterName: "Altare Magico"
+
+#/magic bazar schematic to paste
+bazarSchematic: "test"
+
+wandItem:
+  display: "&6Catalizzatore"
+  lore:
+  - "&8&k111111111111111111111"
+  - "&4MAGIA: &5%spell%"
+  - "&4Potenza Magica: &5%totalpower%"
+  - "&4Livello Minimo: &5%lvl%"
+  - "&4Area d'Effetto:"
+  - "&5%area% di %distance% Metri"
+  - "&4Descrizione:"
+  - "&5%description%"
+
+#NPC Name and Skin
+npcs:
+  paper:
+    name: "Paper Bazar"
+    skin: "BumbleBeee_"
+    addLore:
+    - "&6Price: %price%"
+  wand:
+    name: "Wand Bazar"
+    skin: "BumbleBeee_"
+    addLore:
+    - "&6Price: %price%"
+  structure:
+    name: "Structure Bazar"
+    skin: "BumbleBeee_"
+    addLore:
+    - "&6Price: %price%"
+  altar:
+    name: "Alter Bazar"
+    skin: "BumbleBeee_"
+    addLore:
+    - "&6Price: %price%"
+  wanditems:
+    name: "Wand Item Bazar"
+    skin: "BumbleBeee_"
+    addLore:
+    - "&6Price: %price%"

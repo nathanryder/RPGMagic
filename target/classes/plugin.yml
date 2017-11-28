@@ -1,0 +1,9 @@
+name: RPGMagic
+main: me.bumblebeee.rpgmagic.RPGMagic
+version: 1.0
+author: BumbleBeee_
+description: RPGDeath
+depend: [Citizens, RPGPlayerLeveling]
+commands:
+  magic:
+    description: Main command

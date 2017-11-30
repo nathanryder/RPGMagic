@@ -59,7 +59,7 @@ public class RPGMagic extends JavaPlugin {
 
         //Inventory Click Events
         Bukkit.getServer().getPluginManager().registerEvents(new Admin(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new DualFunctionClicks(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new Spells(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new Papers(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new ShopAlterOther(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new Wands(), this);

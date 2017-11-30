@@ -31,6 +31,8 @@ public class Papers implements Listener {
         String removePaperTitle = inv.getMessage("inventory.removePaper.title", false);
         String npcWandOptionsTitle = inv.getMessage("inventory.npcWandOptions.title", false);
         String paperSelectTitle = inv.getMessage("inventory.selectPaperType.title", false);
+        String playerPaperTitle = inv.getMessage("inventory.playerPaperMenu.title", false);
+        String playerPaperSelectTitle = inv.getMessage("inventory.playerPaperSelectMenu.title", false);
 
         String title = e.getInventory().getTitle();
 
@@ -220,6 +222,65 @@ public class Papers implements Listener {
             } else if (clicked.equalsIgnoreCase(powerMsg)) {
                 inv.openPaperType(p, "power", npc.getId(), 0);
                 Storage.getOpenPaperType().put(p.getUniqueId(), "power");
+            }
+        } else if (title.equalsIgnoreCase(playerPaperTitle)) {
+            e.setCancelled(true);
+            if (e.getCurrentItem() == null)
+                return;
+            if (!e.getCurrentItem().hasItemMeta())
+                return;
+            if (!e.getCurrentItem().getItemMeta().hasDisplayName())
+                return;
+
+            String clicked = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
+            String nextMsg = inv.getMessage("inventory.playerPaperMenu.next", false);
+            String prevMsg = inv.getMessage("inventory.playerSpellMenu.previous", false);
+
+            String type = Storage.getCategorySelector().get(p.getUniqueId());
+            if (clicked.equalsIgnoreCase(nextMsg)) {
+                if (Storage.getPages().containsKey(p.getUniqueId())) {
+                    int page = Storage.getPages().get(p.getUniqueId());
+                    inv.openPaperMenu(p, type, page, false);
+                    Storage.getPages().put(p.getUniqueId(), page+1);
+                } else {
+                    inv.openPaperMenu(p, type, 1, false);
+                    Storage.getPages().put(p.getUniqueId(), 1);
+                }
+            } else if (clicked.equalsIgnoreCase(prevMsg)) {
+                if (Storage.getPages().containsKey(p.getUniqueId())) {
+                    int page = Storage.getPages().get(p.getUniqueId());
+                    inv.openPaperMenu(p, type, page, false);
+                    Storage.getPages().put(p.getUniqueId(), page-1);
+                } else {
+                    inv.openPaperMenu(p, type, 0, true);
+                    Storage.getPages().put(p.getUniqueId(), 0);
+                }
+            } else if (e.getCurrentItem().getType() == Material.PAPER) {
+                p.getInventory().addItem(e.getCurrentItem());
+            }
+        } else if (title.equalsIgnoreCase(playerPaperSelectTitle)) {
+            e.setCancelled(true);
+            if (e.getCurrentItem() == null)
+                return;
+            if (!e.getCurrentItem().hasItemMeta())
+                return;
+            if (!e.getCurrentItem().getItemMeta().hasDisplayName())
+                return;
+
+            String clicked = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
+            String levelMsg = inv.getMessage("inventory.playerPaperSelectMenu.level", false);
+            String powerMsg = inv.getMessage("inventory.playerPaperSelectMenu.power", false);
+            String areaMsg = inv.getMessage("inventory.playerPaperSelectMenu.effectArea", false);
+
+            if (clicked.equalsIgnoreCase(levelMsg)) {
+                inv.openPaperMenu(p, "level", 0, true);
+                Storage.getCategorySelector().put(p.getUniqueId(), "level");
+            } else if (clicked.equalsIgnoreCase(powerMsg)) {
+                inv.openPaperMenu(p, "power", 0, true);
+                Storage.getCategorySelector().put(p.getUniqueId(), "power");
+            } else if (clicked.equalsIgnoreCase(areaMsg)) {
+                inv.openPaperMenu(p, "effect area", 0, true);
+                Storage.getCategorySelector().put(p.getUniqueId(), "effect area");
             }
         }
     }

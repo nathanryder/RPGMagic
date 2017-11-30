@@ -26,6 +26,7 @@ public class Wands implements Listener {
 
         String removeWandTitle = inv.getMessage("inventory.removeWand.title", false);
         String addWandTitle = inv.getMessage("inventory.addWand.title", false);
+        String playerWandTitle = inv.getMessage("inventory.playerWandMenu.title", false);
 
         String title = e.getInventory().getTitle();
 
@@ -97,6 +98,42 @@ public class Wands implements Listener {
             String id = HiddenStringUtils.extractHiddenString(im.getLore().get(im.getLore().size()-1)).split(":")[1];
             wandManager.deleteWand(Integer.parseInt(id), npc.getId());
             e.getInventory().setItem(e.getRawSlot(), new ItemStack(Material.AIR));
+        } else if (title.equalsIgnoreCase(playerWandTitle)) {
+            e.setCancelled(true);
+            if (e.getCurrentItem() == null)
+                return;
+            if (!e.getCurrentItem().hasItemMeta())
+                return;
+            if (!e.getCurrentItem().getItemMeta().hasDisplayName())
+                return;
+
+            String clicked = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
+            String nextMsg = inv.getMessage("inventory.playerWandTitle.next", false);
+            String prevMsg = inv.getMessage("inventory.playerWandTitle.previous", false);
+
+            if (clicked.equalsIgnoreCase(nextMsg)) {
+                if (Storage.getPages().containsKey(p.getUniqueId())) {
+                    int page = Storage.getPages().get(p.getUniqueId());
+
+                    inv.openWandMenu(p, page, false);
+                    Storage.getPages().put(p.getUniqueId(), page+1);
+                } else {
+                    inv.openWandMenu(p, 1, false);
+                    Storage.getPages().put(p.getUniqueId(), 1);
+                }
+            } else if (clicked.equalsIgnoreCase(prevMsg)) {
+                if (Storage.getPages().containsKey(p.getUniqueId())) {
+                    int page = Storage.getPages().get(p.getUniqueId());
+
+                    inv.openWandMenu(p, page, false);
+                    Storage.getPages().put(p.getUniqueId(), page-1);
+                } else {
+                    inv.openWandMenu(p, 0, true);
+                    Storage.getPages().put(p.getUniqueId(), 0);
+                }
+            } else if (e.getCurrentItem().getType() != Material.STAINED_GLASS_PANE) {
+                p.getInventory().addItem(e.getCurrentItem());
+            }
         }
     }
 }

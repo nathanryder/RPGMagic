@@ -17,24 +17,28 @@ public class InventoryClose implements Listener {
     Storage storage = new Storage();
     InventoryManager inv = new InventoryManager();
 
+    //TODO admin add/remove
+
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent e) {
         String name = RPGMagic.getInstance().getConfig().getString("alterName");
-        String title = inv.getMessage("inventory.globalChest.title", false);
+        String playerWandAdminTitle = inv.getMessage("inventory.playerWandAdminMenu.title", false);
+        String playerAdminSpellTitle = inv.getMessage("inventory.playerSpellAdminMenu.title", false);
+
+        String globalChestTitle = inv.getMessage("inventory.globalChest.title", false);
+        String title = e.getInventory().getName();
+
         Player p = (Player) e.getPlayer();
-        if (e.getInventory().getName().equals(title)) {
+        if (title.equalsIgnoreCase(globalChestTitle)) {
             storage.setStorage(Storage.getGlobalChestStorage().get(0));
             return;
+        } else if (title.equalsIgnoreCase(name)) {
+            Storage.getOpenNPCs().remove(p.getUniqueId());
+            Storage.getPages().remove(p.getUniqueId());
+            AlterCraftEvent ev = new AlterCraftEvent(p, e.getInventory());
+            Bukkit.getServer().getPluginManager().callEvent(ev);
+            Storage.getOpenInventories().remove(p.getUniqueId());
         }
-
-        if (!e.getInventory().getName().equals(name))
-            return;
-
-        Storage.getOpenNPCs().remove(p.getUniqueId());
-        Storage.getPages().remove(p.getUniqueId());
-        AlterCraftEvent ev = new AlterCraftEvent(p, e.getInventory());
-        Bukkit.getServer().getPluginManager().callEvent(ev);
-        Storage.getOpenInventories().remove(p.getUniqueId());
     }
 
 }

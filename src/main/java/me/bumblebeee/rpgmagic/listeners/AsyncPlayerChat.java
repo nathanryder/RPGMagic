@@ -1,5 +1,6 @@
 package me.bumblebeee.rpgmagic.listeners;
 
+import me.bumblebeee.rpgmagic.managers.InventoryManager;
 import me.bumblebeee.rpgmagic.managers.Messages;
 import me.bumblebeee.rpgmagic.managers.PaperManager;
 import me.bumblebeee.rpgmagic.managers.WandManager;
@@ -17,6 +18,7 @@ public class AsyncPlayerChat implements Listener {
 
     PaperManager paperManager = new PaperManager();
     WandManager wandManager = new WandManager();
+    InventoryManager inventoryManager = new InventoryManager();
 
     @EventHandler (priority = EventPriority.LOWEST)
     public void onAsyncPlayerChat(AsyncPlayerChatEvent e) {
@@ -137,6 +139,12 @@ public class AsyncPlayerChat implements Listener {
             String data = type + ":" + shape + ":" + distance;
             paperManager.addPaper(item, npcId, data, price);
             p.sendMessage(Messages.ADDED_PAPER.get());
+        } else if (Storage.getInputingSearch().contains(p.getUniqueId())) {
+            e.setCancelled(true);
+
+            String playerName = ChatColor.stripColor(e.getMessage());
+            inventoryManager.openAdminPlayers(p, playerName, 0);
+            Storage.getInputingSearch().remove(p.getUniqueId());
         }
     }
 

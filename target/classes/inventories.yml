@@ -100,3 +100,11 @@ inventory:
     price: "&6Click to change price: %price%"
   removeWand:
     title: "Click to remove a wand"
+  playerAdminMainMenu:
+    title: "Select an option"
+    search: "Search for a player"
+    all: "View all players"
+  adminPlayerMenu:
+    title: "Select a player"
+    next: "&aNext"
+    previous: "&aPrevious"

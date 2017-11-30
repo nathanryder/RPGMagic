@@ -3,6 +3,7 @@ package me.bumblebeee.rpgmagic;
 import lombok.Getter;
 import me.bumblebeee.rpgmagic.commands.MagicCommand;
 import me.bumblebeee.rpgmagic.listeners.*;
+import me.bumblebeee.rpgmagic.listeners.inventoryClicks.*;
 import me.bumblebeee.rpgmagic.managers.Messages;
 import me.bumblebeee.rpgmagic.spells.Lightning;
 import me.bumblebeee.rpgmagic.spells.Speed;
@@ -52,10 +53,16 @@ public class RPGMagic extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new BlockPlace(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new InventoryClose(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new InventoryClick(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new AsyncPlayerChat(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new AlterCraft(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new ItemBuy(), this);
+
+        //Inventory Click Events
+        Bukkit.getServer().getPluginManager().registerEvents(new Admin(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new DualFunctionClicks(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new Papers(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new ShopAlterOther(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new Wands(), this);
     }
 
     public void registerSpells() {

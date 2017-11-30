@@ -201,7 +201,6 @@ public class MagicCommand implements CommandExecutor {
                     p.getInventory().addItem(i);
                     p.sendMessage(Messages.ITEM_GIVEN.get());
                 } else if (cat.equalsIgnoreCase("wand")) {
-                    //TODO messages
                     if (p.getInventory().getItemInMainHand() == null) {
                         p.sendMessage(Messages.NOT_HOLDING_WAND.get());
                         return false;
@@ -331,26 +330,7 @@ public class MagicCommand implements CommandExecutor {
                     return false;
                 }
 
-                if (args.length < 2) {
-                    p.sendMessage(Messages.INVALID_ARGS.get());
-                    return false;
-                }
-
-                Player t = Bukkit.getServer().getPlayer(args[1]);
-                if (t == null) {
-                    OfflinePlayer ot = Bukkit.getServer().getOfflinePlayer(args[1]);
-                    if (!ot.hasPlayedBefore()) {
-                        p.sendMessage(Messages.PLAYER_NOT_FOUND.get().replace("%name%", args[1]));
-                        return false;
-                    }
-
-                    inventoryManager.openAdminMenu(p);
-                    Storage.getAdminMenuHolder().put(p.getUniqueId(), ot.getUniqueId());
-                    return true;
-                }
-
-                Storage.getAdminMenuHolder().put(p.getUniqueId(), t.getUniqueId());
-                inventoryManager.openAdminMenu(p);
+                inventoryManager.openAdminMainMenu(p);
                 return true;
             }
             else if (args[0].equalsIgnoreCase("wanditembazar")) {

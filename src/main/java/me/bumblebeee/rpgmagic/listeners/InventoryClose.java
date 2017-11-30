@@ -22,7 +22,6 @@ public class InventoryClose implements Listener {
         String name = RPGMagic.getInstance().getConfig().getString("alterName");
         String title = inv.getMessage("inventory.globalChest.title", false);
         Player p = (Player) e.getPlayer();
-        //TODO title
         if (e.getInventory().getName().equals(title)) {
             storage.setStorage(Storage.getGlobalChestStorage().get(0));
             return;

@@ -33,6 +33,7 @@ public class Storage {
     private static @Getter List<UUID> inputingPower = new ArrayList<>();
     private static @Getter List<UUID> inputingLevel = new ArrayList<>();
     private static @Getter List<UUID> inputingEA = new ArrayList<>();
+    private static @Getter List<UUID> inputingSearch = new ArrayList<>();
     private static @Getter Map<UUID, Integer> pages = new HashMap<>();
     private static @Getter Map<UUID, String> openPaperType = new HashMap<>();
     private static @Getter Map<UUID, String> categorySelector = new HashMap<>();

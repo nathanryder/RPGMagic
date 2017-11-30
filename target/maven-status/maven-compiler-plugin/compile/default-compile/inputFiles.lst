@@ -1,6 +1,8 @@
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/NPCClick.java
+/home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/ShopAlterOther.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/ReflectionUtils.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/PlayerInteract.java
+/home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Admin.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/RPGMagic.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/managers/Cooldown.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/utils/Storage.java
@@ -8,7 +10,6 @@
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/managers/Messages.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/managers/PaperManager.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/ItemBuy.java
-/home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/InventoryClick.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/managers/WandManager.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/events/SpellCastEvent.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/BlockPlace.java
@@ -17,15 +18,19 @@
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/AlterCraft.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/spells/Lightning.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/utils/TableUtils.java
+/home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/utils/Utils.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/managers/ShapeManager.java
+/home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Wands.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/spells/Speed.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/utils/InventoryToBase64.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/ParticleEffect.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/managers/StructureManager.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/commands/MagicCommand.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/utils/HiddenStringUtils.java
+/home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Papers.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/InventoryClose.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/events/ItemBuyEvent.java
+/home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/DualFunctionClicks.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/Wand.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/managers/RPLManaManager.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/managers/NPCManager.java

@@ -3,6 +3,7 @@ package me.bumblebeee.rpgmagic.managers;
 import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.utils.HiddenStringUtils;
 import me.bumblebeee.rpgmagic.utils.Storage;
+import me.bumblebeee.rpgmagic.utils.Utils;
 import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,6 +16,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import java.io.File;
 import java.util.*;
@@ -72,6 +74,120 @@ public class InventoryManager {
         inv.setItem(13, spell);
         inv.setItem(15, wand);
         inv.setItem(22, close);
+
+        admin.openInventory(inv);
+    }
+
+    public void openAdminMainMenu(Player admin) {
+        String title = getMessage("inventory.playerAdminMainMenu.title", false);
+        String searchMsg = getMessage("inventory.playerAdminMainMenu.search", true);
+        String allMsg = getMessage("inventory.playerAdminMainMenu.all", true);
+        Inventory inv = Bukkit.getServer().createInventory(null, 27, title);
+
+        ItemStack breaker = createItem(Material.STAINED_GLASS_PANE, 1, (short) 14, " ", null);
+        ItemStack all = createItem(Material.SKULL_ITEM, 1, (short)0, allMsg, null);
+        ItemStack search = createItem(Material.GLASS, 1, (short)0, searchMsg, null);
+
+        for (int i = 0; i < 27; i++)
+            inv.setItem(i, breaker);
+
+        inv.setItem(11, search);
+        inv.setItem(15, all);
+        admin.openInventory(inv);
+    }
+
+    public void openAdminPlayers(Player admin, String search, int page) {
+        String title = getMessage("inventory.adminPlayerMenu.title", false);
+        String nextMsg = getMessage("inventory.adminPlayerMenu.next", true);
+        String prevMsg = getMessage("inventory.adminPlayerMenu.previous", true);
+        Inventory inv = Bukkit.getServer().createInventory(null, 36, title);
+
+        ItemStack breaker = createItem(Material.STAINED_GLASS_PANE, 1, (short) 14, " ", null);
+        ItemStack next = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, nextMsg, null);
+        ItemStack prev = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, prevMsg, null);
+
+        for (int i = 27; i < 36; i++)
+            inv.setItem(i, breaker);
+        inv.setItem(27, prev);
+        inv.setItem(35, next);
+
+        if (search == null) {
+            Map<UUID, String> players = Utils.getAllPlayers();
+            if (players == null) {
+                admin.openInventory(inv);
+                return;
+            }
+
+            int maxPages = (int) Math.ceil(players.size()/21)+1;
+            if (page >= maxPages)
+                page = 0;
+            else if (page < 0)
+                page = maxPages;
+//            if (first)
+//                page = 0;
+            Storage.getPages().put(admin.getUniqueId(), page);
+
+            int offset = 26*page;
+            if (page > 0) offset++;
+
+            int i = 0;
+            for (UUID uuid : players.keySet()) {
+                if (i < offset) {
+                    i++;
+                    continue;
+                }
+                if (i >= (offset+27))
+                    break;
+
+                String name = players.get(uuid);
+                ItemStack skull = createItem(Material.SKULL_ITEM, 1, (short)0, name, null);
+                SkullMeta sm = (SkullMeta) skull.getItemMeta();
+                sm.setOwner(name);
+                skull.setItemMeta(sm);
+
+                int counter = i >= offset ? i-offset : i;
+                inv.setItem(counter, skull);
+                i++;
+            }
+        } else {
+            Map<UUID, String> players = Utils.searchForPlayer(search);
+            if (players == null) {
+                admin.openInventory(inv);
+                return;
+            }
+
+            int maxPages = (int) Math.ceil(players.size()/21)+1;
+            if (page >= maxPages)
+                page = 0;
+            else if (page < 0)
+                page = maxPages;
+//            if (first)
+//                page = 0;
+            Storage.getPages().put(admin.getUniqueId(), page);
+
+            int offset = 26*page;
+            if (page > 0) offset++;
+
+            int i = 0;
+            for (UUID uuid : players.keySet()) {
+                if (i < offset) {
+                    i++;
+                    continue;
+                }
+                if (i >= (offset+27))
+                    break;
+
+                String name = players.get(uuid);
+                ItemStack skull = createItem(Material.SKULL_ITEM, 1, (short)0, name, null);
+                SkullMeta sm = (SkullMeta) skull.getItemMeta();
+                sm.setOwner(name);
+                skull.setItemMeta(sm);
+
+                int counter = i >= offset ? i-offset : i;
+                inv.setItem(counter, skull);
+                i++;
+            }
+        }
 
         admin.openInventory(inv);
     }

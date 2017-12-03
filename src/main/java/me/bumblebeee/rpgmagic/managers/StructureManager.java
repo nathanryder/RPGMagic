@@ -2,6 +2,7 @@ package me.bumblebeee.rpgmagic.managers;
 
 import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.utils.HiddenStringUtils;
+import me.bumblebeee.rpgmagic.utils.Storage;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -12,8 +13,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class StructureManager {
+
+    Storage storage = new Storage();
 
     public double getPrice(String id) {
         YamlConfiguration c = getFile();
@@ -67,6 +71,23 @@ public class StructureManager {
         return item;
     }
 
+    public void removeSpellFromPlayer(UUID uuid, String spell) {
+        YamlConfiguration c = storage.getPlayerFile(uuid);
+        if (c.getStringList(uuid + ".spells") == null)
+            return;
+
+        List<String> spells = c.getStringList(uuid + ".spells");
+        List<String> remove = new ArrayList<>();
+        for (String id : spells) {
+            if (id.equalsIgnoreCase(spell))
+                remove.add(id);
+        }
+
+        spells.removeAll(remove);
+        c.set(uuid + ".spells", spells);
+        storage.savePlayerFile(uuid, c);
+    }
+
     public YamlConfiguration getFile() {
         File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "spells.yml");
         if (!f.exists()) {
@@ -87,5 +108,4 @@ public class StructureManager {
             e.printStackTrace();
         }
     }
-    
 }

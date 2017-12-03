@@ -5,13 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="164d161e-3d3c-444e-9526-961b562e02a2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Spells.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/DualFunctionClicks.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/RPGMagic.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/RPGMagic.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/inventoryClicks/DualFunctionClicks.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/RPGMagic-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/RPGMagic-1.0-SNAPSHOT.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/RPGMagic.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/RPGMagic.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/Wand.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/Wand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/InventoryClose.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/InventoryClose.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Admin.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Admin.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Papers.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Papers.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Wands.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Wands.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/Cooldown.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/Cooldown.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/InventoryManager.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/InventoryManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/PaperManager.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/PaperManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/utils/Storage.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/utils/Storage.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/utils/Utils.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/utils/Utils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/Wand.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/Wand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/InventoryClose.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/InventoryClose.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Admin.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Admin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Papers.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Papers.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Wands.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Wands.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Cooldown.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Cooldown.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/InventoryManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/InventoryManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/PaperManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/PaperManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/StructureManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/StructureManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/WandManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/WandManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Storage.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Storage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Utils.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Utils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
     </list>
     <ignored path="RPGMagic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,30 +58,18 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/RPGMagic.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="61" column="72" selection-start-line="61" selection-start-column="72" selection-end-line="61" selection-end-column="72" />
+              <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InventoryManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/InventoryManager.java">
+      <file leaf-file-name="PaperManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/PaperManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="240" column="65" selection-start-line="240" selection-start-column="45" selection-end-line="240" selection-end-column="65" />
+            <state vertical-scroll-proportion="0.60058737">
+              <caret line="234" column="45" selection-start-line="234" selection-start-column="45" selection-end-line="234" selection-end-column="45" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Utils.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Utils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36120403">
-              <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -96,13 +104,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/events/ItemBuyEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/events/SpellCastEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/BlockPlace.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/TableUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/InventoryToBase64.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/PaperManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/WandManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/shops.yml" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/NPCClick.java" />
@@ -117,12 +122,10 @@
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/spells/TestSpell.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/PlayerInteract.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/RPLManaManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/Wand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/spells/SpellTemplate.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/spells/Dig.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/spells/Big.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/spells/BigDig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Cooldown.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/spells/Shapes.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spells.yml" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/ReflectionUtils.java" />
@@ -134,19 +137,24 @@
         <option value="$PROJECT_DIR$/src/main/resources/inventories.yml" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/ShopAlterOther.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/InventoryClick.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Storage.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Messages.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/commands/MagicCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/AsyncPlayerChat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Utils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/InventoryManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/InventoryClose.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Admin.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Spells.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/RPGMagic.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Wands.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/DualFunctionClicks.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Papers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Storage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Utils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Cooldown.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/Wand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/WandManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/StructureManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Admin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/InventoryClose.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/InventoryManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/PaperManager.java" />
       </list>
     </option>
   </component>
@@ -848,9 +856,9 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Floobits" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30204964" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23300971" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2078125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -895,13 +903,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/StructureManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/TableUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26975477">
@@ -942,20 +943,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45783132">
           <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/PaperManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1452381">
-          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/WandManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4504065">
-          <caret line="23" column="101" selection-start-line="23" selection-start-column="101" selection-end-line="23" selection-end-column="101" />
         </state>
       </provider>
     </entry>
@@ -1066,35 +1053,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/Wand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3411371">
-          <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/RPLManaManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22073579">
           <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#407#408#0" expanded="false" />
-            <element signature="e#456#457#0" expanded="false" />
-            <element signature="e#504#505#0" expanded="false" />
-            <element signature="e#553#554#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Cooldown.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44570503">
-          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1102,9 +1064,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.48622367">
           <caret line="575" column="46" selection-start-line="575" selection-start-column="46" selection-end-line="575" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1112,17 +1071,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27201784">
           <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#42299#42331#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/ShapeManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4165316">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1137,9 +1085,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35785952">
           <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1150,19 +1095,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/AlterCraft.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3556299">
-          <caret line="73" column="57" selection-start-line="73" selection-start-column="57" selection-end-line="73" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/spells/Speed.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32107022">
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1170,17 +1106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18275861">
           <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Storage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38127092">
-          <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
-          <folding>
-            <marker date="1511873670686" expanded="true" signature="9292:9719" placeholder="{...}" />
-            <marker date="1511873670686" expanded="true" signature="9758:10243" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1192,16 +1117,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/commands/MagicCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50577366">
-          <caret line="49" column="61" selection-start-line="49" selection-start-column="61" selection-end-line="49" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/AsyncPlayerChat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35818475">
@@ -1210,55 +1125,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/InventoryManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="240" column="65" selection-start-line="240" selection-start-column="45" selection-end-line="240" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/ShopAlterOther.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.722408">
-          <caret line="350" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="350" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/InventoryClose.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="85" selection-start-line="25" selection-start-column="85" selection-end-line="25" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Admin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="228" column="24" selection-start-line="228" selection-start-column="24" selection-end-line="228" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Spells.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5819398">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/RPGMagic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="72" selection-start-line="61" selection-start-column="72" selection-end-line="61" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1280,13 +1153,137 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/NPCManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.080267556">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/ShapeManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22073579">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/ShopAlterOther.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46928746">
+          <caret line="219" column="46" selection-start-line="219" selection-start-column="46" selection-end-line="219" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Cooldown.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54395604">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/commands/MagicCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50961536">
+          <caret line="195" column="36" selection-start-line="195" selection-start-column="36" selection-end-line="195" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36120403">
-          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.024725275">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/Wand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75274724">
+          <caret line="40" column="29" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Storage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34567901">
+          <caret line="82" column="49" selection-start-line="82" selection-start-column="49" selection-end-line="82" selection-end-column="49" />
+          <folding>
+            <marker date="1512149760437" expanded="true" signature="9943:10362" placeholder="{...}" />
+            <marker date="1512149760437" expanded="true" signature="10401:10882" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/AlterCraft.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5802469">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/WandManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44444445">
+          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/StructureManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35682818">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/inventoryClicks/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36">
+          <caret line="250" column="33" selection-start-line="250" selection-start-column="33" selection-end-line="250" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/InventoryClose.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3323077">
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/InventoryManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3323077">
+          <caret line="506" column="0" selection-start-line="506" selection-start-column="0" selection-end-line="506" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/RPGMagic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/PaperManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60058737">
+          <caret line="234" column="45" selection-start-line="234" selection-start-column="45" selection-end-line="234" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>

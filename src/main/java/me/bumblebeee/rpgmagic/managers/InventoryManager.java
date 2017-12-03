@@ -292,10 +292,10 @@ public class InventoryManager {
         ItemStack next = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, nextMsg, null);
         ItemStack prev = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, prevMsg, null);
 
-        YamlConfiguration c = storage.getStorageFile();
+        YamlConfiguration c = storage.getPlayerFile(p.getUniqueId());
         int maxPages = 1;
-        if (c.getConfigurationSection("uuids." + p.getUniqueId() + ".wands") != null)
-            maxPages = (int) Math.ceil(c.getConfigurationSection("uuids." + p.getUniqueId() + ".wands").getKeys(false).size()/21)+1;
+        if (c.getConfigurationSection(p.getUniqueId() + ".wands") != null)
+            maxPages = (int) Math.ceil(c.getConfigurationSection(p.getUniqueId() + ".wands").getKeys(false).size()/21)+1;
 
         if (page >= maxPages)
             page = 0;
@@ -337,10 +337,10 @@ public class InventoryManager {
         ItemStack next = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, nextMsg, null);
         ItemStack prev = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, prevMsg, null);
 
-        YamlConfiguration c = storage.getStorageFile();
+        YamlConfiguration c = storage.getPlayerFile(p);
         int maxPages = 1;
-        if (c.getConfigurationSection("uuids." + p + ".wands") != null)
-            maxPages = (int) Math.ceil(c.getConfigurationSection("uuids." + p + ".wands").getKeys(false).size()/21)+1;
+        if (c.getConfigurationSection(p + ".wands") != null)
+            maxPages = (int) Math.ceil(c.getConfigurationSection(p + ".wands").getKeys(false).size()/21)+1;
 
         if (page >= maxPages)
             page = 0;

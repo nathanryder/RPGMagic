@@ -6,6 +6,7 @@ import me.bumblebeee.rpgmagic.utils.HiddenStringUtils;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Wand {
@@ -21,6 +22,11 @@ public class Wand {
     private @Getter int manaRequired;
 
     public Wand(ItemStack i) {
+        if (!i.hasItemMeta())
+            return;
+        if (!i.getItemMeta().hasLore())
+            return;
+
         List<String> lore = i.getItemMeta().getLore();
         int index = lore.size()-1;
         if (!HiddenStringUtils.hasHiddenString(lore.get(index)))

@@ -1,10 +1,11 @@
 package me.bumblebeee.rpgmagic.utils;
 
+import me.bumblebeee.rpgmagic.RPGMagic;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -12,13 +13,20 @@ import java.util.UUID;
 public class Utils {
 
     public static Map<UUID, String> searchForPlayer(String name) {
-        Storage storage = new Storage();
-        YamlConfiguration c = storage.getStorageFile();
-        if (c.getConfigurationSection("uuids") == null)
-            return null;
-
+        File folder = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "data");
+        File[] listOfFiles = folder.listFiles();
         Map<UUID, String> players = new HashMap<>();
-        for (String suuid : c.getConfigurationSection("uuids").getKeys(false)) {
+
+        if (listOfFiles == null)
+            return new HashMap<>();
+        for (int i = 0; i < listOfFiles.length; i++) {
+            if (!listOfFiles[i].isFile())
+                continue;
+
+            String suuid = listOfFiles[i].getName().split("\\.")[0];
+            if (suuid.equalsIgnoreCase("storage"))
+                continue;
+
             UUID uuid = UUID.fromString(suuid);
             Player t = Bukkit.getServer().getPlayer(uuid);
             if (t == null) {
@@ -38,13 +46,20 @@ public class Utils {
     }
 
     public static Map<UUID,String> getAllPlayers() {
-        Storage storage = new Storage();
-        YamlConfiguration c = storage.getStorageFile();
-        if (c.getConfigurationSection("uuids") == null)
-            return null;
-
+        File folder = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "data");
+        File[] listOfFiles = folder.listFiles();
         Map<UUID, String> players = new HashMap<>();
-        for (String suuid : c.getConfigurationSection("uuids").getKeys(false)) {
+
+        if (listOfFiles == null)
+            return new HashMap<>();
+        for (int i = 0; i < listOfFiles.length; i++) {
+            if (!listOfFiles[i].isFile())
+                continue;
+
+            String suuid = listOfFiles[i].getName().split("\\.")[0];
+            if (suuid.equalsIgnoreCase("storage"))
+                continue;
+
             UUID uuid = UUID.fromString(suuid);
             Player t = Bukkit.getServer().getPlayer(uuid);
             if (t == null) {

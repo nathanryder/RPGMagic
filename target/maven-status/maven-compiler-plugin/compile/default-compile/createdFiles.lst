@@ -22,6 +22,7 @@ me/bumblebeee/rpgmagic/ParticleEffect$OrdinaryColor.class
 me/bumblebeee/rpgmagic/ParticleEffect$ParticleColor.class
 me/bumblebeee/rpgmagic/listeners/inventoryClicks/Admin.class
 me/bumblebeee/rpgmagic/listeners/ItemBuy.class
+me/bumblebeee/rpgmagic/listeners/inventoryClicks/Spells.class
 me/bumblebeee/rpgmagic/spells/Lightning.class
 me/bumblebeee/rpgmagic/utils/InventoryToBase64.class
 me/bumblebeee/rpgmagic/utils/TableUtils.class
@@ -29,7 +30,6 @@ me/bumblebeee/rpgmagic/ParticleEffect$ParticleVersionException.class
 me/bumblebeee/rpgmagic/listeners/PlayerInteract.class
 me/bumblebeee/rpgmagic/managers/Cooldown.class
 me/bumblebeee/rpgmagic/managers/NPCManager.class
-me/bumblebeee/rpgmagic/listeners/inventoryClicks/DualFunctionClicks.class
 me/bumblebeee/rpgmagic/events/SpellCastEvent.class
 me/bumblebeee/rpgmagic/managers/InventoryManager.class
 me/bumblebeee/rpgmagic/listeners/inventoryClicks/Wands.class

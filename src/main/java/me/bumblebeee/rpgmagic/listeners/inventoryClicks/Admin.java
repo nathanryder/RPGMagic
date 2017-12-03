@@ -1,7 +1,7 @@
 package me.bumblebeee.rpgmagic.listeners.inventoryClicks;
 
-import me.bumblebeee.rpgmagic.managers.InventoryManager;
-import me.bumblebeee.rpgmagic.managers.Messages;
+import me.bumblebeee.rpgmagic.managers.*;
+import me.bumblebeee.rpgmagic.utils.HiddenStringUtils;
 import me.bumblebeee.rpgmagic.utils.Storage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,13 +10,20 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 public class Admin implements Listener {
 
     InventoryManager inv = new InventoryManager();
+    PaperManager paperManager = new PaperManager();
+    WandManager wandManager = new WandManager();
+    StructureManager spellManager = new StructureManager();
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
@@ -109,6 +116,17 @@ public class Admin implements Listener {
             if (!e.getCurrentItem().getItemMeta().hasDisplayName())
                 return;
 
+            if (e.getAction() == InventoryAction.PICKUP_HALF && e.getCurrentItem().getType() != Material.STAINED_GLASS_PANE) {
+                e.setCancelled(true);
+                ItemMeta im = e.getCurrentItem().getItemMeta();
+                int index = e.getCurrentItem().getItemMeta().getLore().size()-1;
+                String[] data = HiddenStringUtils.extractHiddenString(im.getLore().get(index)).split(":");
+
+                spellManager.removeSpellFromPlayer(p.getUniqueId(), data[1]);
+                e.getInventory().setItem(e.getRawSlot(), new ItemStack(Material.AIR));
+                return;
+            }
+
             String clicked = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
             String nextMsg = inv.getMessage("inventory.playerSpellAdminMenu.next", false);
             String prevMsg = inv.getMessage("inventory.playerSpellAdminMenu.previous", false);
@@ -136,6 +154,9 @@ public class Admin implements Listener {
                 }
             } else if (e.getCurrentItem().getType() == Material.STAINED_GLASS_PANE) {
                 e.setCancelled(true);
+            } else if (e.getRawSlot() >= 0 && e.getRawSlot() < 28) {
+                e.setCancelled(true);
+                p.getInventory().addItem(e.getCurrentItem());
             }
         } else if (title.equalsIgnoreCase(playerWandAdminTitle)) {
             if (e.getCurrentItem() == null)
@@ -144,6 +165,17 @@ public class Admin implements Listener {
                 return;
             if (!e.getCurrentItem().getItemMeta().hasDisplayName())
                 return;
+
+            if (e.getAction() == InventoryAction.PICKUP_HALF && e.getCurrentItem().getType() != Material.STAINED_GLASS_PANE) {
+                e.setCancelled(true);
+                ItemMeta im = e.getCurrentItem().getItemMeta();
+                int index = e.getCurrentItem().getItemMeta().getLore().size()-1;
+                String[] data = HiddenStringUtils.extractHiddenString(im.getLore().get(index)).split(":");
+
+                wandManager.removeWandFromPlayer(p.getUniqueId(), data);
+                e.getInventory().setItem(e.getRawSlot(), new ItemStack(Material.AIR));
+                return;
+            }
 
             String clicked = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
             String nextMsg = inv.getMessage("inventory.playerWandAdminMenu.next", false);
@@ -173,6 +205,9 @@ public class Admin implements Listener {
                 }
             } else if (e.getCurrentItem().getType() == Material.STAINED_GLASS_PANE) {
                 e.setCancelled(true);
+            } else if (e.getRawSlot() >= 0 && e.getRawSlot() < 28) {
+                e.setCancelled(true);
+                p.getInventory().addItem(e.getCurrentItem());
             }
         } else if (title.equalsIgnoreCase(playerAdminPaperSelectTitle)) {
             e.setCancelled(true);
@@ -199,7 +234,6 @@ public class Admin implements Listener {
                 Storage.getCategorySelector().put(p.getUniqueId(), "effect area");
             }
         } else if (title.equalsIgnoreCase(playerPaperAdminTitle)) {
-            e.setCancelled(true);
             if (e.getCurrentItem() == null)
                 return;
             if (!e.getCurrentItem().hasItemMeta())
@@ -207,12 +241,34 @@ public class Admin implements Listener {
             if (!e.getCurrentItem().getItemMeta().hasDisplayName())
                 return;
 
+            if (e.getAction() == InventoryAction.PICKUP_HALF && e.getCurrentItem().getType() != Material.STAINED_GLASS_PANE) {
+                e.setCancelled(true);
+                ItemMeta im = e.getCurrentItem().getItemMeta();
+                int index = e.getCurrentItem().getItemMeta().getLore().size()-1;
+                String[] data = HiddenStringUtils.extractHiddenString(im.getLore().get(index)).split(":");
+
+                if (data[1].contains("distance")) {
+                    int dist = Integer.parseInt(data[2]);
+                    String shape = data[1].split("\\|")[0];
+                    paperManager.removePaperFromPlayer(p.getUniqueId(), "effect area", dist, shape);
+                } else if (data[0].equalsIgnoreCase("power")) {
+                    int power = Integer.parseInt(data[1]);
+                    paperManager.removePaperFromPlayer(p.getUniqueId(), "power", power, null);
+                } else if (data[0].equalsIgnoreCase("level")) {
+                    int level = Integer.parseInt(data[1]);
+                    paperManager.removePaperFromPlayer(p.getUniqueId(), "level", level, null);
+                }
+                e.getInventory().setItem(e.getRawSlot(), new ItemStack(Material.AIR));
+                return;
+            }
+
             String clicked = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
             String nextMsg = inv.getMessage("inventory.playerPaperMenu.next", false);
             String prevMsg = inv.getMessage("inventory.playerSpellMenu.previous", false);
 
             String type = Storage.getCategorySelector().get(p.getUniqueId());
             if (clicked.equalsIgnoreCase(nextMsg)) {
+                e.setCancelled(true);
                 if (Storage.getPages().containsKey(p.getUniqueId())) {
                     int page = Storage.getPages().get(p.getUniqueId());
                     inv.openPaperAdminMenu(Storage.getAdminMenuHolder().get(p.getUniqueId()), p, type, page, false);
@@ -222,6 +278,7 @@ public class Admin implements Listener {
                     Storage.getPages().put(p.getUniqueId(), 1);
                 }
             } else if (clicked.equalsIgnoreCase(prevMsg)) {
+                e.setCancelled(true);
                 if (Storage.getPages().containsKey(p.getUniqueId())) {
                     int page = Storage.getPages().get(p.getUniqueId());
                     inv.openPaperAdminMenu(Storage.getAdminMenuHolder().get(p.getUniqueId()), p, type, page, false);
@@ -230,7 +287,10 @@ public class Admin implements Listener {
                     inv.openPaperAdminMenu(Storage.getAdminMenuHolder().get(p.getUniqueId()), p, type, 0, false);
                     Storage.getPages().put(p.getUniqueId(), 0);
                 }
-            } else if (e.getCurrentItem().getType() == Material.PAPER) {
+            } else if (e.getCurrentItem().getType() == Material.STAINED_GLASS_PANE) {
+                e.setCancelled(true);
+            } else if (e.getRawSlot() >= 0 && e.getRawSlot() < 28) {
+                e.setCancelled(true);
                 p.getInventory().addItem(e.getCurrentItem());
             }
         }

@@ -1,16 +1,49 @@
 package me.bumblebeee.rpgmagic.managers;
 
 import me.bumblebeee.rpgmagic.utils.HiddenStringUtils;
+import me.bumblebeee.rpgmagic.utils.Storage;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class WandManager {
 
     NPCManager npcs = new NPCManager();
+    Storage storage = new Storage();
+
+    public void removeWandFromPlayer(UUID uuid, String[] data) {
+        int power = Integer.parseInt(data[0]);
+        int level = Integer.parseInt(data[1]);
+        String shape = data[2];
+        int distance = Integer.parseInt(data[3]);
+        String spell = data[4];
+
+        YamlConfiguration c = storage.getPlayerFile(uuid);
+        if (c.getConfigurationSection(uuid + ".wands") == null)
+            return;
+
+        for (String id : c.getConfigurationSection(uuid + ".wands").getKeys(false)) {
+            if (id.equalsIgnoreCase("counter"))
+                continue;
+            int cPower = Integer.parseInt(c.getString(uuid + ".wands." + id + ".power"));
+            int cLevel = Integer.parseInt(c.getString(uuid + ".wands." + id + ".level"));
+            String cShape = c.getString(uuid + ".wands." + id + ".shape");
+            int cDistance = Integer.parseInt(c.getString(uuid + ".wands." + id + ".distance"));
+            String cSpell = c.getString(uuid + ".wands." + id + ".spell");
+
+            if (power == cPower && level == cLevel
+                    && shape.equalsIgnoreCase(cShape) && distance == cDistance
+                    && spell.equalsIgnoreCase(cSpell))
+                c.set(uuid + ".wands." + id, null);
+        }
+
+        storage.savePlayerFile(uuid, c);
+    }
 
     public void addWandToNpc(ItemStack wand, int npcId, double price) {
         YamlConfiguration c = npcs.getFile();

@@ -40,7 +40,7 @@ public class Storage {
     private static @Getter List<ItemStack[]> globalChestStorage = new ArrayList<>();
 
     public void setStorage(ItemStack[] items) {
-        YamlConfiguration c = getStorageFile();
+        YamlConfiguration c = getStorage();
 
         int slot = 0;
         for (ItemStack item : items) {
@@ -64,11 +64,11 @@ public class Storage {
             c.set("chest." + slot + ".lore", lore);
             ++slot;
         }
-        saveStorageFile(c);
+        saveStorage(c);
     }
 
     public void addWandPlayer(UUID uuid, String args) {
-        YamlConfiguration c = getStorageFile();
+        YamlConfiguration c = getPlayerFile(uuid);
         String[] data = args.split(":");
 
         String power = data[0];
@@ -79,36 +79,36 @@ public class Storage {
         String type = data[5];
         String desc = data[6];
 
-        int counter = c.getInt("uuids." + uuid + ".wands.counter");
-        c.set("uuids." + uuid + ".wands." + counter + ".type", type);
-        c.set("uuids." + uuid + ".wands." + counter + ".level", level);
-        c.set("uuids." + uuid + ".wands." + counter + ".power", power);
-        c.set("uuids." + uuid + ".wands." + counter + ".shape", shape);
-        c.set("uuids." + uuid + ".wands." + counter + ".distance", distance);
-        c.set("uuids." + uuid + ".wands." + counter + ".spell", spellName);
-        c.set("uuids." + uuid + ".wands." + counter + ".description", desc);
+        int counter = c.getInt(uuid + ".wands.counter");
+        c.set(uuid + ".wands." + counter + ".type", type);
+        c.set(uuid + ".wands." + counter + ".level", level);
+        c.set(uuid + ".wands." + counter + ".power", power);
+        c.set(uuid + ".wands." + counter + ".shape", shape);
+        c.set(uuid + ".wands." + counter + ".distance", distance);
+        c.set(uuid + ".wands." + counter + ".spell", spellName);
+        c.set(uuid + ".wands." + counter + ".description", desc);
 
-        c.set("uuids." + uuid + ".wands.counter", counter+1);
-        saveStorageFile(c);
+        c.set(uuid + ".wands.counter", counter+1);
+        savePlayerFile(uuid, c);
     }
 
     public List<ItemStack> getPlayerWands(UUID uuid) {
-        YamlConfiguration c = getStorageFile();
+        YamlConfiguration c = getPlayerFile(uuid);
         List<ItemStack> wands = new ArrayList<>();
 
-        if (c.getConfigurationSection("uuids." + uuid + ".wands") == null)
+        if (c.getConfigurationSection(uuid + ".wands") == null)
             return new ArrayList<>();
 
-        for (String id : c.getConfigurationSection("uuids." + uuid + ".wands").getKeys(false)) {
+        for (String id : c.getConfigurationSection(uuid + ".wands").getKeys(false)) {
             if (id.equalsIgnoreCase("counter"))
                 continue;
-            String type = c.getString("uuids." + uuid + ".wands." + id + ".type");
-            String level = c.getString("uuids." + uuid + ".wands." + id + ".level");
-            String power = c.getString("uuids." + uuid + ".wands." + id + ".power");
-            String shape = c.getString("uuids." + uuid + ".wands." + id + ".shape");
-            String distance = c.getString("uuids." + uuid + ".wands." + id + ".distance");
-            String spellName = c.getString("uuids." + uuid + ".wands." + id + ".spell");
-            String description = c.getString("uuids." + uuid + ".wands." + id + ".description");
+            String type = c.getString(uuid + ".wands." + id + ".type");
+            String level = c.getString(uuid + ".wands." + id + ".level");
+            String power = c.getString(uuid + ".wands." + id + ".power");
+            String shape = c.getString(uuid + ".wands." + id + ".shape");
+            String distance = c.getString(uuid + ".wands." + id + ".distance");
+            String spellName = c.getString(uuid + ".wands." + id + ".spell");
+            String description = c.getString(uuid + ".wands." + id + ".description");
 
             Material m = Material.matchMaterial(type);
             ItemStack i = new ItemStack(m);
@@ -139,59 +139,64 @@ public class Storage {
     }
 
     public void addSpellPlayer(UUID uuid, String spellName) {
-        YamlConfiguration c = getStorageFile();
-        List<String> spells = c.getStringList("uuids." + uuid + ".spells");
+        YamlConfiguration c = getPlayerFile(uuid);
+        List<String> spells = c.getStringList(uuid + ".spells");
         if (spells.contains(spellName))
             return;
 
         spells.add(spellName.toLowerCase());
-        c.set("uuids." + uuid + ".spells", spells);
-        saveStorageFile(c);
+        c.set(uuid + ".spells", spells);
+        savePlayerFile(uuid, c);
     }
 
     public List<String> getSpellsForPlayer(UUID uuid) {
-        YamlConfiguration c = getStorageFile();
-        return c.getStringList("uuids." + uuid + ".spells");
+        YamlConfiguration c = getPlayerFile(uuid);
+        return c.getStringList(uuid + ".spells");
     }
 
     public List<String> getPapersForPlayer(UUID uuid, String category) {
-        YamlConfiguration c = getStorageFile();
-        List<String> cs = c.getStringList("uuids." + uuid + ".papers." + category);
+        YamlConfiguration c = getPlayerFile(uuid);
+        List<String> cs = c.getStringList(uuid + ".papers." + category);
         if (cs == null)
             return null;
         return cs;
     }
 
     public void addPaperPlayer(UUID uuid, String paperType, int lvlPwrDist, String shape) {
-        YamlConfiguration c = getStorageFile();
+        YamlConfiguration c = getPlayerFile(uuid);
         paperType = paperType.toLowerCase();
 
         if (paperType.equalsIgnoreCase("level")) {
-            List<String> levels = c.getStringList("uuids." + uuid + ".papers." + paperType);
+            List<String> levels = c.getStringList(uuid + ".papers." + paperType);
             if (levels.contains(String.valueOf(lvlPwrDist)))
                 return;
             levels.add(String.valueOf(lvlPwrDist));
-            c.set("uuids." + uuid + ".papers." + paperType, levels);
+            c.set(uuid + ".papers." + paperType, levels);
         } else if (paperType.equalsIgnoreCase("power")) {
-            List<String> powers = c.getStringList("uuids." + uuid + ".papers." + paperType);
+            List<String> powers = c.getStringList(uuid + ".papers." + paperType);
             if (powers.contains(String.valueOf(lvlPwrDist)))
                 return;
             powers.add(String.valueOf(lvlPwrDist));
-            c.set("uuids." + uuid + ".papers." + paperType, powers);
+            c.set(uuid + ".papers." + paperType, powers);
         } else if (paperType.equalsIgnoreCase("effect area")) {
             String str = shape + ":" + String.valueOf(lvlPwrDist);
-            List<String> areas = c.getStringList("uuids." + uuid + ".papers." + paperType);
+            List<String> areas = c.getStringList(uuid + ".papers." + paperType);
             if (areas.contains(String.valueOf(str)))
                 return;
             areas.add(str);
 
-            c.set("uuids." + uuid + ".papers." + paperType, areas);
+            c.set(uuid + ".papers." + paperType, areas);
         }
-        saveStorageFile(c);
+        savePlayerFile(uuid, c);
     }
 
-    public YamlConfiguration getStorageFile() {
-        File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "storage.yml");
+    public YamlConfiguration getPlayerFile(UUID uuid) {
+        File folder = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "data");
+        if (!folder.exists())
+            folder.mkdirs();
+
+        File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "data" + File.separator + uuid+".yml");
+
         if (!f.exists()) {
             try {
                 f.createNewFile();
@@ -202,8 +207,30 @@ public class Storage {
         return YamlConfiguration.loadConfiguration(f);
     }
 
-    public void saveStorageFile(YamlConfiguration c) {
-        File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "storage.yml");
+    public void savePlayerFile(UUID uuid, YamlConfiguration c) {
+        File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "data" + File.separator + uuid+".yml");
+
+        try {
+            c.save(f);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public YamlConfiguration getStorage() {
+        File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "data" + File.separator +"storage.yml");
+        if (!f.exists()) {
+            try {
+                f.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return YamlConfiguration.loadConfiguration(f);
+    }
+
+    public void saveStorage(YamlConfiguration c) {
+        File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "data" + File.separator + "storage.yml");
         try {
             c.save(f);
         } catch (IOException e) {
@@ -215,18 +242,18 @@ public class Storage {
         if (Storage.getGlobalChestStorage().size() < 1)
             return;
 
-        YamlConfiguration c = getStorageFile();
+        YamlConfiguration c = getStorage();
         ItemStack[] items = Storage.getGlobalChestStorage().get(0);
         Inventory inv = Bukkit.getServer().createInventory(null, 54, "");
         inv.setContents(items);
 
         String store = InventoryToBase64.toBase64(inv);
         c.set("storageChest", store);
-        saveStorageFile(c);
+        saveStorage(c);
     }
 
     public void loadStorageChest() {
-        YamlConfiguration c = getStorageFile();
+        YamlConfiguration c = getStorage();
         String data = c.getString("storageChest");
         if (data == null)
             return;

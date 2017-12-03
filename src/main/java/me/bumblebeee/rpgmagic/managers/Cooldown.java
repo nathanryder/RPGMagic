@@ -24,7 +24,7 @@ public class Cooldown {
     }
 
     public void reduceCooldown(UUID uuid, String spell, int amount) {
-        int cooldown = getCooldown(uuid, spell)-1;
+        int cooldown = getCooldown(uuid, spell)-amount;
 
         Map<String, Integer> spells = cooldowns.get(uuid);
         spells.put(spell, cooldown);

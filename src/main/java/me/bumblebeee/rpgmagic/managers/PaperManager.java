@@ -2,6 +2,7 @@ package me.bumblebeee.rpgmagic.managers;
 
 import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.utils.HiddenStringUtils;
+import me.bumblebeee.rpgmagic.utils.Storage;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -12,10 +13,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class PaperManager {
 
     NPCManager npcs = new NPCManager();
+    Storage storage = new Storage();
 
     //data - type:params:params:
     public void addPaper(ItemStack paper, int npcId, String typeInfo, double price) {
@@ -65,6 +68,30 @@ public class PaperManager {
 
         c.set("npcs." + npcId + ".papers.counter", counter);
         npcs.saveFile(c);
+    }
+
+    public void removePaperFromPlayer(UUID uuid, String type, int lvlPwrDist, String shape) {
+        YamlConfiguration c = storage.getPlayerFile(uuid);
+        if (c.getStringList(uuid + ".papers." + type) == null)
+            return;
+
+        List<String> remove = new ArrayList<>();
+        List<String> papers = c.getStringList(uuid + ".papers." + type);
+        for (String li : papers) {
+            if (shape != null) {
+                String[] data = li.split(":");
+                if (data[0].equalsIgnoreCase(shape) && lvlPwrDist == Integer.parseInt(data[1]))
+                    remove.add(li);
+            } else {
+                if (Integer.parseInt(li) == lvlPwrDist)
+                    remove.add(li);
+            }
+        }
+        papers.removeAll(remove);
+
+        c.set(uuid + ".papers." + type, null);
+        c.set(uuid + ".papers." + type, papers);
+        storage.savePlayerFile(uuid, c);
     }
 
     public void deletePaper(int id, int npcId) {
@@ -234,5 +261,4 @@ public class PaperManager {
             e.printStackTrace();
         }
     }
-
 }

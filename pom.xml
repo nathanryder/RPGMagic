@@ -86,7 +86,15 @@
                 <includes>
                     <include>*</include>
                 </includes>
-            </resource>
+            </resource><resource>
+            <targetPath>./spells/</targetPath>
+            <filtering>true</filtering>
+            <directory>${basedir}/src/main/resources/spells</directory>
+            <includes>
+                <include>*</include>
+            </includes>
+        </resource>
+
         </resources>
 
         <plugins>

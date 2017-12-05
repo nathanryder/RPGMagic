@@ -1,15 +1,12 @@
 package me.bumblebeee.rpgmagic.managers;
 
 import lombok.Getter;
-import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class Cooldown {
-
-    StructureManager spells = new StructureManager();
 
     private static @Getter Map<UUID, Map<String, Integer>> cooldowns = new HashMap<>();
 
@@ -40,8 +37,7 @@ public class Cooldown {
     }
 
     public int getSpellCooldown(String spell) {
-        YamlConfiguration c = spells.getFile();
-        return c.getInt("spells." + spell + ".cooldown");
+        return SpellManager.getSpell(spell).getCooldown();
     }
 
 }

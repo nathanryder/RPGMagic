@@ -1,0 +1,29 @@
+name: "Speed"
+type: "TBD"
+description: Gives an area effect of speed
+price: 1.0
+mana: 50
+cooldown: 2
+
+#Duration or damage
+boost: "%potential%+5"
+
+commands:
+- "CONSOLE:broadcast &5%player% cast %spell%"
+- "delay:2"
+- "PLAYER:echo Delayed player command"
+
+actions:
+#[loop:] applyPotion:PotionType:amplifier:duration [:loopTime:iterations]
+#total loop time(seconds) = (iterations*loopTime)/20
+- "loop:applyPotion:SPEED:%boost%:3:20:10"
+- "delay:5"
+- "loop:applyPotion:NIGHT_VISION:%boost%:3:20:10"
+
+particles:
+- "start:outlineArea:REDSTONE"
+- "delay:8"
+- "loop:outlineArea:VILLAGER_HAPPY:5"
+- "end:outlineArea:REDSTONE"
+
+#TODO DELAYS FOR ALL

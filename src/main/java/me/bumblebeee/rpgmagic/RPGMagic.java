@@ -5,7 +5,7 @@ import me.bumblebeee.rpgmagic.commands.MagicCommand;
 import me.bumblebeee.rpgmagic.listeners.*;
 import me.bumblebeee.rpgmagic.listeners.inventoryClicks.*;
 import me.bumblebeee.rpgmagic.managers.Messages;
-import me.bumblebeee.rpgmagic.spells.Lightning;
+import me.bumblebeee.rpgmagic.managers.SpellManager;
 import me.bumblebeee.rpgmagic.spells.Speed;
 import me.bumblebeee.rpgmagic.utils.Storage;
 import net.milkbowl.vault.economy.Economy;
@@ -14,12 +14,15 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+
 public class RPGMagic extends JavaPlugin {
 
     private static @Getter Plugin instance;
     private static @Getter Economy econ = null;
 
     Storage storage = new Storage();
+    SpellManager spellManager = new SpellManager();
 
     @Override
     public void onEnable() {
@@ -32,14 +35,10 @@ public class RPGMagic extends JavaPlugin {
 
         saveDefaultConfig();
         registerEvents();
-        registerSpells();
+        spellManager.cacheSpellFiles();
         storage.loadStorageChest();
 
-        saveResource("papers.yml", false);
-        saveResource("inventories.yml", false);
-        saveResource("spells.yml", false);
-        saveResource("shops.yml", false);
-        Messages.getYaml();
+        setupFiles();
         Bukkit.getServer().getPluginCommand("magic").setExecutor(new MagicCommand());
     }
 
@@ -56,6 +55,7 @@ public class RPGMagic extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new AsyncPlayerChat(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new AlterCraft(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new ItemBuy(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new SpellCast(), this);
 
         //Inventory Click Events
         Bukkit.getServer().getPluginManager().registerEvents(new Admin(), this);
@@ -65,9 +65,15 @@ public class RPGMagic extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new Wands(), this);
     }
 
-    public void registerSpells() {
-        Bukkit.getServer().getPluginManager().registerEvents(new Lightning(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new Speed(), this);
+    public void setupFiles() {
+        spellManager.saveDefaultSpells();
+        if (!new File(getDataFolder() + File.separator + "papers.yml").exists())
+            saveResource("papers.yml", false);
+        if (!new File(getDataFolder() + File.separator + "inventories.yml").exists())
+            saveResource("inventories.yml", false);
+        if (!new File(getDataFolder() + File.separator + "shops.yml").exists())
+            saveResource("shops.yml", false);
+        Messages.getYaml();
     }
 
     private boolean setupEconomy() {

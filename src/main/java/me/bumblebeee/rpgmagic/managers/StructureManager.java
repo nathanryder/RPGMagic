@@ -5,6 +5,7 @@ import me.bumblebeee.rpgmagic.utils.HiddenStringUtils;
 import me.bumblebeee.rpgmagic.utils.Storage;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -20,7 +21,7 @@ public class StructureManager {
     Storage storage = new Storage();
 
     public double getPrice(String id) {
-        YamlConfiguration c = getFile();
+        FileConfiguration c = RPGMagic.getInstance().getConfig();
         id = id.toLowerCase();
 
         double price = c.getDouble("spells." + id + ".price");
@@ -28,7 +29,7 @@ public class StructureManager {
     }
 
     public ItemStack getItemById(String id, boolean addLore) {
-        YamlConfiguration c = getFile();
+        FileConfiguration c = RPGMagic.getInstance().getConfig();
         id = id.toLowerCase();
         if (c.getConfigurationSection("spells." + id) == null)
             return null;
@@ -86,26 +87,5 @@ public class StructureManager {
         spells.removeAll(remove);
         c.set(uuid + ".spells", spells);
         storage.savePlayerFile(uuid, c);
-    }
-
-    public YamlConfiguration getFile() {
-        File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "spells.yml");
-        if (!f.exists()) {
-            try {
-                f.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return YamlConfiguration.loadConfiguration(f);
-    }
-
-    public void saveFile(YamlConfiguration c) {
-        File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "spells.yml");
-        try {
-            c.save(f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

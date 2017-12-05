@@ -1,6 +1,7 @@
 package me.bumblebeee.rpgmagic.events;
 
 import lombok.Getter;
+import me.bumblebeee.rpgmagic.Spell;
 import me.bumblebeee.rpgmagic.Wand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -11,7 +12,7 @@ public class SpellCastEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
     private @Getter Player player;
     private @Getter Wand wand;
-    private @Getter String spell;
+    private @Getter Spell spell;
 
     public SpellCastEvent(Player p, Wand wand) {
         this.player = p;

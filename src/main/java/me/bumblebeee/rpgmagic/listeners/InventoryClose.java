@@ -23,9 +23,6 @@ public class InventoryClose implements Listener {
 
     Storage storage = new Storage();
     InventoryManager inv = new InventoryManager();
-    StructureManager spellManager = new StructureManager();
-
-    //TODO admin add/remove
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent e) {
@@ -108,9 +105,7 @@ public class InventoryClose implements Listener {
                 if (wands.contains(i))
                     continue;
 
-                YamlConfiguration c = spellManager.getFile();
-                String desc = ChatColor.translateAlternateColorCodes('&', c.getString("spells." + wand.getSpell() + ".description"));
-                String data = wand.getPower() + ":" + wand.getLevel() + ":" + wand.getShape() + ":" + wand.getDistance() + ":" + wand.getSpell() + ":" + i.getType() + ":" + desc;
+                String data = wand.getPower() + ":" + wand.getLevel() + ":" + wand.getShape() + ":" + wand.getDistance() + ":" + wand.getSpell() + ":" + i.getType() + ":" + wand.getSpell().getDescription();
 
                 storage.addWandPlayer(p.getUniqueId(), data);
             }

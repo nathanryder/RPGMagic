@@ -19,7 +19,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class AlterCraft implements Listener {
@@ -140,7 +139,7 @@ public class AlterCraft implements Listener {
 
         String display = RPGMagic.getInstance().getConfig().getString("wandItem.display").replace("%spell%", spellName);
         List<String> lore = new ArrayList<>();
-        String desc = spellManager.getFile().getString("spells." + spellName + ".description");
+        String desc = RPGMagic.getInstance().getConfig().getString("spells." + spellName + ".description");
         for (String li : RPGMagic.getInstance().getConfig().getStringList("wandItem.lore")) {
             li = ChatColor.translateAlternateColorCodes('&', li);
             li = li.replace("%totalpower%", String.valueOf(itemPower));

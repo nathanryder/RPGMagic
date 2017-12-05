@@ -27,6 +27,7 @@ public class InventoryManager {
     StructureManager structures = new StructureManager();
     PaperManager papers = new PaperManager();
     Storage storage = new Storage();
+    SpellManager spellManager = new SpellManager();
 
     public void openMenu(Player p) {
         String title = getMessage("inventory.playerMenu.title", false);
@@ -202,11 +203,7 @@ public class InventoryManager {
         ItemStack next = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, nextMsg, null);
         ItemStack prev = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, prevMsg, null);
 
-        YamlConfiguration c = structures.getFile();
-        ConfigurationSection cs = c.getConfigurationSection("spells");
-        if (cs == null)
-            return;
-        int maxPages = (int) Math.ceil(c.getConfigurationSection("spells").getKeys(false).size()/21)+1;
+        int maxPages = (int) Math.ceil(spellManager.getAmountOfSpells()/21)+1;
 
         if (page >= maxPages)
             page = 0;
@@ -247,11 +244,7 @@ public class InventoryManager {
         ItemStack next = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, nextMsg, null);
         ItemStack prev = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, prevMsg, null);
 
-        YamlConfiguration c = structures.getFile();
-        ConfigurationSection cs = c.getConfigurationSection("spells");
-        if (cs == null)
-            return;
-        int maxPages = (int) Math.ceil(c.getConfigurationSection("spells").getKeys(false).size()/21)+1;
+        int maxPages = (int) Math.ceil(spellManager.getAmountOfSpells()/21)+1;
 
         if (page >= maxPages)
             page = 0;
@@ -402,12 +395,7 @@ public class InventoryManager {
             ItemStack next = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, nextMsg, null);
             ItemStack prev = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, prevMsg, null);
 
-            YamlConfiguration c = structures.getFile();
-            ConfigurationSection cs = c.getConfigurationSection("spells");
-            if (cs == null)
-                return;
-            int maxPages = (int) Math.ceil(c.getConfigurationSection("spells").getKeys(false).size() / 21) + 1;
-
+            int maxPages = (int) Math.ceil(spellManager.getAmountOfSpells() / 21) + 1;
             if (page >= maxPages)
                 page = 0;
             else if (page <= 0)
@@ -476,12 +464,7 @@ public class InventoryManager {
             ItemStack next = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, nextMsg, null);
             ItemStack prev = createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, prevMsg, null);
 
-            YamlConfiguration c = structures.getFile();
-            ConfigurationSection cs = c.getConfigurationSection("spells");
-            if (cs == null)
-                return;
-            int maxPages = (int) Math.ceil(c.getConfigurationSection("spells").getKeys(false).size() / 21) + 1;
-
+            int maxPages = (int) Math.ceil(spellManager.getAmountOfSpells() / 21) + 1;
             if (page >= maxPages)
                 page = 0;
             else if (page <= 0)
@@ -504,6 +487,7 @@ public class InventoryManager {
                 if (counter > 26)
                     break;
 
+                System.out.println("Cat: " + category);
                 //type level area distance power
                 if (category.equalsIgnoreCase("level"))
                     inv.setItem(counter, papers.getPaperItem(category, Integer.parseInt(spells.get(i)), null, 0, 0));
@@ -538,12 +522,7 @@ public class InventoryManager {
         String prevMsg = getMessage("inventory.structureShop.previous", true);
         Inventory inv = Bukkit.getServer().createInventory(null, 36, title);
 
-        YamlConfiguration c = structures.getFile();
-        ConfigurationSection cs = c.getConfigurationSection("spells");
-        if (cs == null)
-            return;
-
-        int max = (int) Math.ceil(c.getConfigurationSection("spells").getKeys(false).size()/21);
+        int max = (int) Math.ceil(spellManager.getAmountOfSpells()/21);
         if (page < 0) {
             page = max;
             Storage.getPages().put(p.getUniqueId(), page);
@@ -574,7 +553,7 @@ public class InventoryManager {
 
         Map<Integer, String> ids = new HashMap<>();
         int nameCounter = 0;
-        for (String name : c.getConfigurationSection("spells").getKeys(false)) {
+        for (String name : SpellManager.getSpells().keySet()) {
             ids.put(nameCounter, name);
             nameCounter++;
         }

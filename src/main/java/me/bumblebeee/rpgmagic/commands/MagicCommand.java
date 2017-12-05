@@ -11,10 +11,8 @@ import me.baks.rpl.api.API;
 import me.baks.rpl.config.ConfigManager;
 import me.baks.rpl.manager.VersionManager;
 import me.bumblebeee.rpgmagic.RPGMagic;
-import me.bumblebeee.rpgmagic.managers.InventoryManager;
-import me.bumblebeee.rpgmagic.managers.Messages;
-import me.bumblebeee.rpgmagic.managers.PaperManager;
-import me.bumblebeee.rpgmagic.managers.StructureManager;
+import me.bumblebeee.rpgmagic.Spell;
+import me.bumblebeee.rpgmagic.managers.*;
 import me.bumblebeee.rpgmagic.utils.HiddenStringUtils;
 import me.bumblebeee.rpgmagic.utils.Storage;
 import net.citizensnpcs.api.CitizensAPI;
@@ -41,6 +39,7 @@ public class MagicCommand implements CommandExecutor {
     PaperManager papers = new PaperManager();
     StructureManager spells = new StructureManager();
     InventoryManager inventoryManager = new InventoryManager();
+    SpellManager spellManager = new SpellManager();
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
@@ -243,23 +242,24 @@ public class MagicCommand implements CommandExecutor {
                         p.sendMessage(Messages.SHAPE_DOES_NOT_EXIST.get().replace("%shape%", shape));
                         return false;
                     }
-                    if (!spellExists(spell)) {
+
+                    if (!spellManager.spellExists(spell)) {
                         p.sendMessage(Messages.SPELL_NOT_FOUND.get().replace("%spell%", spell));
                         return false;
                     }
 
                     String display = RPGMagic.getInstance().getConfig().getString("wandItem.display").replace("%spell%", spell);
                     List<String> lore = new ArrayList<>();
-                    String desc = spells.getFile().getString("spells." + spell + ".description");
+                    Spell actualSpell = new Spell(spell);
                     for (String li : RPGMagic.getInstance().getConfig().getStringList("wandItem.lore")) {
                         li = ChatColor.translateAlternateColorCodes('&', li);
                         li = li.replace("%totalpower%", String.valueOf(power));
                         li = li.replace("%lvl%", String.valueOf(level));
                         li = li.replace("%area%", shape).replace("%distance%", String.valueOf(distance));
-                        li = li.replace("%description%", desc).replace("%spell%", spell);
+                        li = li.replace("%description%", actualSpell.getDescription()).replace("%spell%", spell);
                         lore.add(li);
                     }
-                    String data = power + ":" + level + ":" + shape + ":" + distance + ":" + spell + ":" + i.getType() + ":" + desc;
+                    String data = power + ":" + level + ":" + shape + ":" + distance + ":" + spell + ":" + i.getType() + ":" + actualSpell.getDescription();
                     lore.add(HiddenStringUtils.encodeString(data));
 
                     ItemStack ni = new ItemStack(i.getType(), i.getAmount());
@@ -392,14 +392,5 @@ public class MagicCommand implements CommandExecutor {
             return true;
         else
             return false;
-    }
-
-    public boolean spellExists(String spell) {
-        YamlConfiguration c = spells.getFile();
-        if (c.getConfigurationSection("spells") == null)
-            return false;
-        if (c.getConfigurationSection("spells").contains(spell))
-            return true;
-        return false;
     }
 }

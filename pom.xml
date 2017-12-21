@@ -69,6 +69,13 @@
             <systemPath>/home/user/Documents/buildPaths/RPGPlayerLeveling.jar</systemPath>
         </dependency>
         <dependency>
+            <groupId>sun.jdk</groupId>
+            <artifactId>EffectLib</artifactId>
+            <version>1.5.0</version>
+            <scope>system</scope>
+            <systemPath>/home/user/Documents/buildPaths/EffectLib-5.6-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-bukkit</artifactId>
             <version>6.1.4-SNAPSHOT</version>

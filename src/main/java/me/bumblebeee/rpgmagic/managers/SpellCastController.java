@@ -16,10 +16,13 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SpellCastController {
+
+    private static @Getter List<UUID> casting = new ArrayList<>();
 
     private @Getter Player player;
     private @Getter Spell spell;
@@ -35,132 +38,79 @@ public class SpellCastController {
         this.particleManager = new SpellParticleManager();
     }
 
-    public void runParticles(String mode) {
-        if (mode.equalsIgnoreCase("START")) {
-            Bukkit.getServer().getScheduler().runTaskAsynchronously(RPGMagic.getInstance(), new Runnable() {
-                @Override
-                public void run() {
-                    for (String full : wand.getSpell().getParticles()) {
-                        String[] data = full.split(":");
-                        StringBuilder action = new StringBuilder();
-                        for (int i = 1; i < data.length; i++)
-                            action.append(data[i]).append(":");
-
-                        if (data[0].equalsIgnoreCase("start")) {
-                            if (data[1].equalsIgnoreCase("delay")) {
-                                try {
-                                    Thread.sleep(Integer.parseInt(data[2])*1000);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                                continue;
-                            }
-                            particleManager.manageParticle(player, action.toString());
-                        }
-                    }
-                }
-            });
-
-        } else if (mode.equalsIgnoreCase("END")) {
-            Bukkit.getServer().getScheduler().runTaskAsynchronously(RPGMagic.getInstance(), new Runnable() {
-                @Override
-                public void run() {
-                    for (String full : wand.getSpell().getParticles()) {
-                        String[] data = full.split(":");
-                        StringBuilder action = new StringBuilder();
-                        for (int i = 1; i < data.length; i++)
-                            action.append(data[i]).append(":");
-
-                        if (data[0].equalsIgnoreCase("end")) {
-                            if (data[1].equalsIgnoreCase("delay")) {
-                                try {
-                                    Thread.sleep(Integer.parseInt(data[2])*1000);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                                continue;
-                            }
-                            particleManager.manageParticle(player, action.toString());
-                        }
-                    }
-                }
-            });
-
-        } else if (mode.equalsIgnoreCase("NORMAL")) {
-            Bukkit.getServer().getScheduler().runTaskAsynchronously(RPGMagic.getInstance(), new Runnable() {
-                @Override
-                public void run() {
-                    for (String full : wand.getSpell().getParticles()) {
-                        String[] data = full.split(":");
-                        StringBuilder action = new StringBuilder();
-                        for (int i = 1; i < data.length; i++)
-                            action.append(data[i]).append(":");
-
-                        if (!data[0].equalsIgnoreCase("START") && !data[0].equalsIgnoreCase("END")) {
-                            if (data[0].equalsIgnoreCase("delay")) {
-                                try {
-                                    Thread.sleep(Integer.parseInt(data[1])*1000);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                                continue;
-                            }
-
-                            particleManager.manageParticle(player, action.toString());
-                        }
-                    }
-                }
-            });
-        }
-    }
-
-    public void runActions() {
-        Bukkit.getServer().getScheduler().runTaskAsynchronously(RPGMagic.getInstance(), new Runnable() {
+    public void startCasting() {
+        casting.add(player.getUniqueId());
+        player.setFlying(true);
+        new BukkitRunnable() {
+            double i = 0;
             @Override
             public void run() {
-                for (String action : spell.getActions()) {
-                    String ac = replaceVariables(action, wand);
-                    String[] data = ac.split(":");
+                player.setFlying(true);
+                player.teleport(player.getLocation().add(0,0.1,0));
+
+                i += 0.1;
+                if (i >= 1.5)
+                    this.cancel();
+            }
+        }.runTaskTimer(RPGMagic.getInstance(), 1, 1);
+    }
+
+    public void process() {
+        YamlConfiguration c = YamlConfiguration.loadConfiguration(spell.getFile());
+
+        Bukkit.getScheduler().runTaskAsynchronously(RPGMagic.getInstance(), new Runnable() {
+            @Override
+            public void run() {
+                for (String full : c.getStringList("actions")) {
+                    String[] data = full.split(":");
+
+                    StringBuilder action = new StringBuilder();
+                    for (int i = 1; i < data.length; i++)
+                        action.append(data[i]).append(":");
+
                     if (data[0].equalsIgnoreCase("delay")) {
                         try {
                             Thread.sleep(Integer.parseInt(data[1])*1000);
                         } catch (InterruptedException e) {
+                            RPGMagic.getInstance().getLogger().severe("FAILED TO DELAY FOR " + data[1] + " SECONDS");
                             e.printStackTrace();
                         }
-                        continue;
                     }
-                    actionManager.manageAction(player, ac);
+
+                    if (data[0].equalsIgnoreCase("CMD"))
+                        runCommand(action.toString());
+                    else if (data[0].equalsIgnoreCase("ACT"))
+                        runAction(action.toString());
+                    else if (data[0].equalsIgnoreCase("PAR"))
+                        runParticle(action.toString());
                 }
             }
         });
     }
 
-    public void runCommands() {
-        Bukkit.getServer().getScheduler().runTaskAsynchronously(RPGMagic.getInstance(), new Runnable() {
-            @Override
-            public void run() {
-                for (String commandData : spell.getCommands()) {
-                    String[] data = commandData.split(":");
-                    String cmd = ChatColor.translateAlternateColorCodes('&', data[1]);
-                    cmd = replaceVariables(cmd, getWand());
+    public void runParticle(String full) {
+        particleManager.manageParticle(player, wand, full);
+    }
 
-                    if (data[0].equalsIgnoreCase("CONSOLE")) {
-                        ConsoleCommandSender sender = RPGMagic.getInstance().getServer().getConsoleSender();
-                        RPGMagic.getInstance().getServer().dispatchCommand(sender, cmd);
-                    } else if (data[0].equalsIgnoreCase("PLAYER")) {
-                        RPGMagic.getInstance().getServer().dispatchCommand(player, cmd);
-                    } else if (data[0].equalsIgnoreCase("delay")) {
-                        try {
-                            Thread.sleep(Integer.parseInt(data[1])*1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        RPGMagic.getInstance().getLogger().severe("INVALID MODE " + data[0] + " in line " + commandData);
-                    }
-                }
-            }
-        });
+    public void runAction(String action) {
+        String ac = replaceVariables(action, wand);
+
+        actionManager.manageAction(player, wand, ac);
+    }
+
+    public void runCommand(String commandData) {
+        String[] data = commandData.split(":");
+        String cmd = ChatColor.translateAlternateColorCodes('&', data[1]);
+        cmd = replaceVariables(cmd, getWand());
+
+        if (data[0].equalsIgnoreCase("CONSOLE")) {
+            ConsoleCommandSender sender = RPGMagic.getInstance().getServer().getConsoleSender();
+            RPGMagic.getInstance().getServer().dispatchCommand(sender, cmd);
+        } else if (data[0].equalsIgnoreCase("PLAYER")) {
+            RPGMagic.getInstance().getServer().dispatchCommand(player, cmd);
+        } else {
+            RPGMagic.getInstance().getLogger().severe("INVALID MODE " + data[0] + " in line " + commandData);
+        }
     }
 
     public String replaceVariables(String action, Wand wand) {

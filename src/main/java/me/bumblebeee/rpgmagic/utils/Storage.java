@@ -9,6 +9,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -38,6 +39,9 @@ public class Storage {
     private static @Getter Map<UUID, String> openPaperType = new HashMap<>();
     private static @Getter Map<UUID, String> categorySelector = new HashMap<>();
     private static @Getter List<ItemStack[]> globalChestStorage = new ArrayList<>();
+
+    private static @Getter List<Player> waterWalk = new ArrayList<>();
+    private static @Getter List<Player> wallWalk = new ArrayList<>();
 
     public void setStorage(ItemStack[] items) {
         YamlConfiguration c = getStorage();

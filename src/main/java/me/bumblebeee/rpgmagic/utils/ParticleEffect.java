@@ -1,6 +1,6 @@
-package me.bumblebeee.rpgmagic;
+package me.bumblebeee.rpgmagic.utils;
 
-import me.bumblebeee.rpgmagic.ReflectionUtils.PackageType;
+import me.bumblebeee.rpgmagic.utils.ReflectionUtils.PackageType;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;

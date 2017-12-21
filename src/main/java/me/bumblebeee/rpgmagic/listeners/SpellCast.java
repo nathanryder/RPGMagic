@@ -33,22 +33,33 @@ public class SpellCast implements Listener {
             return;
         }
 
+        int castTime = 3;
         SpellCastController controller = new SpellCastController(p, e.getWand());
-
-        controller.runParticles("START");
-        controller.runCommands();
-        controller.runParticles("NORMAL");
-        controller.runActions();
-
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (controller.getActionManager().getActionsRunning().size() == 0) {
-                    controller.runParticles("END");
-                    this.cancel();
-                }
-            }
-        }.runTaskTimer(RPGMagic.getInstance(), 5, 5);
+//        controller.startCasting();
+//
+//        EffectManager em = new EffectManager(RPGMagic.getInstance());
+//
+//        AtomEffect effect = new AtomEffect(em);
+//        effect.setLocation(p.getLocation().add(0,2,0));
+//        effect.particleNucleus = de.slikey.effectlib.util.ParticleEffect.PORTAL;
+//        effect.particleOrbital = de.slikey.effectlib.util.ParticleEffect.REDSTONE;
+//        effect.duration = 2800;
+//        effect.start();
+//
+//        Bukkit.getScheduler().runTaskLater(RPGMagic.getInstance(), new Runnable() {
+//            @Override
+//            public void run() {
+//                SpellCastController.getCasting().remove(p.getUniqueId());
+//                p.setFlying(false);
+//            }
+//        }, 20*castTime);
+//
+//        Bukkit.getScheduler().runTaskLater(RPGMagic.getInstance(), new Runnable() {
+//            @Override
+//            public void run() {
+                controller.process();
+//            }
+//        }, (20*castTime)+7);
 
         mana.takeMana(p, spell.getMana());
         cooldowns.giveCooldown(p.getUniqueId(), spell.getName());
@@ -61,6 +72,4 @@ public class SpellCast implements Listener {
             }
         }.runTaskTimer(RPGMagic.getInstance(), 20, 20);
     }
-
-
 }

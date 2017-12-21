@@ -19,9 +19,6 @@ public class Spell {
     private @Getter String type;
     private @Getter String description;
     private @Getter int variable;
-    private @Getter List<String> commands;
-    private @Getter List<String> actions;
-    private @Getter List<String> particles;
 
     public Spell(String name, File f) {
         YamlConfiguration c = YamlConfiguration.loadConfiguration(f);
@@ -34,9 +31,6 @@ public class Spell {
         this.type = c.getString("type");
         this.description = c.getString("description");
         this.variable = c.getInt("variable");
-        this.commands = c.getStringList("commands");
-        this.actions = c.getStringList("actions");
-        this.particles = c.getStringList("particles");
     }
 
     public Spell(String name) {
@@ -55,8 +49,5 @@ public class Spell {
         this.type = c.getString("type");
         this.description = c.getString("description");
         this.variable = c.getInt("variable");
-        this.commands = c.getStringList("commands");
-        this.actions = c.getStringList("actions");
-        this.particles = c.getStringList("particles");
     }
 }

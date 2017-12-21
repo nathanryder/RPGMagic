@@ -5,8 +5,8 @@ import me.bumblebeee.rpgmagic.commands.MagicCommand;
 import me.bumblebeee.rpgmagic.listeners.*;
 import me.bumblebeee.rpgmagic.listeners.inventoryClicks.*;
 import me.bumblebeee.rpgmagic.managers.Messages;
+import me.bumblebeee.rpgmagic.managers.Runnables;
 import me.bumblebeee.rpgmagic.managers.SpellManager;
-import me.bumblebeee.rpgmagic.spells.Speed;
 import me.bumblebeee.rpgmagic.utils.Storage;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -35,11 +35,12 @@ public class RPGMagic extends JavaPlugin {
 
         saveDefaultConfig();
         registerEvents();
+        setupFiles();
         spellManager.cacheSpellFiles();
         storage.loadStorageChest();
 
-        setupFiles();
         Bukkit.getServer().getPluginCommand("magic").setExecutor(new MagicCommand());
+        Runnables.walk();
     }
 
     @Override
@@ -56,6 +57,7 @@ public class RPGMagic extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new AlterCraft(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new ItemBuy(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new SpellCast(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new PlayerMove(), this);
 
         //Inventory Click Events
         Bukkit.getServer().getPluginManager().registerEvents(new Admin(), this);

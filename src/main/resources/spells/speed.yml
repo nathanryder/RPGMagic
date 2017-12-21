@@ -8,20 +8,26 @@ cooldown: 2
 #Duration or damage
 boost: "%potential%+5"
 
-commands:
-- "CONSOLE:broadcast &5%player% cast %spell%"
-- "delay:2"
-- "PLAYER:echo Delayed player command"
-
 actions:
-#[loop:] applyPotion:PotionType:amplifier:duration [:loopTime:iterations]
-#total loop time(seconds) = (iterations*loopTime)/20
-- "loop:applyPotion:SPEED:%boost%:3:20:10"
-- "delay:5"
-- "loop:applyPotion:NIGHT_VISION:%boost%:3:20:10"
+- "CMD:CONSOLE:broadcast &5%player% cast %spell%"
+- "ACT:waterWalk:enable"
+- "ACT:wallWalk:enable"
+- "ACT:loop:applyPotionShape:SPEED:%boost%:3:20:10"
+- "PAR:loop:outlineArea:VILLAGER_HAPPY:5:20:10"
+- "delay:11"
+- "ACT:waterWalk:disable"
+- "ACT:wallWalk:disable"
+- "PAR:outlineArea:REDSTONE"
 
-particles:
-- "start:outlineArea:REDSTONE"
-- "delay:8"
-- "loop:outlineArea:VILLAGER_HAPPY:5"
-- "end:outlineArea:REDSTONE"
+
+#actions:
+#- "CMD:CONSOLE:broadcast &5%player% cast %spell%"
+#- "delay:5"
+#- "CMD:PLAYER:echo Delayed player command"
+#- "ACT:loop:applyPotion:SPEED:%boost%:3:20:10"
+#- "delay:5"
+#- "ACT:loop:applyPotion:NIGHT_VISION:%boost%:3:20:10"
+#- "PAR:start:outlineArea:REDSTONE"
+#- "delay:8"
+#- "PAR:loop:outlineArea:VILLAGER_HAPPY:5"
+#- "PAR:end:outlineArea:REDSTONE"

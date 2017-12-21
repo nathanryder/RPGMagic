@@ -1,4 +1,4 @@
-package me.bumblebeee.rpgmagic;
+package me.bumblebeee.rpgmagic.utils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

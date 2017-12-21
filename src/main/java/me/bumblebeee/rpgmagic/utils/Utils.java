@@ -2,6 +2,7 @@ package me.bumblebeee.rpgmagic.utils;
 
 import me.bumblebeee.rpgmagic.RPGMagic;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
@@ -71,5 +72,29 @@ public class Utils {
         }
 
         return players;
+    }
+
+    public static String getCardinalDirection(Location loc) {
+        double rot = (loc.getYaw() - 90) % 360;
+        if (rot < 0) {
+            rot += 360.0;
+        }
+        return getDirection(rot);
+    }
+
+    private static String getDirection(double rot) {
+        if (45 <= rot && rot < 135) {
+            return "North";
+        } else if (135 <= rot && rot < 225) {
+            return "East";
+        } else if (225 <= rot && rot < 315) {
+            return "South";
+        } else if (315 <= rot && rot < 360) {
+            return "West";
+        } else if (0 <= rot && rot < 45) {
+            return "West";
+        } else {
+            return null;
+        }
     }
 }

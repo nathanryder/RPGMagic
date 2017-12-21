@@ -2,7 +2,13 @@ package me.bumblebeee.rpgmagic.managers;
 
 import lombok.Getter;
 import me.bumblebeee.rpgmagic.RPGMagic;
+import me.bumblebeee.rpgmagic.Wand;
+import me.bumblebeee.rpgmagic.utils.ParticleEffect;
+import me.bumblebeee.rpgmagic.utils.Storage;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -14,10 +20,9 @@ import java.util.UUID;
 
 public class SpellActionManager {
 
-    private @Getter List<UUID> actionsRunning = new ArrayList<>();
+    ShapeManager shapeManager = new ShapeManager();
 
-    public SpellActionManager() {
-    }
+    private @Getter List<UUID> actionsRunning = new ArrayList<>();
 
     public void addRunning(UUID uuid) {
         actionsRunning.add(uuid);
@@ -27,7 +32,7 @@ public class SpellActionManager {
         actionsRunning.remove(uuid);
     }
 
-    public void manageAction(Player p, String action) {
+    public void manageAction(Player p, Wand wand, String action) {
         String[] data = action.split(":");
         String function = data[0];
         String[] args = new String[100];
@@ -50,7 +55,7 @@ public class SpellActionManager {
                     for (String s : args)
                         ac.append(s).append(":");
 
-                    manageAction(p, ac.toString());
+                    manageAction(p, wand, ac.toString());
 
                     count++;
                     if (count >= iterations) {
@@ -59,24 +64,58 @@ public class SpellActionManager {
                     }
                 }
             }.runTaskTimer(RPGMagic.getInstance(), 0, time);
-        } else if (function.equalsIgnoreCase("applyPotion")) {
-            applyPotion(p, args);
+        } else if (function.equalsIgnoreCase("applyPotionShape")) {
+            String shape = wand.getShape();
+            if (shape.equalsIgnoreCase("raggio")) {
+                List<Location> locations = shapeManager.getCircleBorder(p.getLocation(), wand.getDistance(), 30);
+
+                for (Location l : locations)
+                    applyPotion(l, wand.getDistance(), args);
+            } else if (shape.equalsIgnoreCase("linee")) {
+                boolean onGround = false;
+                if (wand.getSpell().getName().equalsIgnoreCase("speed"))
+                    onGround = true;
+
+                List<Location> locations = shapeManager.getLine(p, wand.getDistance(), onGround);
+
+                for (Location l : locations)
+                    applyPotion(l, wand.getDistance(), args);
+            } else if (shape.equalsIgnoreCase("coni")) {
+                List<Location> locations = shapeManager.getCone(p, wand.getDistance());
+
+                for (Location l : locations)
+                    applyPotion(l, wand.getDistance(), args);
+            }
+
             removeRunning(uuid);
+        } else if (function.equalsIgnoreCase("waterWalk")) {
+            if (args[0].equalsIgnoreCase("enable"))
+                Storage.getWaterWalk().add(p);
+            else if (args[0].equalsIgnoreCase("disable"))
+                Storage.getWaterWalk().remove(p);
+        } else if (function.equalsIgnoreCase("wallWalk")) {
+            if (args[0].equalsIgnoreCase("enable"))
+                Storage.getWallWalk().add(p);
+            else if (args[0].equalsIgnoreCase("disable"))
+                Storage.getWallWalk().remove(p);
         }
     }
 
-    public void applyPotion(Player p, String[] args) {
+    public void applyPotion(Location loc, int radius, String[] args) {
         String potionName = args[0];
         int boost = Integer.parseInt(args[1])-1;
         int duration = Integer.parseInt(args[2])*20;
         PotionEffectType effect = PotionEffectType.getByName(potionName);
         if (effect == null) {
-            p.sendMessage(ChatColor.RED + "Invalid potion effect " + potionName);
+            RPGMagic.getInstance().getLogger().severe(ChatColor.RED + "Invalid potion effect " + potionName);
             return;
         }
 
         PotionEffect potion = new PotionEffect(effect, duration, boost, false);
-        p.addPotionEffect(potion);
+        for (Entity e : loc.getWorld().getNearbyEntities(loc, radius, radius, radius)) {
+            if (e instanceof LivingEntity)
+                ((LivingEntity) e).addPotionEffect(potion);
+        }
     }
 
 }

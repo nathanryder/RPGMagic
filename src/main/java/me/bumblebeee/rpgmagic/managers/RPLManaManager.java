@@ -11,10 +11,6 @@ public class RPLManaManager {
 
     Main rpl = (Main) Bukkit.getServer().getPluginManager().getPlugin("RPGPlayerLeveling");
 
-    public void addMana(Player p, int mana) {
-        setMana(p, getPlayerMana(p)+mana);
-    }
-
     public void takeMana(Player p, int mana) {
         setMana(p, getPlayerMana(p)-mana);
     }

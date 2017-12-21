@@ -17,6 +17,10 @@ public class SpellManager {
         return spells.get(spell.toLowerCase());
     }
 
+    public void saveDefaultSpells() {
+        RPGMagic.getInstance().saveResource("spells/speed.yml", false);
+    }
+
     public void cacheSpellFiles() {
         File folder = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "spells");
         File[] files = folder.listFiles();
@@ -31,10 +35,6 @@ public class SpellManager {
 
             spells.put(name.toLowerCase(), new Spell(name, f));
         }
-    }
-
-    public void saveDefaultSpells() {
-        RPGMagic.getInstance().saveResource("spells/speed.yml", false);
     }
 
     public boolean spellExists(String spell) {

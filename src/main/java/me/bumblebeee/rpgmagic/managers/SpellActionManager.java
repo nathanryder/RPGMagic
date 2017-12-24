@@ -5,18 +5,15 @@ import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.Wand;
 import me.bumblebeee.rpgmagic.utils.ParticleEffect;
 import me.bumblebeee.rpgmagic.utils.Storage;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class SpellActionManager {
 
@@ -32,7 +29,7 @@ public class SpellActionManager {
         actionsRunning.remove(uuid);
     }
 
-    public void manageAction(Player p, Wand wand, String action) {
+    public void manageAction(Player p, Location targetLoc, Wand wand, String action) {
         String[] data = action.split(":");
         String function = data[0];
         String[] args = new String[100];
@@ -47,6 +44,7 @@ public class SpellActionManager {
             int time = Integer.parseInt(data[data.length-2]);
             int iterations = Integer.parseInt(data[data.length-1]);
 
+            final Location target = targetLoc;
             new BukkitRunnable() {
                 int count = 0;
                 @Override
@@ -55,7 +53,7 @@ public class SpellActionManager {
                     for (String s : args)
                         ac.append(s).append(":");
 
-                    manageAction(p, wand, ac.toString());
+                    manageAction(p, target.clone(), wand, ac.toString());
 
                     count++;
                     if (count >= iterations) {
@@ -76,7 +74,7 @@ public class SpellActionManager {
                 if (wand.getSpell().getName().equalsIgnoreCase("speed"))
                     onGround = true;
 
-                List<Location> locations = shapeManager.getLine(p, wand.getDistance(), onGround);
+                List<Location> locations = shapeManager.getLine(p.getLocation(), wand.getDistance(), onGround);
 
                 for (Location l : locations)
                     applyPotion(l, wand.getDistance(), args);
@@ -98,6 +96,16 @@ public class SpellActionManager {
                 Storage.getWallWalk().add(p);
             else if (args[0].equalsIgnoreCase("disable"))
                 Storage.getWallWalk().remove(p);
+        } else if (function.equalsIgnoreCase("freezePlayer")) {
+            SpellCastController.getFrozen().add(p.getUniqueId());
+        } else if (function.equalsIgnoreCase("unfreezePlayer")) {
+            SpellCastController.getFrozen().remove(p.getUniqueId());
+        } else if (function.equalsIgnoreCase("teleportToStoredLocation")) {
+            Location l = SpellCastController.getStoredLocations().get(p.getUniqueId()).add(0,1,0);
+            if (l == null)
+                p.sendMessage(ChatColor.RED + "Failed to find stored location!");
+            else
+                p.teleport(l);
         }
     }
 

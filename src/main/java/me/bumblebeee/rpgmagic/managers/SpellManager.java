@@ -19,6 +19,7 @@ public class SpellManager {
 
     public void saveDefaultSpells() {
         RPGMagic.getInstance().saveResource("spells/speed.yml", false);
+        RPGMagic.getInstance().saveResource("spells/teleport.yml", false);
     }
 
     public void cacheSpellFiles() {

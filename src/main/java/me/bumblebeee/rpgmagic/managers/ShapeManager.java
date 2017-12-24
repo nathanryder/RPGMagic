@@ -48,19 +48,13 @@ public class ShapeManager {
         return locations;
     }
 
-    public List<Location> getLine(Player player, int size, boolean onGround) {
+    public List<Location> getLine(Location location, int size, boolean onGround) {
         List<Location> locations = new ArrayList<>();
-        Location location;
-
-        if (onGround) {
-            location = player.getLocation();
-            location.setPitch(0);
-        } else
-            location = player.getEyeLocation();
+        location.setPitch(0);
 
         double x = 0;
         double z = 0;
-        switch (Utils.getCardinalDirection(player.getLocation())) {
+        switch (Utils.getCardinalDirection(location)) {
             case "North":
                 z = 0.5;
                 break;
@@ -95,21 +89,21 @@ public class ShapeManager {
         return locations;
     }
 
-    public List<Location> getConeBorder(Player p, int size) {
+    public List<Location> getConeBorder(Location loc, int size) {
         List<Location> locations = new ArrayList<>();
 
-        locations.addAll(getConeLineEdges(size, size, p, true));
+        locations.addAll(getConeLineEdges(size, size, loc, true));
 
         for (int i = size-1; i > 1; i--) {
-            locations.addAll(getConeLineEdges(size, i, p, false));
+            locations.addAll(getConeLineEdges(size, i, loc, false));
         }
 
         return locations;
     }
 
 
-    public List<Location> getConeLineEdges(int startSize, int size, Player p, boolean first) {
-        RespectiveLocation rl = new RespectiveLocation(p.getLocation());
+    public List<Location> getConeLineEdges(int startSize, int size, Location loc, boolean first) {
+        RespectiveLocation rl = new RespectiveLocation(loc);
         List<Location> locations = new ArrayList<>();
         double width = (size-1)/2;
         rl.forward(Math.floor(size/2));

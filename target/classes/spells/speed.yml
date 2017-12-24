@@ -2,7 +2,7 @@ name: "Speed"
 type: "TBD"
 description: Gives an area effect of speed
 price: 1.0
-mana: 50
+mana: 1
 cooldown: 2
 
 #Duration or damage

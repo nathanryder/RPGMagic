@@ -6,6 +6,8 @@ import me.bumblebeee.rpgmagic.Spell;
 import me.bumblebeee.rpgmagic.Wand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -14,15 +16,14 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SpellCastController {
 
-    private static @Getter List<UUID> casting = new ArrayList<>();
+    private static @Getter List<UUID> frozen = new ArrayList<>();
+    private static @Getter Map<UUID, Location> storedLocations = new HashMap<>();
 
     private @Getter Player player;
     private @Getter Spell spell;
@@ -39,7 +40,7 @@ public class SpellCastController {
     }
 
     public void startCasting() {
-        casting.add(player.getUniqueId());
+        frozen.add(player.getUniqueId());
         player.setFlying(true);
         new BukkitRunnable() {
             double i = 0;
@@ -75,6 +76,9 @@ public class SpellCastController {
                             RPGMagic.getInstance().getLogger().severe("FAILED TO DELAY FOR " + data[1] + " SECONDS");
                             e.printStackTrace();
                         }
+                    } else if (data[0].equalsIgnoreCase("storeLocation")) {
+                        Location l = player.getTargetBlock((Set<Material>)null, 50).getLocation();
+                        storedLocations.put(player.getUniqueId(), l);
                     }
 
                     if (data[0].equalsIgnoreCase("CMD"))
@@ -89,13 +93,15 @@ public class SpellCastController {
     }
 
     public void runParticle(String full) {
-        particleManager.manageParticle(player, wand, full);
+        Location targetLoc = player.getTargetBlock((Set<Material>) null, 100).getLocation().add(0,1,0);
+        particleManager.manageParticle(player, targetLoc, wand, full);
     }
 
     public void runAction(String action) {
         String ac = replaceVariables(action, wand);
+        Location targetLoc = player.getTargetBlock((Set<Material>) null, 100).getLocation().add(0,1,0);
 
-        actionManager.manageAction(player, wand, ac);
+        actionManager.manageAction(player, targetLoc, wand, ac);
     }
 
     public void runCommand(String commandData) {

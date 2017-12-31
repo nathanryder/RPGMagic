@@ -7,4 +7,4 @@ description: Throws you in the given direction
 
 actions:
 - "ACT:throwPlayerInDirection:2"
-- "PAR:trailPlayer:FLAME"
+- "PAR:trailPlayer:FLAME:50"

@@ -1,0 +1,12 @@
+name: "Shield"
+type: "TBD"
+price: 0.0
+mana: 1
+cooldown: 2
+description: Creates a shield around you
+
+actions:
+#protectPlayer:radius:power
+- "ACT:loop:protectPlayer:5:0.5:5:40"
+#shield:PARTICLE:radius:iterations
+- "PAR:shield:TOTEM:5:200"

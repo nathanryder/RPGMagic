@@ -210,7 +210,6 @@ public class SpellActionManager {
                 le.damage(amount);
             }
         } else if (function.equalsIgnoreCase("teleportEntitiesToWorld")) {
-            System.out.println("Getting ready to teleport");
             String[] locData = args[0].replace("{", "").replace("}", "").split(",");
             Location from = getLocationFromData(p.getWorld(), locData);
             World toWorld = Bukkit.getWorld(args[1]);
@@ -231,6 +230,16 @@ public class SpellActionManager {
         } else if (function.equalsIgnoreCase("throwPlayerInDirection")) {
             int power = Integer.parseInt(args[0]);
             p.setVelocity(p.getEyeLocation().getDirection().multiply(power));
+        } else if (function.equalsIgnoreCase("protectPlayer")) {
+            double radius = Double.parseDouble(args[0]);
+            double power = Double.parseDouble(args[1]);
+
+            for (Entity e : p.getWorld().getNearbyEntities(p.getLocation(), radius, radius, radius)) {
+                if (e.getUniqueId().equals(p.getUniqueId()))
+                    continue;
+
+                e.setVelocity(e.getLocation().toVector().subtract(p.getLocation().toVector()).multiply(power));
+            }
         }
     }
 

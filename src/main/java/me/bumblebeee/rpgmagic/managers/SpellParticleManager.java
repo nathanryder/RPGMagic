@@ -3,7 +3,9 @@ package me.bumblebeee.rpgmagic.managers;
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.effect.DonutEffect;
 import de.slikey.effectlib.effect.HelixEffect;
+import de.slikey.effectlib.effect.ShieldEffect;
 import de.slikey.effectlib.effect.TraceEffect;
+import de.slikey.effectlib.util.DynamicLocation;
 import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.Wand;
 import me.bumblebeee.rpgmagic.utils.ParticleEffect;
@@ -170,9 +172,32 @@ public class SpellParticleManager {
             EffectManager em = new EffectManager(RPGMagic.getInstance());
 
             TraceEffect te = new TraceEffect(em);
-            te.iterations = 50;
+            te.iterations = Integer.parseInt(args[1]);
+            te.particle = de.slikey.effectlib.util.ParticleEffect.valueOf(args[0]);
             te.setEntity(p);
             te.start();
+        } else if (function.equalsIgnoreCase("shield")) {
+            EffectManager em = new EffectManager(RPGMagic.getInstance());
+
+            ShieldEffect se = new ShieldEffect(em);
+            se.setLocation(p.getLocation());
+            se.particle = de.slikey.effectlib.util.ParticleEffect.valueOf(args[0]);
+            se.iterations = Integer.parseInt(args[2]);
+            se.sphere = true;
+            se.radius = Integer.parseInt(args[1]);
+            se.start();
+
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (se.isDone()) {
+                        this.cancel();
+                        return;
+                    }
+
+                    se.setLocation(p.getLocation());
+                }
+            }.runTaskTimer(RPGMagic.getInstance(), 5, 5);
         }
     }
 }

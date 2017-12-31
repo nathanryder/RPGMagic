@@ -4,6 +4,7 @@ me/bumblebeee/rpgmagic/utils/HiddenStringUtils.class
 me/bumblebeee/rpgmagic/utils/ReflectionUtils.class
 me/bumblebeee/rpgmagic/managers/Runnables.class
 me/bumblebeee/rpgmagic/listeners/AsyncPlayerChat.class
+me/bumblebeee/rpgmagic/managers/SpellParticleManager$2.class
 me/bumblebeee/rpgmagic/managers/ShapeManager.class
 me/bumblebeee/rpgmagic/listeners/inventoryClicks/ShopAlterOther.class
 me/bumblebeee/rpgmagic/utils/Utils.class

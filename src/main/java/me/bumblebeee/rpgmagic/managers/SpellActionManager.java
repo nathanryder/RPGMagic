@@ -174,9 +174,8 @@ public class SpellActionManager {
             for (Entity e : p.getWorld().getNearbyEntities(l, range, range, range)) {
                 if (!(e instanceof LivingEntity))
                     continue;
-                //TODO uncomment after blackhole finished
-//                if (e.getUniqueId().equals(p.getUniqueId()))
-//                    continue;
+                if (e.getUniqueId().equals(p.getUniqueId()))
+                    continue;
 
                 e.setVelocity(l.toVector().subtract(e.getLocation().toVector()).multiply(0.1));
             }
@@ -225,11 +224,13 @@ public class SpellActionManager {
                 new BukkitRunnable() {
                     @Override
                     public void run() {
-                        System.out.println("Teleporting..");
                         e.teleport(toWorld.getSpawnLocation());
                     }
                 }.runTaskLater(RPGMagic.getInstance(), 1);
             }
+        } else if (function.equalsIgnoreCase("throwPlayerInDirection")) {
+            int power = Integer.parseInt(args[0]);
+            p.setVelocity(p.getEyeLocation().getDirection().multiply(power));
         }
     }
 

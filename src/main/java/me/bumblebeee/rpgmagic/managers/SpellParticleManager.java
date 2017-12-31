@@ -3,6 +3,7 @@ package me.bumblebeee.rpgmagic.managers;
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.effect.DonutEffect;
 import de.slikey.effectlib.effect.HelixEffect;
+import de.slikey.effectlib.effect.TraceEffect;
 import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.Wand;
 import me.bumblebeee.rpgmagic.utils.ParticleEffect;
@@ -165,9 +166,13 @@ public class SpellParticleManager {
             helix.radiusTube = 0.1F;
             helix.iterations = 30;
             helix.start();
+        } else if (function.equalsIgnoreCase("trailPlayer")) {
+            EffectManager em = new EffectManager(RPGMagic.getInstance());
 
-
-            //TODO ShieldEffect - protection bubble
+            TraceEffect te = new TraceEffect(em);
+            te.iterations = 50;
+            te.setEntity(p);
+            te.start();
         }
     }
 }

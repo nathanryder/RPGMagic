@@ -5,13 +5,17 @@ import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.Wand;
 import me.bumblebeee.rpgmagic.utils.ParticleEffect;
 import me.bumblebeee.rpgmagic.utils.Storage;
-import org.bukkit.Bukkit;
+import me.bumblebeee.rpgmagic.utils.Utils;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.entity.*;
+import org.bukkit.Material;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 import java.util.*;
 
@@ -106,6 +110,59 @@ public class SpellActionManager {
                 p.sendMessage(ChatColor.RED + "Failed to find stored location!");
             else
                 p.teleport(l);
+        } else if (function.equalsIgnoreCase("shootMissileAtTarget")) {
+            int range = Integer.parseInt(args[0]);
+            Entity target = Utils.getPlayerTarget(p, range);
+            ParticleEffect particle = ParticleEffect.valueOf(args[1]);
+            if (particle == null) {
+                RPGMagic.getInstance().getLogger().severe("FAILED TO FIND PARTICLE NAMED " + args[0]);
+                return;
+            }
+
+            new BukkitRunnable() {
+                double t = 0;
+                Location loc = p.getLocation();
+                Location lastBlock = p.getLocation().clone();
+                int blocksMoved = 0;
+                @Override
+                public void run() {
+                    if (loc == null)
+                        loc = p.getTargetBlock((Set<Material>)null, range).getLocation();
+
+                    if (blocksMoved >= range) {
+                        this.cancel();
+                        return;
+                    }
+
+                    Vector direction = loc.toVector().subtract(target.getLocation().toVector()).multiply(-1).normalize();
+                    t = t + 0.02;
+                    double x = direction.getX() * t;
+                    double y = direction.getY();
+                    double z = direction.getZ() * t;
+                    loc = loc.add(x,y,z);
+                    particle.display(0, 0, 0, 0, 0, loc, (double) 100);
+
+
+                    if (loc.getBlockX() != lastBlock.getBlockX() ||
+                            loc.getBlockY() != lastBlock.getBlockY() || loc.getBlockZ() != lastBlock.getBlockZ()) {
+                        blocksMoved++;
+                        lastBlock = loc.clone();
+                    }
+
+                    Collection<Entity> entities = loc.getWorld().getNearbyEntities(loc, 0.5, 0.5, 0.5);
+                    if (entities.size() > 0) {
+                        if (!entities.contains(p)) {
+                            loc.getWorld().strikeLightning(loc);
+                            this.cancel();
+                            return;
+                        }
+                    }
+
+                    if (t > 5) {
+                        this.cancel();
+                    }
+                }
+            }.runTaskTimer(RPGMagic.getInstance(), 0, 2);
         }
     }
 

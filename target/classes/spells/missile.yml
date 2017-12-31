@@ -1,0 +1,11 @@
+name: "Missile"
+type: "TBD"
+price: 0.0
+mana: 1
+cooldown: 2
+description: Shoot a magic missile that follows its target
+
+range: 100
+
+actions:
+- "ACT:shootMissileAtTarget:%range%:FLAME"

@@ -38,6 +38,7 @@ me/bumblebeee/rpgmagic/managers/SpellParticleManager.class
 me/bumblebeee/rpgmagic/managers/NPCManager.class
 me/bumblebeee/rpgmagic/listeners/PlayerMove.class
 me/bumblebeee/rpgmagic/events/SpellCastEvent.class
+me/bumblebeee/rpgmagic/managers/SpellActionManager$2.class
 me/bumblebeee/rpgmagic/listeners/SpellCast.class
 me/bumblebeee/rpgmagic/managers/InventoryManager.class
 me/bumblebeee/rpgmagic/listeners/inventoryClicks/Wands.class

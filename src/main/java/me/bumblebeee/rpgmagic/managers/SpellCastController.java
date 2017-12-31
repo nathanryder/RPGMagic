@@ -60,6 +60,7 @@ public class SpellCastController {
         YamlConfiguration c = YamlConfiguration.loadConfiguration(spell.getFile());
 
         Bukkit.getScheduler().runTaskAsynchronously(RPGMagic.getInstance(), new Runnable() {
+            int i = 0;
             @Override
             public void run() {
                 for (String full : c.getStringList("actions")) {
@@ -87,6 +88,8 @@ public class SpellCastController {
                         runAction(action.toString());
                     else if (data[0].equalsIgnoreCase("PAR"))
                         runParticle(action.toString());
+
+                    i++;
                 }
             }
         });
@@ -134,6 +137,15 @@ public class SpellCastController {
                 case "spell":
                     action = action.replace("%" + variable + "%", spell.getName());
                     continue;
+                case "storedLoc":
+                    Location l = getStoredLocations().get(player.getUniqueId());
+                    String locData = "null";
+                    if (l != null) {
+                        locData = "{" + l.getBlockX() + "," + l.getBlockY() + "," + l.getBlockZ() + "}";
+                    }
+
+                    action = action.replace("%" + variable + "%", locData);
+                    continue;
             }
 
             YamlConfiguration c = YamlConfiguration.loadConfiguration(spell.getFile());
@@ -141,8 +153,14 @@ public class SpellCastController {
             if (var.contains("%"))
                 var = replaceVariables(var, wand);
 
-            int replace = evaluateMath(var);
-            action = action.replace("%" + variable + "%", String.valueOf(replace));
+            String replace;
+            try {
+                replace = String.valueOf(evaluateMath(var));
+            } catch (ScriptException e) {
+                replace = var;
+            }
+
+            action = action.replace("%" + variable + "%", replace);
         }
 
         return action;
@@ -160,16 +178,16 @@ public class SpellCastController {
         return vars;
     }
 
-    public int evaluateMath(String input) {
+    public int evaluateMath(String input) throws ScriptException {
         ScriptEngineManager manager = new ScriptEngineManager();
         ScriptEngine engine = manager.getEngineByName("js");
-        Object result;
-        try {
-            result = engine.eval(input);
-        } catch (ScriptException e) {
-            e.printStackTrace();
-            return 0;
-        }
+        Object result = engine.eval(input);
+//        try {
+//            result = engine.eval(input);
+//        } catch (ScriptException e) {
+//            e.printStackTrace();
+//            return 0;
+//        }
 
         return (int)result;
     }

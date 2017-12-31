@@ -1,11 +1,12 @@
 package me.bumblebeee.rpgmagic.managers;
 
 import de.slikey.effectlib.EffectManager;
-import de.slikey.effectlib.EffectType;
+import de.slikey.effectlib.effect.DonutEffect;
 import de.slikey.effectlib.effect.HelixEffect;
 import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.Wand;
 import me.bumblebeee.rpgmagic.utils.ParticleEffect;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -146,6 +147,27 @@ public class SpellParticleManager {
                 helix.setLocation(p.getLocation());
 
             helix.start();
+        } else if (function.equalsIgnoreCase("createBlackHole")) {
+            Location l = SpellCastController.getStoredLocations().get(p.getUniqueId()).add(0,1,0);
+            if (l == null) {
+                p.sendMessage(ChatColor.RED + "Failed to find stored location!");
+                return;
+            }
+
+            EffectManager em = new EffectManager(RPGMagic.getInstance());
+
+            DonutEffect helix = new DonutEffect(em);
+            helix.setLocation(l.add(0,2,0));
+            helix.particle = de.slikey.effectlib.util.ParticleEffect.PORTAL;
+            helix.circles = 50;
+            helix.particlesCircle = 15;
+            helix.radiusDonut = 1.8F;
+            helix.radiusTube = 0.1F;
+            helix.iterations = 30;
+            helix.start();
+
+
+            //TODO ShieldEffect - protection bubble
         }
     }
 }

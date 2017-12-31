@@ -21,6 +21,7 @@ public class SpellManager {
         RPGMagic.getInstance().saveResource("spells/speed.yml", false);
         RPGMagic.getInstance().saveResource("spells/teleport.yml", false);
         RPGMagic.getInstance().saveResource("spells/missile.yml", false);
+        RPGMagic.getInstance().saveResource("spells/blackhole.yml", false);
     }
 
     public void cacheSpellFiles() {

@@ -17,6 +17,8 @@ public class SpellCast implements Listener {
 
     @EventHandler
     public void onSpellCast(SpellCastEvent e) {
+        if (e.getSpell() == null)
+            return;
         if (!spellManager.spellExists(e.getSpell().getName()))
             return;
 

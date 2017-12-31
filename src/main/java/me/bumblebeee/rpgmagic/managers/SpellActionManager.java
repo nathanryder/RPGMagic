@@ -6,9 +6,7 @@ import me.bumblebeee.rpgmagic.Wand;
 import me.bumblebeee.rpgmagic.utils.ParticleEffect;
 import me.bumblebeee.rpgmagic.utils.Storage;
 import me.bumblebeee.rpgmagic.utils.Utils;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -119,6 +117,11 @@ public class SpellActionManager {
                 return;
             }
 
+            if (target == null) {
+                p.sendMessage("Target not found");
+                return;
+            }
+
             new BukkitRunnable() {
                 double t = 0;
                 Location loc = p.getLocation();
@@ -163,7 +166,78 @@ public class SpellActionManager {
                     }
                 }
             }.runTaskTimer(RPGMagic.getInstance(), 0, 2);
+        } else if (function.equalsIgnoreCase("pullNearbyEntityTowards")) {
+            String[] locData = args[0].replace("{", "").replace("}", "").split(",");
+            int range = Integer.parseInt(args[1]);
+            Location l = getLocationFromData(p.getWorld(), locData).add(0,1,0);
+
+            for (Entity e : p.getWorld().getNearbyEntities(l, range, range, range)) {
+                if (!(e instanceof LivingEntity))
+                    continue;
+                //TODO uncomment after blackhole finished
+//                if (e.getUniqueId().equals(p.getUniqueId()))
+//                    continue;
+
+                e.setVelocity(l.toVector().subtract(e.getLocation().toVector()).multiply(0.1));
+            }
+        } else if (function.equals("applyPotionAtLocation")) {
+            String[] locData = args[0].replace("{", "").replace("}", "").split(",");
+            int radius = Integer.parseInt(args[1]);
+            Location l = getLocationFromData(p.getWorld(), locData);
+
+            String[] potionData = (args[2] + "," + args[3] + "," + args[4]).split(",");
+            applyPotion(l, radius, potionData);
+        } else if (function.equalsIgnoreCase("playSoundAtLocation")) {
+            String[] locData = args[0].replace("{", "").replace("}", "").split(",");
+            int volume = Integer.parseInt(args[2]);
+            Sound sound = Sound.valueOf(args[1]);
+            Location l = getLocationFromData(p.getWorld(), locData);
+
+            if (sound == null) {
+                RPGMagic.getInstance().getLogger().severe("FAILED TO FIND SOUND NAMED " + args[1]);
+                return;
+            }
+
+            l.getWorld().playSound(l, sound, volume, 1);
+        } else if (function.equalsIgnoreCase("damageEntitiesAtLocation")) {
+            String[] locData = args[0].replace("{", "").replace("}", "").split(",");
+            Location l = getLocationFromData(p.getWorld(), locData);
+            int amount = Integer.parseInt(args[1]);
+
+            for (Entity e : l.getWorld().getNearbyEntities(l, 1.5, 1.5, 1.5)) {
+                if (!(e instanceof LivingEntity))
+                    continue;
+                LivingEntity le = (LivingEntity) e;
+                le.damage(amount);
+            }
+        } else if (function.equalsIgnoreCase("teleportEntitiesToWorld")) {
+            System.out.println("Getting ready to teleport");
+            String[] locData = args[0].replace("{", "").replace("}", "").split(",");
+            Location from = getLocationFromData(p.getWorld(), locData);
+            World toWorld = Bukkit.getWorld(args[1]);
+
+            if (toWorld == null) {
+                RPGMagic.getInstance().getLogger().severe("FAILED TO FIND WORLD CALLED " + args[1]);
+                return;
+            }
+
+            for (Entity e : from.getWorld().getNearbyEntities(from, 1.5, 1.5, 1.5)) {
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        System.out.println("Teleporting..");
+                        e.teleport(toWorld.getSpawnLocation());
+                    }
+                }.runTaskLater(RPGMagic.getInstance(), 1);
+            }
         }
+    }
+
+    public Location getLocationFromData(World w, String[] locData) {
+        int x = Integer.parseInt(locData[0]);
+        int y = Integer.parseInt(locData[1]);
+        int z = Integer.parseInt(locData[2]);
+        return new Location(w, x, y, z);
     }
 
     public void applyPotion(Location loc, int radius, String[] args) {

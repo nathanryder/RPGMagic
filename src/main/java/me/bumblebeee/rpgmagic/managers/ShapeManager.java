@@ -1,20 +1,36 @@
 package me.bumblebeee.rpgmagic.managers;
 
-import me.bumblebeee.rpgmagic.utils.ParticleEffect;
 import me.bumblebeee.rpgmagic.utils.RespectiveLocation;
 import me.bumblebeee.rpgmagic.utils.Utils;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.util.BlockIterator;
-import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeManager {
+
+    public List<Location> getSphere(Location l, float r, float maxHeight, float minHeight) {
+        int cx = l.getBlockX();
+        int cy = l.getBlockY();
+        int cz = l.getBlockZ();
+        World w = l.getWorld();
+        float rSquared =  r * r;
+
+        List<Location> locs = new ArrayList<>();
+        for (float x = cx-r; x <= cx+r; x++) {
+            for (float z = cz-r; z <= cz+r; z++) {
+                for (float y = cy-maxHeight; y <= cy+minHeight; y++) {
+                    if ((cx - x) * (cx - x) + (cz - z) * (cz - z) <= rSquared)
+                        locs.add(new Location(w, x, y+1, z));
+                }
+            }
+        }
+
+        return locs;
+    }
 
     public List<Location> getCircle(Location l, float r) {
         int cx = l.getBlockX();
@@ -26,8 +42,9 @@ public class ShapeManager {
         List<Location> locs = new ArrayList<>();
         for (float x = cx-r; x <= cx+r; x++) {
             for (float z = cz-r; z <= cz+r; z++) {
-                if ((cx-x) * (cx-x) + (cz-z) * (cz-z) <= rSquared)
+                if ((cx-x) * (cx-x) + (cz-z) * (cz-z) <= rSquared) {
                     locs.add(new Location(w, x, cy, z));
+                }
             }
         }
 
@@ -47,6 +64,7 @@ public class ShapeManager {
         }
         return locations;
     }
+
 
     public List<Location> getLine(Location location, int size, boolean onGround) {
         List<Location> locations = new ArrayList<>();

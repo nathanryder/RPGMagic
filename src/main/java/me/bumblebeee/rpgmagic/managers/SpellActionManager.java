@@ -22,6 +22,7 @@ public class SpellActionManager {
     ShapeManager shapeManager = new ShapeManager();
 
     private @Getter List<UUID> actionsRunning = new ArrayList<>();
+    private static @Getter Map<UUID, Map<Location, Material>> changedBlocks = new HashMap<>();
 
     public void addRunning(UUID uuid) {
         actionsRunning.add(uuid);
@@ -67,7 +68,7 @@ public class SpellActionManager {
         } else if (function.equalsIgnoreCase("applyPotionShape")) {
             String shape = wand.getShape();
             if (shape.equalsIgnoreCase("raggio")) {
-                List<Location> locations = shapeManager.getCircleBorder(p.getLocation(), wand.getDistance(), 30);
+                List<Location> locations = shapeManager.getCircle(p.getLocation(), wand.getDistance());
 
                 for (Location l : locations)
                     applyPotion(l, wand.getDistance(), args);
@@ -240,6 +241,43 @@ public class SpellActionManager {
 
                 e.setVelocity(e.getLocation().toVector().subtract(p.getLocation().toVector()).multiply(power));
             }
+        } else if (function.equalsIgnoreCase("changeBlocksForPlayerInArea")) {
+            String shape = wand.getShape();
+            List<Location> locations = new ArrayList<>();
+            List<Location> temploc;
+            int up = Integer.parseInt(args[1]);
+            int down = Integer.parseInt(args[2]);
+
+            if (shape.equalsIgnoreCase("raggio"))
+                temploc = shapeManager.getSphere(p.getLocation(), wand.getDistance(), up, down);
+            else if (shape.equalsIgnoreCase("linee"))
+                temploc = shapeManager.getLine(p.getLocation(), wand.getDistance(), true);
+            else
+                temploc = shapeManager.getCone(p, wand.getDistance());
+
+            for (int i = 0; i < temploc.size(); i++)
+                locations.add(temploc.get(i).subtract(0,1,0));
+
+            Map<Location, Material> changing = new HashMap<>();
+            for (Location l : locations) {
+                Material m = l.getBlock().getType();
+                if (m != Material.STONE)
+                    continue;
+
+                changing.put(l, m);
+                Utils.disguiseBlock(p, l, Material.matchMaterial(args[0]), (byte) 0);
+//                l.getBlock().setType(Material.BARRIER);
+
+                Bukkit.getScheduler().runTaskLater(RPGMagic.getInstance(), new Runnable() {
+                    @Override
+                    public void run() {
+                        Utils.disguiseBlock(p, l, m, (byte) 0);
+//                        l.getBlock().setType(m);
+                    }
+                }, 19);
+            }
+
+            changedBlocks.put(p.getUniqueId(), changing);
         }
     }
 

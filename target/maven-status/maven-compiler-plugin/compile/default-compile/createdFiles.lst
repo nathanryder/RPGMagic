@@ -1,5 +1,6 @@
 me/bumblebeee/rpgmagic/listeners/inventoryClicks/ShopAlterOther$1.class
 me/bumblebeee/rpgmagic/utils/ReflectionUtils$PackageType.class
+me/bumblebeee/rpgmagic/managers/SpellActionManager$4.class
 me/bumblebeee/rpgmagic/utils/HiddenStringUtils.class
 me/bumblebeee/rpgmagic/utils/ReflectionUtils.class
 me/bumblebeee/rpgmagic/managers/Runnables.class
@@ -13,6 +14,7 @@ me/bumblebeee/rpgmagic/utils/ParticleEffect$ParticleColor.class
 me/bumblebeee/rpgmagic/utils/ParticleEffect$ParticleData.class
 me/bumblebeee/rpgmagic/Spell.class
 me/bumblebeee/rpgmagic/utils/ParticleEffect$ParticlePacket$PacketInstantiationException.class
+me/bumblebeee/rpgmagic/utils/Utils$1.class
 me/bumblebeee/rpgmagic/utils/ParticleEffect$ParticleColorException.class
 me/bumblebeee/rpgmagic/managers/RPLManaManager.class
 me/bumblebeee/rpgmagic/RPGMagic.class

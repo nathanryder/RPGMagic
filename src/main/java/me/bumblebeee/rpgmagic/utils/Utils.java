@@ -1,20 +1,38 @@
 package me.bumblebeee.rpgmagic.utils;
 
 import me.bumblebeee.rpgmagic.RPGMagic;
+import net.minecraft.server.v1_12_R1.BlockPosition;
+import net.minecraft.server.v1_12_R1.PacketPlayOutBlockChange;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
+import org.bukkit.craftbukkit.v1_12_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.BlockIterator;
 
 import java.io.File;
 import java.util.*;
 
 public class Utils {
+
+    public static void disguiseBlock(Player player, Location location, Material material, byte data) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+
+                BlockPosition blockPosition = new BlockPosition(location.getBlockX(), location.getBlockY(), location.getBlockZ());
+                PacketPlayOutBlockChange packet = new PacketPlayOutBlockChange(((CraftWorld) location.getWorld()).getHandle(), blockPosition);
+                packet.block =  net.minecraft.server.v1_12_R1.Block.getByCombinedId(material.getId() + (data << 12));
+                ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+            }
+        }.runTaskAsynchronously(RPGMagic.getInstance());
+    }
 
     public static Map<UUID, String> searchForPlayer(String name) {
         File folder = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "data");

@@ -97,11 +97,11 @@ public class ShapeManager {
         return locations;
     }
 
-    public List<Location> getCone(Player p, int size) {
+    public List<Location> getCone(Location loc, int size) {
         List<Location> locations = new ArrayList<>();
 
         for (int i = size; i > 1; i--) {
-            locations.addAll(getConeLine(size, i, p));
+            locations.addAll(getConeLine(size, i, loc));
         }
 
         return locations;
@@ -153,8 +153,8 @@ public class ShapeManager {
         return locations;
     }
 
-    public List<Location> getConeLine(int startSize, int size, Player p) {
-        RespectiveLocation rl = new RespectiveLocation(p.getLocation());
+    public List<Location> getConeLine(int startSize, int size, Location loc) {
+        RespectiveLocation rl = new RespectiveLocation(loc);
         List<Location> locations = new ArrayList<>();
         double width = (size-1)/2;
         Location start = rl.forward(Math.floor(size/2));

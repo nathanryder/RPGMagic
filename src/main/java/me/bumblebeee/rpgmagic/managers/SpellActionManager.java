@@ -82,7 +82,7 @@ public class SpellActionManager {
                 for (Location l : locations)
                     applyPotion(l, wand.getDistance(), args);
             } else if (shape.equalsIgnoreCase("coni")) {
-                List<Location> locations = shapeManager.getCone(p, wand.getDistance());
+                List<Location> locations = shapeManager.getCone(p.getLocation(), wand.getDistance());
 
                 for (Location l : locations)
                     applyPotion(l, wand.getDistance(), args);
@@ -253,7 +253,7 @@ public class SpellActionManager {
             else if (shape.equalsIgnoreCase("linee"))
                 temploc = shapeManager.getLine(p.getLocation(), wand.getDistance(), true);
             else
-                temploc = shapeManager.getCone(p, wand.getDistance());
+                temploc = shapeManager.getCone(p.getLocation(), wand.getDistance());
 
             for (int i = 0; i < temploc.size(); i++)
                 locations.add(temploc.get(i).subtract(0,1,0));
@@ -278,6 +278,28 @@ public class SpellActionManager {
             }
 
             changedBlocks.put(p.getUniqueId(), changing);
+        } else if (function.equalsIgnoreCase("strikeLightning")) {
+            Random rand = new Random();
+            int percent = Integer.parseInt(args[0]);
+
+            String shape = wand.getShape();
+            List<Location> locations = new ArrayList<>();
+            Location target = p.getTargetBlock((Set<Material>)null, 50).getLocation();
+            if (shape.equalsIgnoreCase("raggio"))
+                locations = shapeManager.getCircle(target, wand.getDistance());
+            else if (shape.equalsIgnoreCase("linee"))
+                locations = shapeManager.getLine(target, wand.getDistance(), false);
+            else if (shape.equalsIgnoreCase("coni"))
+                locations = shapeManager.getCone(target, wand.getDistance());
+
+            int skip;
+            for (Location l : locations) {
+                skip = rand.nextInt(99);
+                if (skip > percent)
+                    continue;
+
+                l.getWorld().strikeLightning(l);
+            }
         }
     }
 

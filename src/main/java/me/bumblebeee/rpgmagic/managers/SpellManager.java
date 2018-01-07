@@ -25,6 +25,7 @@ public class SpellManager {
         RPGMagic.getInstance().saveResource("spells/fling.yml", false);
         RPGMagic.getInstance().saveResource("spells/shield.yml", false);
         RPGMagic.getInstance().saveResource("spells/peek.yml", false);
+        RPGMagic.getInstance().saveResource("spells/zeus.yml", false);
     }
 
     public void cacheSpellFiles() {

@@ -137,6 +137,9 @@ public class SpellCastController {
                 case "spell":
                     action = action.replace("%" + variable + "%", spell.getName());
                     continue;
+                case "distance":
+                    action = action.replace("%" + variable + "%", String.valueOf(wand.getDistance()));
+                    continue;
                 case "storedLoc":
                     Location l = getStoredLocations().get(player.getUniqueId());
                     String locData = "null";

@@ -23,6 +23,8 @@ public class SpellActionManager {
 
     private @Getter List<UUID> actionsRunning = new ArrayList<>();
     private static @Getter Map<UUID, Map<Location, Material>> changedBlocks = new HashMap<>();
+    private static @Getter Map<UUID, Entity> controledEntities = new HashMap<>();
+    private static @Getter List<UUID> protectFromLightning = new ArrayList<>();
 
     public void addRunning(UUID uuid) {
         actionsRunning.add(uuid);
@@ -123,6 +125,7 @@ public class SpellActionManager {
                 return;
             }
 
+            protectFromLightning.add(p.getUniqueId());
             new BukkitRunnable() {
                 double t = 0;
                 Location loc = p.getLocation();
@@ -164,6 +167,7 @@ public class SpellActionManager {
 
                     if (t > 5) {
                         this.cancel();
+                        protectFromLightning.remove(p.getUniqueId());
                     }
                 }
             }.runTaskTimer(RPGMagic.getInstance(), 0, 2);
@@ -300,6 +304,9 @@ public class SpellActionManager {
 
                 l.getWorld().strikeLightning(l);
             }
+        } else if (function.equalsIgnoreCase("control")) {
+
+
         }
     }
 

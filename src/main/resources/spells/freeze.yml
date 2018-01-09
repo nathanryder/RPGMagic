@@ -1,0 +1,14 @@
+name: "Freeze"
+type: "TBD"
+description: Freeze players inside an area
+price: 1.0
+mana: 1
+cooldown: 2
+
+actions:
+- "PAR:loop:outlineAreaFromCastLoc:REDSTONE:10:30" ########
+- "ACT:applyPotionShapeFromCastLoc:SLOW:5:13" ########
+- "delay:2"
+- "ACT:freezePlayersInShape" ###########
+- "delay:10"
+- "ACT:unfreezePlayersInShape" #########

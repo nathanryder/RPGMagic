@@ -1,9 +1,0 @@
-name: "Control"
-type: "TBD"
-price: 0.0
-mana: 1
-cooldown: 2
-description: Control other entities with your crosshair
-
-actions:
-- "ACT:loop:control:10:30"

@@ -23,8 +23,8 @@ public class SpellActionManager {
 
     private @Getter List<UUID> actionsRunning = new ArrayList<>();
     private static @Getter Map<UUID, Map<Location, Material>> changedBlocks = new HashMap<>();
-    private static @Getter Map<UUID, Entity> controledEntities = new HashMap<>();
     private static @Getter List<UUID> protectFromLightning = new ArrayList<>();
+    private static @Getter List<UUID> frozen = new ArrayList<>();
 
     public void addRunning(UUID uuid) {
         actionsRunning.add(uuid);
@@ -34,7 +34,7 @@ public class SpellActionManager {
         actionsRunning.remove(uuid);
     }
 
-    public void manageAction(Player p, Location targetLoc, Wand wand, String action) {
+    public void manageAction(Player p, Location castLocation, Location targetLoc, Wand wand, String action) {
         String[] data = action.split(":");
         String function = data[0];
         String[] args = new String[100];
@@ -58,7 +58,7 @@ public class SpellActionManager {
                     for (String s : args)
                         ac.append(s).append(":");
 
-                    manageAction(p, target.clone(), wand, ac.toString());
+                    manageAction(p, castLocation.clone(), target.clone(), wand, ac.toString());
 
                     count++;
                     if (count >= iterations) {
@@ -85,6 +85,30 @@ public class SpellActionManager {
                     applyPotion(l, wand.getDistance(), args);
             } else if (shape.equalsIgnoreCase("coni")) {
                 List<Location> locations = shapeManager.getCone(p.getLocation(), wand.getDistance());
+
+                for (Location l : locations)
+                    applyPotion(l, wand.getDistance(), args);
+            }
+
+            removeRunning(uuid);
+        } else if (function.equalsIgnoreCase("applyPotionShapeFromCastLoc")) {
+            String shape = wand.getShape();
+            if (shape.equalsIgnoreCase("raggio")) {
+                List<Location> locations = shapeManager.getCircle(castLocation, wand.getDistance());
+
+                for (Location l : locations)
+                    applyPotion(l, wand.getDistance(), args);
+            } else if (shape.equalsIgnoreCase("linee")) {
+                boolean onGround = false;
+                if (wand.getSpell().getName().equalsIgnoreCase("speed"))
+                    onGround = true;
+
+                List<Location> locations = shapeManager.getLine(castLocation, wand.getDistance(), onGround);
+
+                for (Location l : locations)
+                    applyPotion(l, wand.getDistance(), args);
+            } else if (shape.equalsIgnoreCase("coni")) {
+                List<Location> locations = shapeManager.getCone(castLocation, wand.getDistance());
 
                 for (Location l : locations)
                     applyPotion(l, wand.getDistance(), args);
@@ -304,9 +328,37 @@ public class SpellActionManager {
 
                 l.getWorld().strikeLightning(l);
             }
-        } else if (function.equalsIgnoreCase("control")) {
+        } else if (function.equalsIgnoreCase("freezePlayersInShape")) {
+            String shape = wand.getShape();
+            List<Location> locations = new ArrayList<>();
 
+            if (shape.equalsIgnoreCase("raggio"))
+                locations = shapeManager.getCircle(castLocation, wand.getDistance());
+            else if (shape.equalsIgnoreCase("linee"))
+                locations = shapeManager.getLine(castLocation, wand.getDistance(), false);
+            else if (shape.equalsIgnoreCase("coni"))
+                locations = shapeManager.getCone(castLocation, wand.getDistance());
 
+            for (Location l : locations) {
+                Collection<Entity> entities = l.getWorld().getNearbyEntities(l, 1, 1, 1);
+                entities.stream().forEach(e -> frozen.add(e.getUniqueId()));
+            }
+        } else if (function.equalsIgnoreCase("unfreezePlayersInShape")) {
+            String shape = wand.getShape();
+            List<Location> locations = new ArrayList<>();
+
+            if (shape.equalsIgnoreCase("raggio"))
+                locations = shapeManager.getCircle(castLocation, wand.getDistance());
+            else if (shape.equalsIgnoreCase("linee"))
+                locations = shapeManager.getLine(castLocation, wand.getDistance(), false);
+            else if (shape.equalsIgnoreCase("coni"))
+                locations = shapeManager.getCone(castLocation, wand.getDistance());
+
+            for (Location l : locations) {
+                Collection<Entity> entities = l.getWorld().getNearbyEntities(l, 1, 1, 1);
+                entities.stream().filter(e -> frozen.contains(e.getUniqueId()))
+                                .forEach(e -> frozen.remove(e.getUniqueId()));
+            }
         }
     }
 
@@ -318,20 +370,25 @@ public class SpellActionManager {
     }
 
     public void applyPotion(Location loc, int radius, String[] args) {
-        String potionName = args[0];
-        int boost = Integer.parseInt(args[1])-1;
-        int duration = Integer.parseInt(args[2])*20;
-        PotionEffectType effect = PotionEffectType.getByName(potionName);
-        if (effect == null) {
-            RPGMagic.getInstance().getLogger().severe(ChatColor.RED + "Invalid potion effect " + potionName);
-            return;
-        }
+        Bukkit.getScheduler().runTaskLater(RPGMagic.getInstance(), new Runnable() {
+            @Override
+            public void run() {
+                String potionName = args[0];
+                int boost = Integer.parseInt(args[1])-1;
+                int duration = Integer.parseInt(args[2])*20;
+                PotionEffectType effect = PotionEffectType.getByName(potionName);
+                if (effect == null) {
+                    RPGMagic.getInstance().getLogger().severe(ChatColor.RED + "Invalid potion effect " + potionName);
+                    return;
+                }
 
-        PotionEffect potion = new PotionEffect(effect, duration, boost, false);
-        for (Entity e : loc.getWorld().getNearbyEntities(loc, radius, radius, radius)) {
-            if (e instanceof LivingEntity)
-                ((LivingEntity) e).addPotionEffect(potion);
-        }
+                PotionEffect potion = new PotionEffect(effect, duration, boost, false);
+                for (Entity e : loc.getWorld().getNearbyEntities(loc, radius, radius, radius)) {
+                    if (e instanceof LivingEntity)
+                        ((LivingEntity) e).addPotionEffect(potion);
+                }
+            }
+        }, 1);
     }
 
 }

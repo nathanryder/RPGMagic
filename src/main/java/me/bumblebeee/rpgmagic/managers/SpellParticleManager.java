@@ -20,7 +20,7 @@ public class SpellParticleManager {
 
     ShapeManager shapeManager = new ShapeManager();
 
-    public void manageParticle(Player p, Location targetLoc, Wand wand, String action) {
+    public void manageParticle(Player p, Location castLocation, Location targetLoc, Wand wand, String action) {
         String[] data = action.split(":");
         String function = data[0];
         String[] args = new String[10];
@@ -41,7 +41,7 @@ public class SpellParticleManager {
                     for (String s : args)
                         ac.append(s).append(":");
 
-                    manageParticle(p, targetLoc, wand, ac.toString());
+                    manageParticle(p, castLocation, targetLoc, wand, ac.toString());
 
                     count++;
                     if (count >= iterations)
@@ -117,6 +117,45 @@ public class SpellParticleManager {
                 }
             } else if (shape.equalsIgnoreCase("coni")) {
                 List<Location> locations = shapeManager.getConeBorder(targetLoc, wand.getDistance());
+                for (Location l : locations) {
+                    ParticleEffect particle = ParticleEffect.valueOf(args[0]);
+                    if (particle == null) {
+                        RPGMagic.getInstance().getLogger().severe("FAILED TO FIND PARTICLE NAMED " + args[0]);
+                        continue;
+                    }
+                    particle.display(0, 0, 0, 0, 0, l.add(0,0.1,0), (double) 50);
+                }
+            }
+        } else if (function.equalsIgnoreCase("outlineAreaFromCastLoc")) {
+            String shape = wand.getShape();
+            if (shape.equalsIgnoreCase("raggio")) {
+                List<Location> locations = shapeManager.getCircleBorder(castLocation, wand.getDistance(), 30);
+
+                for (Location l : locations) {
+                    ParticleEffect particle = ParticleEffect.valueOf(args[0]);
+                    if (particle == null) {
+                        RPGMagic.getInstance().getLogger().severe("FAILED TO FIND PARTICLE NAMED " + args[0]);
+                        continue;
+                    }
+                    particle.display(0, 0, 0, 0, 0, l.add(0,0.1,0), (double) 50);
+                }
+            } else if (shape.equalsIgnoreCase("linee")) {
+                boolean onGround = false;
+                if (wand.getSpell().getName().equalsIgnoreCase("speed"))
+                    onGround = true;
+
+                List<Location> locations = shapeManager.getLine(castLocation, wand.getDistance(), onGround);
+
+                for (Location l : locations) {
+                    ParticleEffect particle = ParticleEffect.valueOf(args[0]);
+                    if (particle == null) {
+                        RPGMagic.getInstance().getLogger().severe("FAILED TO FIND PARTICLE NAMED " + args[0]);
+                        continue;
+                    }
+                    particle.display(0, 0, 0, 0, 0, l.add(0,0.1,0), (double) 50);
+                }
+            } else if (shape.equalsIgnoreCase("coni")) {
+                List<Location> locations = shapeManager.getConeBorder(castLocation, wand.getDistance());
                 for (Location l : locations) {
                     ParticleEffect particle = ParticleEffect.valueOf(args[0]);
                     if (particle == null) {

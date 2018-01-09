@@ -18,6 +18,7 @@ public class SpellManager {
     }
 
     public void saveDefaultSpells() {
+        //TODO check if default spells exists
         RPGMagic.getInstance().saveResource("spells/speed.yml", false);
         RPGMagic.getInstance().saveResource("spells/teleport.yml", false);
         RPGMagic.getInstance().saveResource("spells/missile.yml", false);
@@ -26,6 +27,7 @@ public class SpellManager {
         RPGMagic.getInstance().saveResource("spells/shield.yml", false);
         RPGMagic.getInstance().saveResource("spells/peek.yml", false);
         RPGMagic.getInstance().saveResource("spells/zeus.yml", false);
+        RPGMagic.getInstance().saveResource("spells/freeze.yml", false);
     }
 
     public void cacheSpellFiles() {

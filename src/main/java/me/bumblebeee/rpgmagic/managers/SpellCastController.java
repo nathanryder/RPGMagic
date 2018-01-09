@@ -26,6 +26,7 @@ public class SpellCastController {
     private static @Getter Map<UUID, Location> storedLocations = new HashMap<>();
 
     private @Getter Player player;
+    private @Getter Location castLocation = null;
     private @Getter Spell spell;
     private @Getter Wand wand;
     private @Getter SpellActionManager actionManager;
@@ -57,6 +58,7 @@ public class SpellCastController {
     }
 
     public void process() {
+        castLocation = player.getLocation();
         YamlConfiguration c = YamlConfiguration.loadConfiguration(spell.getFile());
 
         Bukkit.getScheduler().runTaskAsynchronously(RPGMagic.getInstance(), new Runnable() {
@@ -97,14 +99,14 @@ public class SpellCastController {
 
     public void runParticle(String full) {
         Location targetLoc = player.getTargetBlock((Set<Material>) null, 100).getLocation().add(0,1,0);
-        particleManager.manageParticle(player, targetLoc, wand, full);
+        particleManager.manageParticle(player, castLocation, targetLoc, wand, full);
     }
 
     public void runAction(String action) {
         String ac = replaceVariables(action, wand);
         Location targetLoc = player.getTargetBlock((Set<Material>) null, 100).getLocation().add(0,1,0);
 
-        actionManager.manageAction(player, targetLoc, wand, ac);
+        actionManager.manageAction(player, castLocation, targetLoc, wand, ac);
     }
 
     public void runCommand(String commandData) {

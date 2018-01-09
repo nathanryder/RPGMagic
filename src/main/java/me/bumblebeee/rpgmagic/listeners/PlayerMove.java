@@ -1,5 +1,6 @@
 package me.bumblebeee.rpgmagic.listeners;
 
+import me.bumblebeee.rpgmagic.managers.SpellActionManager;
 import me.bumblebeee.rpgmagic.managers.SpellCastController;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,7 +15,8 @@ public class PlayerMove implements Listener {
         if (e.getFrom().getBlockX() != e.getTo().getBlockX()
                     || e.getFrom().getBlockY() != e.getTo().getBlockY()
                     || e.getFrom().getBlockZ() != e.getTo().getBlockZ()) {
-            if (SpellCastController.getFrozen().contains(p.getUniqueId()))
+            if (SpellCastController.getFrozen().contains(p.getUniqueId())
+                    || SpellActionManager.getFrozen().contains(p.getUniqueId()))
                 e.setCancelled(true);
         }
     }

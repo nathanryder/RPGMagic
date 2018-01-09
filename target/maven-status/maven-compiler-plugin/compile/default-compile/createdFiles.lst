@@ -31,6 +31,7 @@ me/bumblebeee/rpgmagic/listeners/SpellCast$1.class
 me/bumblebeee/rpgmagic/utils/ParticleEffect$ParticleDataException.class
 me/bumblebeee/rpgmagic/managers/SpellManager.class
 me/bumblebeee/rpgmagic/utils/ParticleEffect$OrdinaryColor.class
+me/bumblebeee/rpgmagic/listeners/PlayerDamage.class
 me/bumblebeee/rpgmagic/utils/InventoryToBase64.class
 me/bumblebeee/rpgmagic/utils/TableUtils.class
 me/bumblebeee/rpgmagic/listeners/PlayerInteract.class
@@ -48,6 +49,7 @@ me/bumblebeee/rpgmagic/listeners/inventoryClicks/Wands.class
 me/bumblebeee/rpgmagic/listeners/BlockPlace.class
 me/bumblebeee/rpgmagic/events/AlterCraftEvent.class
 me/bumblebeee/rpgmagic/managers/StructureManager.class
+me/bumblebeee/rpgmagic/managers/SpellActionManager$5.class
 me/bumblebeee/rpgmagic/managers/PaperManager.class
 me/bumblebeee/rpgmagic/utils/ParticleEffect$ItemData.class
 me/bumblebeee/rpgmagic/commands/MagicCommand.class

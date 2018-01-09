@@ -39,5 +39,6 @@
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/managers/SpellManager.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/events/ItemBuyEvent.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/Wand.java
+/home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/listeners/PlayerDamage.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/managers/RPLManaManager.java
 /home/user/workspace/RPGMagic/src/main/java/me/bumblebeee/rpgmagic/managers/NPCManager.java

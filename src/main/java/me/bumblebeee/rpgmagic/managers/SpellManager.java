@@ -19,15 +19,23 @@ public class SpellManager {
 
     public void saveDefaultSpells() {
         //TODO check if default spells exists
-        RPGMagic.getInstance().saveResource("spells/speed.yml", false);
-        RPGMagic.getInstance().saveResource("spells/teleport.yml", false);
-        RPGMagic.getInstance().saveResource("spells/missile.yml", false);
-        RPGMagic.getInstance().saveResource("spells/blackhole.yml", false);
-        RPGMagic.getInstance().saveResource("spells/fling.yml", false);
-        RPGMagic.getInstance().saveResource("spells/shield.yml", false);
-        RPGMagic.getInstance().saveResource("spells/peek.yml", false);
-        RPGMagic.getInstance().saveResource("spells/zeus.yml", false);
-        RPGMagic.getInstance().saveResource("spells/freeze.yml", false);
+        saveDefaultSpell("speed.yml");
+        saveDefaultSpell("teleport.yml");
+        saveDefaultSpell("missile.yml");
+        saveDefaultSpell("blackhole.yml");
+        saveDefaultSpell("fling.yml");
+        saveDefaultSpell("shield.yml");
+        saveDefaultSpell("peek.yml");
+        saveDefaultSpell("zeus.yml");
+        saveDefaultSpell("freeze.yml");
+    }
+
+    public void saveDefaultSpell(String spellFile) {
+        File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "spells" + File.separator + spellFile);
+        if (f.exists())
+            return;
+
+        RPGMagic.getInstance().saveResource("spells/" + spellFile, false);
     }
 
     public void cacheSpellFiles() {

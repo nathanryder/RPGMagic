@@ -6,8 +6,8 @@ mana: 1
 cooldown: 2
 
 actions:
-- "PAR:loop:outlineAreaFromCastLoc:REDSTONE:10:30"
-- "ACT:applyPotionShapeFromCastLoc:SLOW:5:13"
+- "PAR:loop:outlineAreaFromCastLoc:REDSTONE:10:30" ########
+- "ACT:applyPotionShapeFromCastLoc:SLOW:5:13" ########
 - "delay:2"
 - "ACT:freezePlayersInShape" ###########
 - "delay:10"

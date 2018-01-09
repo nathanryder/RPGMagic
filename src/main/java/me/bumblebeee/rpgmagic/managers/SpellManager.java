@@ -28,6 +28,7 @@ public class SpellManager {
         saveDefaultSpell("peek.yml");
         saveDefaultSpell("zeus.yml");
         saveDefaultSpell("freeze.yml");
+        saveDefaultSpell("wallhack.yml");
     }
 
     public void saveDefaultSpell(String spellFile) {

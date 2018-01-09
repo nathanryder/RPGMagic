@@ -359,6 +359,37 @@ public class SpellActionManager {
                 entities.stream().filter(e -> frozen.contains(e.getUniqueId()))
                                 .forEach(e -> frozen.remove(e.getUniqueId()));
             }
+        } else if (function.equalsIgnoreCase("addWallHack")) {
+            RPGMagic.getSeeGlow().add(p);
+
+            for (Player t : Bukkit.getOnlinePlayers())
+            {
+                Bukkit.getScheduler().runTaskLater(RPGMagic.getInstance(), new Runnable() {
+                    @Override
+                    public void run() {
+                        if(t != p) {
+                            p.hidePlayer(t);
+                            p.showPlayer(t);
+                        }
+                    }
+                }, 1);
+
+            }
+        } else if (function.equalsIgnoreCase("removeWallHack")) {
+            RPGMagic.getSeeGlow().remove(p);
+            for (Player t : Bukkit.getOnlinePlayers())
+            {
+                Bukkit.getScheduler().runTaskLater(RPGMagic.getInstance(), new Runnable() {
+                    @Override
+                    public void run() {
+                        if(t != p) {
+                            p.hidePlayer(t);
+                            p.showPlayer(t);
+                        }
+                    }
+                }, 1);
+
+            }
         }
     }
 

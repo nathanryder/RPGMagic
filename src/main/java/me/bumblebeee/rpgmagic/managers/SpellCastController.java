@@ -73,8 +73,9 @@ public class SpellCastController {
                         action.append(data[i]).append(":");
 
                     if (data[0].equalsIgnoreCase("delay")) {
+                        String ac = replaceVariables(data[1], wand);
                         try {
-                            Thread.sleep(Integer.parseInt(data[1])*1000);
+                            Thread.sleep(Integer.parseInt(ac)*1000);
                         } catch (InterruptedException e) {
                             RPGMagic.getInstance().getLogger().severe("FAILED TO DELAY FOR " + data[1] + " SECONDS");
                             e.printStackTrace();

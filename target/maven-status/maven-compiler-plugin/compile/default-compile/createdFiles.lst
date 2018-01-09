@@ -2,6 +2,7 @@ me/bumblebeee/rpgmagic/listeners/inventoryClicks/ShopAlterOther$1.class
 me/bumblebeee/rpgmagic/utils/ReflectionUtils$PackageType.class
 me/bumblebeee/rpgmagic/managers/SpellActionManager$4.class
 me/bumblebeee/rpgmagic/utils/HiddenStringUtils.class
+me/bumblebeee/rpgmagic/managers/SpellActionManager$7.class
 me/bumblebeee/rpgmagic/utils/ReflectionUtils.class
 me/bumblebeee/rpgmagic/managers/Runnables.class
 me/bumblebeee/rpgmagic/listeners/AsyncPlayerChat.class
@@ -62,6 +63,7 @@ me/bumblebeee/rpgmagic/managers/Messages.class
 me/bumblebeee/rpgmagic/listeners/inventoryClicks/ShopAlterOther$2.class
 me/bumblebeee/rpgmagic/Wand.class
 me/bumblebeee/rpgmagic/managers/Runnables$1.class
+me/bumblebeee/rpgmagic/RPGMagic$1.class
 me/bumblebeee/rpgmagic/managers/SpellActionManager$3.class
 me/bumblebeee/rpgmagic/managers/SpellCastController$1.class
 me/bumblebeee/rpgmagic/utils/ParticleEffect.class
@@ -70,5 +72,6 @@ me/bumblebeee/rpgmagic/utils/ReflectionUtils$DataType.class
 me/bumblebeee/rpgmagic/managers/SpellCastController.class
 me/bumblebeee/rpgmagic/events/ItemBuyEvent.class
 me/bumblebeee/rpgmagic/utils/ParticleEffect$BlockData.class
+me/bumblebeee/rpgmagic/managers/SpellActionManager$6.class
 me/bumblebeee/rpgmagic/utils/Storage.class
 me/bumblebeee/rpgmagic/managers/SpellParticleManager$1.class

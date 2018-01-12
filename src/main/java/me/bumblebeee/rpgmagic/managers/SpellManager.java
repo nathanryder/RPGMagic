@@ -18,7 +18,6 @@ public class SpellManager {
     }
 
     public void saveDefaultSpells() {
-        //TODO check if default spells exists
         saveDefaultSpell("speed.yml");
         saveDefaultSpell("teleport.yml");
         saveDefaultSpell("missile.yml");

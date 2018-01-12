@@ -41,8 +41,7 @@ public class MagicCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         if (cmd.getName().equalsIgnoreCase("magic")) {
             if (!(args.length > 0)) {
-                //TODO send help message
-                sender.sendMessage("Help message goes here");
+                sendHelpMessage(sender);
                 return false;
             }
 
@@ -349,7 +348,7 @@ public class MagicCommand implements CommandExecutor {
                 npc.data().setPersistent(NPC.PLAYER_SKIN_UUID_METADATA, skin);
                 npc.spawn(l);
                 return true;
-            } else if (args[0].equalsIgnoreCase("bazaraltar")) {
+            } else if (args[0].equalsIgnoreCase("altaritembazar")) {
                 if (!(sender instanceof Player)) {
                     sender.sendMessage(ChatColor.RED + "Console cannot use this command!");
                     return false;
@@ -371,12 +370,53 @@ public class MagicCommand implements CommandExecutor {
                 return true;
             }
             else {
-                //TODO send help message
-                sender.sendMessage("Help message goes here");
+                sendHelpMessage(sender);
                 return true;
             }
         }
         return false;
+    }
+
+    public void sendHelpMessage(CommandSender sender) {
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic bazar")
+                .replace("%description%", "Spawn in the shop structure"));
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic structurebazar")
+                .replace("%description%", "Spawns the NPC for spells"));
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic paperbazar")
+                .replace("%description%", "Spawns the NPC for papers"));
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic wandbazar")
+                .replace("%description%", "Spawn the NPC for wands"));
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic wanditembazar")
+                .replace("%description%", "Spawns the NPC for wand items"));
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic altaritembazar")
+                .replace("%description%", "Spawns the NPC for altar items"));
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic create paper <level:power:area> <levelPowerDistance> [Shape]")
+                .replace("%description%", "Create a paper with the given values"));
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic create spell <spellName>")
+                .replace("%description%", "Create a spell"));
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic create wand <spellName> <level> <power> <shape> <distance>")
+                .replace("%description%", "Create a wand with the given values"));
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic reload")
+                .replace("%description%", "Reload the plugin"));
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic chest")
+                .replace("%description%", "Open the wizards chest"));
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic menu")
+                .replace("%description%", "Open the main menu"));
+        sender.sendMessage(Messages.HELP_LINE.get()
+                .replace("%command%", "/magic adminmenu")
+                .replace("%description%", "Open the admin menu"));
     }
 
     public boolean shapeExists(String shape) {

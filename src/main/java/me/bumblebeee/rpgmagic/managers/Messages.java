@@ -32,6 +32,7 @@ public enum Messages {
     PASTED_SCHEMATIC("pastedSchematic"),
     NOT_HOLDING_WAND("notHoldingWand"),
     ENTER_A_PLAYER_NAME("enterPlayerName"),
+    HELP_LINE("helpCommand"),
     RELOAD_SUCCESS("reloadSuccess");
 
     String key;
@@ -80,6 +81,8 @@ public enum Messages {
             c.set("pastedSchematic", "&aSuccessfully pasted schematic!");
             c.set("notHoldingWand", "&aYou must be holding a wand!");
             c.set("enterPlayerName", "&aEnter a player name to search:");
+            c.set("helpCommand", "&6%command%&f: %description%");
+
 
             try {
                 c.save(f);

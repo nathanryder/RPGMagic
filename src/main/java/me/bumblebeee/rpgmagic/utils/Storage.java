@@ -222,6 +222,7 @@ public class Storage {
     }
 
     public YamlConfiguration getStorage() {
+        createDataFolder();
         File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "data" + File.separator +"storage.yml");
         if (!f.exists()) {
             try {
@@ -234,12 +235,19 @@ public class Storage {
     }
 
     public void saveStorage(YamlConfiguration c) {
+        createDataFolder();
         File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "data" + File.separator + "storage.yml");
         try {
             c.save(f);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void createDataFolder() {
+        File f = new File(RPGMagic.getInstance().getDataFolder() + File.separator + "data");
+        if (!f.exists())
+            f.mkdir();
     }
 
     public void saveStorageChest() {

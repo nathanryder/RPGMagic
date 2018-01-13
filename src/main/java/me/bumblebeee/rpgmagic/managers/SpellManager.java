@@ -19,15 +19,6 @@ public class SpellManager {
 
     public void saveDefaultSpells() {
         saveDefaultSpell("speed.yml");
-        saveDefaultSpell("teleport.yml");
-        saveDefaultSpell("missile.yml");
-        saveDefaultSpell("blackhole.yml");
-        saveDefaultSpell("fling.yml");
-        saveDefaultSpell("shield.yml");
-        saveDefaultSpell("peek.yml");
-        saveDefaultSpell("zeus.yml");
-        saveDefaultSpell("freeze.yml");
-        saveDefaultSpell("wallhack.yml");
     }
 
     public void saveDefaultSpell(String spellFile) {

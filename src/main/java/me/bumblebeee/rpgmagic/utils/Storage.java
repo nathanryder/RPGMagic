@@ -27,13 +27,12 @@ public class Storage {
     private static @Getter Map<UUID, NPC> openNPCs = new HashMap<>();
     private static @Getter Map<UUID, String> typeHolder = new HashMap<>();
     private static @Getter Map<UUID, Double> priceHolder = new HashMap<>();
+    private static @Getter Map<UUID, Double> lvlPwrDistHolder = new HashMap<>();
+    private static @Getter Map<UUID, String> EAHolder = new HashMap<>();
     private static @Getter Map<UUID, ItemStack> itemHolder = new HashMap<>();
     private static @Getter Map<UUID, UUID> adminMenuHolder = new HashMap<>();
     private static @Getter List<UUID> inputingWandPrice = new ArrayList<>();
     private static @Getter List<UUID> inputingPrice = new ArrayList<>();
-    private static @Getter List<UUID> inputingPower = new ArrayList<>();
-    private static @Getter List<UUID> inputingLevel = new ArrayList<>();
-    private static @Getter List<UUID> inputingEA = new ArrayList<>();
     private static @Getter List<UUID> inputingSearch = new ArrayList<>();
     private static @Getter Map<UUID, Integer> pages = new HashMap<>();
     private static @Getter Map<UUID, String> openPaperType = new HashMap<>();

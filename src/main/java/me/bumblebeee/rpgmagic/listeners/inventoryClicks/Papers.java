@@ -87,7 +87,6 @@ public class Papers implements Listener {
             String type = inv.getMessage("inventory.addPaper.itemNames.type", false);
 
             if (clicked.equalsIgnoreCase(save)) {
-
                 e.setCancelled(true);
 
                 ItemStack i = e.getInventory().getItem(11);
@@ -104,8 +103,19 @@ public class Papers implements Listener {
                 if (clickedItem.equalsIgnoreCase(" "))
                     return;
 
+                String[] data = HiddenStringUtils.extractHiddenString(i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1)).split(":");
+                double lvlPwrDist;
+                if (data[0].equalsIgnoreCase("shape")) {
+                    lvlPwrDist = Double.valueOf(data[2]);
+                    String shape = data[1].split("\\|")[0];
+                    Storage.getEAHolder().put(p.getUniqueId(), shape);
+                } else {
+                    lvlPwrDist = Double.valueOf(data[1]);
+                }
+
                 //input price
                 Storage.getItemHolder().put(p.getUniqueId(), i);
+                Storage.getLvlPwrDistHolder().put(p.getUniqueId(), lvlPwrDist);
                 Storage.getInputingPrice().add(p.getUniqueId());
                 p.sendMessage(Messages.ENTER_A_NUMBER.get());
                 p.closeInventory();

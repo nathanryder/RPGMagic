@@ -4,6 +4,7 @@ import me.baks.rpl.Files;
 import me.baks.rpl.api.API;
 import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.events.AlterCraftEvent;
+import me.bumblebeee.rpgmagic.managers.SpellManager;
 import me.bumblebeee.rpgmagic.managers.StructureManager;
 import me.bumblebeee.rpgmagic.utils.HiddenStringUtils;
 import me.bumblebeee.rpgmagic.utils.Storage;
@@ -139,7 +140,7 @@ public class AlterCraft implements Listener {
 
         String display = RPGMagic.getInstance().getConfig().getString("wandItem.display").replace("%spell%", spellName);
         List<String> lore = new ArrayList<>();
-        String desc = RPGMagic.getInstance().getConfig().getString("spells." + spellName + ".description");
+        String desc = SpellManager.getSpell(spellName.toLowerCase()).getDescription();
         for (String li : RPGMagic.getInstance().getConfig().getStringList("wandItem.lore")) {
             li = ChatColor.translateAlternateColorCodes('&', li);
             li = li.replace("%totalpower%", String.valueOf(itemPower));

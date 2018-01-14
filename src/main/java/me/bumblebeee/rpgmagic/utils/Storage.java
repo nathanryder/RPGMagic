@@ -165,7 +165,7 @@ public class Storage {
         return cs;
     }
 
-    public void addPaperPlayer(UUID uuid, String paperType, int lvlPwrDist, String shape) {
+    public void addPaperPlayer(UUID uuid, String paperType, double lvlPwrDist, String shape) {
         YamlConfiguration c = getPlayerFile(uuid);
         paperType = paperType.toLowerCase();
 

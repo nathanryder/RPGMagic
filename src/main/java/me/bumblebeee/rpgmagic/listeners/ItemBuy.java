@@ -22,7 +22,7 @@ public class ItemBuy implements Listener {
             String[] data = e.getArgs().split(":");
             UUID uuid = p.getUniqueId();
             String type = data[1];
-            int lvlPwrDist = Integer.parseInt(data[2]);
+            double lvlPwrDist = Double.parseDouble(data[2]);
 
             if (type.equalsIgnoreCase("level") || type.equalsIgnoreCase("power"))
                 storage.addPaperPlayer(uuid, type, lvlPwrDist, null);

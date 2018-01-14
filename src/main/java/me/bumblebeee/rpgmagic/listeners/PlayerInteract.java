@@ -3,6 +3,7 @@ package me.bumblebeee.rpgmagic.listeners;
 import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.Wand;
 import me.bumblebeee.rpgmagic.events.SpellCastEvent;
+import me.bumblebeee.rpgmagic.managers.Messages;
 import me.bumblebeee.rpgmagic.utils.Storage;
 import me.bumblebeee.rpgmagic.utils.TableUtils;
 import org.bukkit.Bukkit;
@@ -28,6 +29,7 @@ public class PlayerInteract implements Listener {
 
     @EventHandler (priority = EventPriority.HIGHEST)
     public void onPlayerInteract(PlayerInteractEvent e) {
+        Player p = e.getPlayer();
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if (e.getClickedBlock() != null) {
                 if (e.getClickedBlock().getType() == Material.ENCHANTMENT_TABLE) {
@@ -37,13 +39,18 @@ public class PlayerInteract implements Listener {
 
                     e.setCancelled(true);
                     Location l = e.getClickedBlock().getLocation();
-                    String name = RPGMagic.getInstance().getConfig().getString("alterName");
+                    if (Storage.getOpenInventories().containsValue(l)) {
+                        p.sendMessage(Messages.ALTAR_IN_USE.get());
+                        return;
+                    }
+
+                        String name = RPGMagic.getInstance().getConfig().getString("alterName");
                     Inventory inv = Bukkit.getServer().createInventory(null, InventoryType.DISPENSER, name);
 
                     if (Storage.getCrafts().get(l) != null)
                         inv.setContents(Storage.getCrafts().get(l));
 
-                    e.getPlayer().openInventory(inv);
+                    p.openInventory(inv);
                     Storage.getOpenInventories().put(e.getPlayer().getUniqueId(), l);
                 }
             }
@@ -69,7 +76,6 @@ public class PlayerInteract implements Listener {
             if (i.getItemMeta().getDisplayName().equals(name)) {
                 e.setCancelled(true);
 
-                Player p = e.getPlayer();
                 Wand wand = new Wand(i);
                 SpellCastEvent event = new SpellCastEvent(p, wand);
                 Bukkit.getServer().getPluginManager().callEvent(event);

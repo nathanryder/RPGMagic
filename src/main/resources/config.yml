@@ -5,7 +5,7 @@ alterName: "Altare Magico"
 bazarSchematic: "test"
 
 #Change the text of distance 1 papers to:
-personalPaperText: "Personale"
+personalPaperText: "Personale" #TODO
 
 wandItem:
   display: "&6Catalizzatore"

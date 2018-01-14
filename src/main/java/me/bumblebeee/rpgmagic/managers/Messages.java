@@ -20,11 +20,6 @@ public enum Messages {
     SHAPE_DOES_NOT_EXIST("shapeNotFound"),
     ITEM_GIVEN("itemGiven"),
     SPELL_NOT_FOUND("spellNotFound"),
-    PLAYER_NOT_FOUND("playerNotFound"),
-    INPUT_LEVEL("inputLevel"),
-    INPUT_POWER("inputPower"),
-    INPUT_AREA_INFO("inputAreaInfo"),
-    INVALID_FORMATTING("invalidFormatting"),
     ENTER_A_NUMBER("enterANumber"),
     SPELL_ON_COOLDOWN("spellOnCooldown"),
     NOT_ENOUGH_MANA("notEnoughMana"),
@@ -33,6 +28,7 @@ public enum Messages {
     NOT_HOLDING_WAND("notHoldingWand"),
     ENTER_A_PLAYER_NAME("enterPlayerName"),
     HELP_LINE("helpCommand"),
+    ALTAR_IN_USE("altarInUse"),
     RELOAD_SUCCESS("reloadSuccess");
 
     String key;
@@ -82,7 +78,7 @@ public enum Messages {
             c.set("notHoldingWand", "&aYou must be holding a wand!");
             c.set("enterPlayerName", "&aEnter a player name to search:");
             c.set("helpCommand", "&6%command%&f: %description%");
-
+            c.set("altarInUse", "&cOnly one person can use the magic altar at a time!");
 
             try {
                 c.save(f);

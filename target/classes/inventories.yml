@@ -13,10 +13,9 @@ inventory:
       removePaper: "&cDelete paper"
       deleteNPC: "&cDelete NPC"
   addPaper:
-    title: "Insert papers to add"
+    title: "Insert a paper to add"
     itemNames:
       save: "&aSave changes"
-      type: "&5%type%"
       price: "&6Click to change price: %price%"
   removePaper:
     title: "Click to remove a paper"

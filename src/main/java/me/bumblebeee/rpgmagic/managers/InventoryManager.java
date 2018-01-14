@@ -487,7 +487,6 @@ public class InventoryManager {
                 if (counter > 26)
                     break;
 
-                System.out.println("Cat: " + category);
                 //type level area distance power
                 if (category.equalsIgnoreCase("level"))
                     inv.setItem(counter, papers.getPaperItem(category, Integer.parseInt(spells.get(i)), null, 0, 0));
@@ -770,24 +769,14 @@ public class InventoryManager {
     public void addPaperGUI(Player p) {
         String title = getMessage("inventory.addPaper.title", false);
         String save = getMessage("inventory.addPaper.itemNames.save", true);
-        String type = getMessage("inventory.addPaper.itemNames.type", true);
         Inventory inv = Bukkit.getServer().createInventory(null, 27, title);
-
-        if (Storage.getTypeHolder().containsKey(p.getUniqueId()))
-            type = type.replace("%type%", Storage.getTypeHolder().get(p.getUniqueId()));
-        else
-            type = type.replace("%type%", "Level");
-        //Level
-        //EffectArea
-        //Power
 
         ItemStack breaker = createItem(Material.STAINED_GLASS_PANE, 1, (short) 14, " ", null);
         for (int i = 0; i < 27; i++)
             inv.setItem(i, breaker);
 
         inv.setItem(26, createItem(Material.STAINED_GLASS_PANE, 1, (short) 5, save, null));
-        inv.setItem(11, new ItemStack(Material.AIR));
-        inv.setItem(15, createItem(Material.STAINED_GLASS_PANE, 1, (short) 4, type, null));
+        inv.setItem(13, new ItemStack(Material.AIR));
 
         p.openInventory(inv);
     }

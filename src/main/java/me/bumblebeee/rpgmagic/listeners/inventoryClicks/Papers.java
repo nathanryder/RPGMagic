@@ -84,12 +84,11 @@ public class Papers implements Listener {
 
             String clicked = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
             String save = inv.getMessage("inventory.addPaper.itemNames.save", false);
-            String type = inv.getMessage("inventory.addPaper.itemNames.type", false);
 
             if (clicked.equalsIgnoreCase(save)) {
                 e.setCancelled(true);
 
-                ItemStack i = e.getInventory().getItem(11);
+                ItemStack i = e.getInventory().getItem(13);
                 if (i == null)
                     return;
                 if (i.getType() != Material.PAPER)
@@ -104,47 +103,26 @@ public class Papers implements Listener {
                     return;
 
                 String[] data = HiddenStringUtils.extractHiddenString(i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1)).split(":");
+
+                String type = data[0];
                 double lvlPwrDist;
                 if (data[0].equalsIgnoreCase("shape")) {
                     lvlPwrDist = Double.valueOf(data[2]);
                     String shape = data[1].split("\\|")[0];
                     Storage.getEAHolder().put(p.getUniqueId(), shape);
+                    type = "effect area";
                 } else {
                     lvlPwrDist = Double.valueOf(data[1]);
                 }
 
                 //input price
+                Storage.getTypeHolder().put(p.getUniqueId(), type);
                 Storage.getItemHolder().put(p.getUniqueId(), i);
                 Storage.getLvlPwrDistHolder().put(p.getUniqueId(), lvlPwrDist);
                 Storage.getInputingPrice().add(p.getUniqueId());
                 p.sendMessage(Messages.ENTER_A_NUMBER.get());
                 p.closeInventory();
-            } else if (clicked.equalsIgnoreCase(type) || clicked.equalsIgnoreCase("level") ||
-                    clicked.equalsIgnoreCase("power") || clicked.equalsIgnoreCase("effect area")) {
-                e.setCancelled(true);
-
-                String coloredType = inv.getMessage("inventory.addPaper.itemNames.type", true);
-                int slot = e.getRawSlot();
-                ItemStack i = inv.createItem(Material.STAINED_GLASS_PANE, 1, (short) 4, type, null);
-
-                if (Storage.getTypeHolder().containsKey(p.getUniqueId())) {
-                    if (Storage.getTypeHolder().get(p.getUniqueId()).equalsIgnoreCase("level"))
-                        Storage.getTypeHolder().put(p.getUniqueId(), "Effect Area");
-                    else if (Storage.getTypeHolder().get(p.getUniqueId()).equalsIgnoreCase("effect area"))
-                        Storage.getTypeHolder().put(p.getUniqueId(), "Power");
-                    else if (Storage.getTypeHolder().get(p.getUniqueId()).equalsIgnoreCase("power"))
-                        Storage.getTypeHolder().put(p.getUniqueId(), "Level");
-                } else {
-                    Storage.getTypeHolder().put(p.getUniqueId(), "Level");
-                }
-
-                coloredType = coloredType.replace("%type%", Storage.getTypeHolder().get(p.getUniqueId()));
-                ItemMeta im = i.getItemMeta();
-                im.setDisplayName(coloredType);
-                i.setItemMeta(im);
-                e.getInventory().setItem(slot, i);
-            }
-            else if (clicked.equalsIgnoreCase("") || clicked.equalsIgnoreCase(" ")) {
+            } else if (clicked.equalsIgnoreCase("") || clicked.equalsIgnoreCase(" ")) {
                 e.setCancelled(true);
             }
             return;

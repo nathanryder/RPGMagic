@@ -1,6 +1,7 @@
 package me.bumblebeee.rpgmagic.listeners;
 
 import me.baks.rpl.Files;
+import me.baks.rpl.PlayerList;
 import me.baks.rpl.api.API;
 import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.events.AlterCraftEvent;
@@ -125,7 +126,13 @@ public class AlterCraft implements Listener {
         int rplDistance = c.getInt("MagicWands." + matrix[1].getType().name() + ".Distance");
         distance += rplDistance;
 
-        int itemPower = power + rplPower + API.getPlayerLevel(p);
+        /*
+            This gets the player level - reason this is here is because of an error when accessing RPL API
+        */
+        PlayerList t = PlayerList.getByName(p.getName());
+        int plevel = t != null ? t.getPlayerLevel():-1;
+
+        int itemPower = power + rplPower + plevel;
         if (itemPower >= 5000)
             itemPower = 4999;
 

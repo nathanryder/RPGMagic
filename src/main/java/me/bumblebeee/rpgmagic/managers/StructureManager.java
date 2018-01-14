@@ -1,6 +1,7 @@
 package me.bumblebeee.rpgmagic.managers;
 
 import me.bumblebeee.rpgmagic.RPGMagic;
+import me.bumblebeee.rpgmagic.Spell;
 import me.bumblebeee.rpgmagic.utils.HiddenStringUtils;
 import me.bumblebeee.rpgmagic.utils.Storage;
 import org.bukkit.ChatColor;
@@ -28,28 +29,31 @@ public class StructureManager {
         return price;
     }
 
-    public ItemStack getItemById(String id, boolean addLore) {
-        FileConfiguration c = RPGMagic.getInstance().getConfig();
+    public ItemStack getItemByName(String id, boolean addLore) {
         id = id.toLowerCase();
-        if (c.getConfigurationSection("spells." + id) == null)
+        if (!SpellManager.getSpells().containsKey(id))
             return null;
 
-        String displayName = ChatColor.translateAlternateColorCodes('&', c.getString("spells." + id + ".name"));
-        String type = ChatColor.translateAlternateColorCodes('&', c.getString("spells." + id + ".type"));
-        String desc = ChatColor.translateAlternateColorCodes('&', c.getString("spells." + id + ".description"));
-        String price = ChatColor.translateAlternateColorCodes('&', c.getString("spells." + id + ".price"));
+        Spell spell = SpellManager.getSpell(id);
+        YamlConfiguration c = YamlConfiguration.loadConfiguration(spell.getFile());
 
+        String displayName = ChatColor.translateAlternateColorCodes('&', c.getString("name"));
+        String type = ChatColor.translateAlternateColorCodes('&', spell.getType());
+        String desc = ChatColor.translateAlternateColorCodes('&', spell.getDescription());
+        String price = String.valueOf(c.getInt("price"));
+
+        FileConfiguration fc = RPGMagic.getInstance().getConfig();
         Material m;
         try {
-            m = Material.matchMaterial(c.getString("spellItem.item"));
+            m = Material.matchMaterial(fc.getString("spellItem.item"));
         } catch (Exception e) {
             return null;
         }
-        short data = (short) c.getInt("spellItem.data");
-        String display = c.getString("spellItem.name");
+        short data = (short) fc.getInt("spellItem.data");
+        String display = fc.getString("spellItem.name");
         List<String> lore = new ArrayList<>();
 
-        for (String loreItem : c.getStringList("spellItem.lore")) {
+        for (String loreItem : fc.getStringList("spellItem.lore")) {
             loreItem = ChatColor.translateAlternateColorCodes('&', loreItem);
             loreItem = loreItem.replace("%name%", displayName);
             loreItem = loreItem.replace("%type%", type);
@@ -57,7 +61,7 @@ public class StructureManager {
             lore.add(loreItem);
         }
         if (addLore) {
-            for (String loreItem : c.getStringList("spellItem.addLore"))
+            for (String loreItem : fc.getStringList("spellItem.addLore"))
                 lore.add(ChatColor.translateAlternateColorCodes('&', loreItem.replace("%price%", price)));
         }
         lore.add(HiddenStringUtils.encodeString("ID:" + id));

@@ -186,7 +186,7 @@ public class MagicCommand implements CommandExecutor {
                         return false;
                     }
                 } else if (cat.equalsIgnoreCase("spell")) {
-                    ItemStack i = spells.getItemById(args[2], false);
+                    ItemStack i = spells.getItemByName(args[2], false);
                     if (i == null) {
                         p.sendMessage(Messages.SPELL_NOT_FOUND.get().replace("%spell%", args[2]));
                         return false;

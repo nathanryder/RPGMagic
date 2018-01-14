@@ -227,7 +227,7 @@ public class InventoryManager {
             if (counter > 26)
                 break;
 
-            inv.setItem(counter, structures.getItemById(spells.get(i), false));
+            inv.setItem(counter, structures.getItemByName(spells.get(i), false));
             counter++;
         }
 
@@ -268,7 +268,7 @@ public class InventoryManager {
             if (counter > 26)
                 break;
 
-            inv.setItem(counter, structures.getItemById(spells.get(i), false));
+            inv.setItem(counter, structures.getItemByName(spells.get(i), false));
             counter++;
         }
 
@@ -566,7 +566,7 @@ public class InventoryManager {
             if (id >= ids.size())
                 break;
 
-            ItemStack i = structures.getItemById(ids.get(id), true);
+            ItemStack i = structures.getItemByName(ids.get(id), true);
             inv.setItem(counter, i);
             counter++;
         }

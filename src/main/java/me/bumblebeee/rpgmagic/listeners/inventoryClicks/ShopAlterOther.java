@@ -209,7 +209,7 @@ public class ShopAlterOther implements Listener {
                         return;
                     }
 
-                    ItemStack i = structureManager.getItemById(itemId, false);
+                    ItemStack i = structureManager.getItemByName(itemId, false);
                     if (i == null) {
                         p.sendMessage(ChatColor.RED + "Failed to get item!");
                         return;

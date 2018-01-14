@@ -162,7 +162,7 @@ public class MagicCommand implements CommandExecutor {
                             return false;
                         }
 
-                        String shape = args[3];
+                        String shape = args[4];
                         if (!shapeExists(shape)) {
                             p.sendMessage(Messages.SHAPE_DOES_NOT_EXIST.get().replace("%shape%", shape));
                             return false;
@@ -170,9 +170,9 @@ public class MagicCommand implements CommandExecutor {
 
                         int distance;
                         try {
-                            distance = Integer.parseInt(args[4]);
+                            distance = Integer.parseInt(args[3]);
                         } catch (NumberFormatException e) {
-                            p.sendMessage(Messages.NOT_A_NUMBER.get().replace("%number%", args[4]));
+                            p.sendMessage(Messages.NOT_A_NUMBER.get().replace("%number%", args[3]));
                             return false;
                         }
 

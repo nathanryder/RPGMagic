@@ -420,11 +420,11 @@ public class MagicCommand implements CommandExecutor {
     }
 
     public boolean shapeExists(String shape) {
-        if (shape.equalsIgnoreCase("coni"))
+        if (shape.equalsIgnoreCase("cono"))
             return true;
         else if (shape.equalsIgnoreCase("raggio"))
             return true;
-        else if (shape.equalsIgnoreCase("linee"))
+        else if (shape.equalsIgnoreCase("linea"))
             return true;
         else
             return false;

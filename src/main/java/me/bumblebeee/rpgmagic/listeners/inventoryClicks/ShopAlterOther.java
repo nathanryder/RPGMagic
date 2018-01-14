@@ -146,7 +146,7 @@ public class ShopAlterOther implements Listener {
                         return;
                     }
 
-                    int lvlPwrDist = paperManager.getPwrLvlDist(npc.getId(), itemId, "papers");
+                    double lvlPwrDist = paperManager.getPwrLvlDist(npc.getId(), itemId, "papers");
                     String shape = paperManager.getShape(npc.getId(), itemId, "papers");
                     String type = paperManager.getPaperType(npc.getId(), itemId, "papers");
 

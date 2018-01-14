@@ -121,7 +121,7 @@ public class PaperManager {
     }
 
 
-    public int getPwrLvlDist(int npcId, int itemId, String type) {
+    public double getPwrLvlDist(int npcId, int itemId, String type) {
         YamlConfiguration c = npcs.getFile();
         if (c.getConfigurationSection("npcs." + npcId + "." + type + "." + itemId) == null)
             return 0;
@@ -132,11 +132,11 @@ public class PaperManager {
         String distance = c.getString("npcs." + npcId + "." + type + "." + itemId + ".distance");
 
         if (level != null)
-            return Integer.parseInt(level);
+            return Double.parseDouble(level);
         else if (power != null)
-            return Integer.parseInt(power);
+            return Double.parseDouble(power);
         else if (distance != null)
-            return Integer.parseInt(distance);
+            return Double.parseDouble(distance);
 
         return 0;
     }

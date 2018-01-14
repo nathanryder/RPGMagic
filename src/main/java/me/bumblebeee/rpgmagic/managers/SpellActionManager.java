@@ -74,7 +74,7 @@ public class SpellActionManager {
 
                 for (Location l : locations)
                     applyPotion(l, wand.getDistance(), args);
-            } else if (shape.equalsIgnoreCase("linee")) {
+            } else if (shape.equalsIgnoreCase("linea")) {
                 boolean onGround = false;
                 if (wand.getSpell().getName().equalsIgnoreCase("speed"))
                     onGround = true;
@@ -83,7 +83,7 @@ public class SpellActionManager {
 
                 for (Location l : locations)
                     applyPotion(l, wand.getDistance(), args);
-            } else if (shape.equalsIgnoreCase("coni")) {
+            } else if (shape.equalsIgnoreCase("cono")) {
                 List<Location> locations = shapeManager.getCone(p.getLocation(), wand.getDistance());
 
                 for (Location l : locations)

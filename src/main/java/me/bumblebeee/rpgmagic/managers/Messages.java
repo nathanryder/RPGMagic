@@ -72,7 +72,7 @@ public enum Messages {
             c.set("playerNotFound", "&cFailed to find a a player named %name%");
             c.set("inputLevel", "&aEnter the level");
             c.set("inputPower", "&aEnter the power");
-            c.set("inputAreaInfo", "&aEnter the shape and area (e.g coni 4)");
+            c.set("inputAreaInfo", "&aEnter the shape and area (e.g cono 4)");
             c.set("invalidFormatting", "&cInvalid formatting!");
             c.set("enterANumber", "&aEnter a number:");
             c.set("spellOnCooldown", "&cYou must wait &e%time% &cmore seconds!");

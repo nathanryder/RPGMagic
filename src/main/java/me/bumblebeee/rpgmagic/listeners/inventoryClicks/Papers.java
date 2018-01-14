@@ -20,7 +20,6 @@ public class Papers implements Listener {
 
     InventoryManager inv = new InventoryManager();
     PaperManager paperManager = new PaperManager();
-    WandManager wandManager = new WandManager();
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
@@ -44,7 +43,6 @@ public class Papers implements Listener {
         }
 
         if (title.equalsIgnoreCase(paperOptions)) {
-
             e.setCancelled(true);
             if (e.getCurrentItem() == null)
                 return;

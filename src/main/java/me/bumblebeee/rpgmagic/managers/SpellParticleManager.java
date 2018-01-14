@@ -61,7 +61,7 @@ public class SpellParticleManager {
                     }
                     particle.display(0, 0, 0, 0, 0, l.add(0,0.1,0), (double) 50);
                 }
-            } else if (shape.equalsIgnoreCase("linee")) {
+            } else if (shape.equalsIgnoreCase("linea")) {
                 boolean onGround = false;
                 if (wand.getSpell().getName().equalsIgnoreCase("speed"))
                     onGround = true;
@@ -76,7 +76,7 @@ public class SpellParticleManager {
                     }
                     particle.display(0, 0, 0, 0, 0, l.add(0,0.1,0), (double) 50);
                 }
-            } else if (shape.equalsIgnoreCase("coni")) {
+            } else if (shape.equalsIgnoreCase("cono")) {
                 List<Location> locations = shapeManager.getConeBorder(p.getLocation(), wand.getDistance());
                 for (Location l : locations) {
                     ParticleEffect particle = ParticleEffect.valueOf(args[0]);

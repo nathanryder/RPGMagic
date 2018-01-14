@@ -4,6 +4,9 @@ alterName: "Altare Magico"
 #/magic bazar schematic to paste
 bazarSchematic: "test"
 
+#Change the text of distance 1 papers to:
+personalPaperText: "Personale"
+
 wandItem:
   display: "&6Catalizzatore"
   lore:

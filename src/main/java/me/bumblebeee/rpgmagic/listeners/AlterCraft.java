@@ -78,9 +78,9 @@ public class AlterCraft implements Listener {
             return;
         }
 
-        double level = -1;
-        double power = -1;
-        double distance = -1;
+        int level = -1;
+        int power = -1;
+        int distance = -1;
         String shape = "null";
 
         for (int i = 3; i < 6; i++) {
@@ -98,13 +98,13 @@ public class AlterCraft implements Listener {
 
             if (type.equalsIgnoreCase("level")) {
                 try {
-                    level = Double.parseDouble(data[1]);
+                    level = Integer.parseInt(data[1]);
                 } catch (Exception e1) {
                     p.sendMessage(ChatColor.RED + "Failed to get level. Continuing anyway..");
                 }
             } else if (type.equalsIgnoreCase("power")) {
                 try {
-                    power = Double.parseDouble(data[1]);
+                    power = Integer.parseInt(data[1]);
                 } catch (Exception e1) {
                     p.sendMessage(ChatColor.RED + "Failed to get power. Continuing anyway..");
                 }
@@ -112,7 +112,7 @@ public class AlterCraft implements Listener {
                 String main = data[1].split("\\|")[0];
                 shape = main.substring(0,1).toUpperCase() + main.substring(1);
                 try {
-                    distance = Double.parseDouble(data[2]);
+                    distance = Integer.parseInt(data[2]);
                 } catch (Exception e1) {
                     p.sendMessage(ChatColor.RED + "Failed to get distance. Continuing anyway..");
                 }
@@ -133,7 +133,7 @@ public class AlterCraft implements Listener {
         PlayerList t = PlayerList.getByName(p.getName());
         int plevel = t != null ? t.getPlayerLevel():-1;
 
-        double itemPower = power + rplPower + plevel;
+        int itemPower = power + rplPower + plevel;
         if (itemPower >= 5000)
             itemPower = 4999;
 

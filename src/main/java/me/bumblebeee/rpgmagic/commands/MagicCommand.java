@@ -250,8 +250,13 @@ public class MagicCommand implements CommandExecutor {
                         li = ChatColor.translateAlternateColorCodes('&', li);
                         li = li.replace("%totalpower%", String.valueOf(power));
                         li = li.replace("%lvl%", String.valueOf(level));
-                        li = li.replace("%area%", shape).replace("%distance%", String.valueOf(distance));
                         li = li.replace("%description%", actualSpell.getDescription()).replace("%spell%", spell);
+
+                        if (distance <= 1) {
+                            li = li.replace("%area%", shape).replace("%distance%", RPGMagic.getInstance().getConfig().getString("personalPaperText"));
+                        } else {
+                            li = li.replace("%area%", shape).replace("%distance%", String.valueOf(distance));
+                        }
                         lore.add(li);
                     }
                     String data = power + ":" + level + ":" + shape + ":" + distance + ":" + spell + ":" + i.getType() + ":" + actualSpell.getDescription();

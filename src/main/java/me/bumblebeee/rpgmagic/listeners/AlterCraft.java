@@ -153,8 +153,13 @@ public class AlterCraft implements Listener {
             li = ChatColor.translateAlternateColorCodes('&', li);
             li = li.replace("%totalpower%", String.valueOf(itemPower));
             li = li.replace("%lvl%", String.valueOf(level));
-            li = li.replace("%area%", shape).replace("%distance%", String.valueOf(distance));
             li = li.replace("%description%", desc).replace("%spell%", spellName);
+
+            if (distance <= 1) {
+                li = li.replace("%area%", shape).replace("%distance%", RPGMagic.getInstance().getConfig().getString("personalPaperText"));
+            } else {
+                li = li.replace("%area%", shape).replace("%distance%", String.valueOf(distance));
+            }
             lore.add(li);
         }
         String data = itemPower + ":" + level + ":" + shape + ":" + distance + ":" + spellName + ":" + matrix[1].getType() + ":" + desc;

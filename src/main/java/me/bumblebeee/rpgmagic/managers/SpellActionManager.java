@@ -73,7 +73,7 @@ public class SpellActionManager {
                 List<Location> locations = shapeManager.getCircle(p.getLocation(), wand.getDistance());
 
                 for (Location l : locations)
-                    applyPotion(l, wand.getDistance(), args);
+                    applyPotion(p, l, wand.getDistance(), args);
             } else if (shape.equalsIgnoreCase("linea")) {
                 boolean onGround = false;
                 if (wand.getSpell().getName().equalsIgnoreCase("speed"))
@@ -82,12 +82,12 @@ public class SpellActionManager {
                 List<Location> locations = shapeManager.getLine(p.getLocation(), wand.getDistance(), onGround);
 
                 for (Location l : locations)
-                    applyPotion(l, wand.getDistance(), args);
+                    applyPotion(p, l, wand.getDistance(), args);
             } else if (shape.equalsIgnoreCase("cono")) {
                 List<Location> locations = shapeManager.getCone(p.getLocation(), wand.getDistance());
 
                 for (Location l : locations)
-                    applyPotion(l, wand.getDistance(), args);
+                    applyPotion(p, l, wand.getDistance(), args);
             }
 
             removeRunning(uuid);
@@ -111,7 +111,7 @@ public class SpellActionManager {
         return new Location(w, x, y, z);
     }
 
-    public void applyPotion(Location loc, int radius, String[] args) {
+    public void applyPotion(Player p, Location loc, int radius, String[] args) {
         Bukkit.getScheduler().runTaskLater(RPGMagic.getInstance(), new Runnable() {
             @Override
             public void run() {
@@ -125,9 +125,13 @@ public class SpellActionManager {
                 }
 
                 PotionEffect potion = new PotionEffect(effect, duration, boost, false);
-                for (Entity e : loc.getWorld().getNearbyEntities(loc, radius, radius, radius)) {
-                    if (e instanceof LivingEntity)
-                        ((LivingEntity) e).addPotionEffect(potion);
+                if (radius <= 1) {
+                    p.addPotionEffect(potion);
+                } else {
+                    for (Entity e : loc.getWorld().getNearbyEntities(loc, radius, radius, radius)) {
+                        if (e instanceof LivingEntity)
+                            ((LivingEntity) e).addPotionEffect(potion);
+                    }
                 }
             }
         }, 1);

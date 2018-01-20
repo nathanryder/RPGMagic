@@ -39,12 +39,8 @@ public class PlayerInteract implements Listener {
 
                     e.setCancelled(true);
                     Location l = e.getClickedBlock().getLocation();
-                    if (Storage.getOpenInventories().containsValue(l)) {
-                        p.sendMessage(Messages.ALTAR_IN_USE.get());
-                        return;
-                    }
 
-                        String name = RPGMagic.getInstance().getConfig().getString("alterName");
+                    String name = RPGMagic.getInstance().getConfig().getString("alterName");
                     Inventory inv = Bukkit.getServer().createInventory(null, InventoryType.DISPENSER, name);
 
                     if (Storage.getCrafts().get(l) != null)

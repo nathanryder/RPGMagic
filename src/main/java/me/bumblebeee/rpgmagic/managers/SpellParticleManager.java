@@ -50,43 +50,48 @@ public class SpellParticleManager {
             }.runTaskTimer(RPGMagic.getInstance(), 0, time);
         } else if (function.equalsIgnoreCase("outlineArea")) {
             String shape = wand.getShape();
+            List<Location> locations;
             if (shape.equalsIgnoreCase("raggio")) {
-                List<Location> locations = shapeManager.getCircleBorder(p.getLocation(), wand.getDistance(), 30);
-
-                for (Location l : locations) {
-                    ParticleEffect particle = ParticleEffect.valueOf(args[0]);
-                    if (particle == null) {
-                        RPGMagic.getInstance().getLogger().severe("FAILED TO FIND PARTICLE NAMED " + args[0]);
-                        continue;
-                    }
-                    particle.display(0, 0, 0, 0, 0, l.add(0,0.1,0), (double) 50);
-                }
+                locations = shapeManager.getCircleBorder(p.getLocation(), wand.getDistance(), 30);
             } else if (shape.equalsIgnoreCase("linea")) {
                 boolean onGround = false;
                 if (wand.getSpell().getName().equalsIgnoreCase("speed"))
                     onGround = true;
 
-                List<Location> locations = shapeManager.getLine(p.getLocation(), wand.getDistance(), onGround);
-
-                for (Location l : locations) {
-                    ParticleEffect particle = ParticleEffect.valueOf(args[0]);
-                    if (particle == null) {
-                        RPGMagic.getInstance().getLogger().severe("FAILED TO FIND PARTICLE NAMED " + args[0]);
-                        continue;
-                    }
-                    particle.display(0, 0, 0, 0, 0, l.add(0,0.1,0), (double) 50);
-                }
-            } else if (shape.equalsIgnoreCase("cono")) {
-                List<Location> locations = shapeManager.getConeBorder(p.getLocation(), wand.getDistance());
-                for (Location l : locations) {
-                    ParticleEffect particle = ParticleEffect.valueOf(args[0]);
-                    if (particle == null) {
-                        RPGMagic.getInstance().getLogger().severe("FAILED TO FIND PARTICLE NAMED " + args[0]);
-                        continue;
-                    }
-                    particle.display(0, 0, 0, 0, 0, l.add(0,0.1,0), (double) 50);
-                }
+                locations = shapeManager.getLine(p.getLocation(), wand.getDistance(), onGround);
+            } else {
+                locations = shapeManager.getConeBorder(p.getLocation(), wand.getDistance());
             }
+
+            for (Location l : locations) {
+                ParticleEffect particle = ParticleEffect.valueOf(args[0]);
+                particle.display(0, 0, 0, 0, 0, l.add(0, 0.1, 0), (double) 50);
+            }
+        } else if (function.equalsIgnoreCase("helix")) {
+            int duration = Integer.parseInt(args[1]);
+            int radius = Integer.parseInt(args[2]);
+            de.slikey.effectlib.util.ParticleEffect particle = de.slikey.effectlib.util.ParticleEffect.fromName(args[3]);
+            int strands = Integer.parseInt(args[4]);
+            int curve = Integer.parseInt(args[5]);
+            int period = Integer.parseInt(args[6]);
+
+            EffectManager em = new EffectManager(RPGMagic.getInstance());
+
+            HelixEffect helix = new HelixEffect(em);
+            helix.duration = duration;
+            helix.radius = radius;
+            helix.particle = particle;
+            helix.strands = strands;
+            helix.curve = curve;
+            helix.period = period;
+
+            if (args[0].equalsIgnoreCase("target"))
+                helix.setLocation(targetLoc);
+            else
+                helix.setLocation(p.getLocation());
+
+            helix.start();
+
         }
     }
 }

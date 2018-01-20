@@ -101,6 +101,16 @@ public class SpellActionManager {
                 Storage.getWallWalk().add(p);
             else if (args[0].equalsIgnoreCase("disable"))
                 Storage.getWallWalk().remove(p);
+        } else if (function.equalsIgnoreCase("freezePlayer")) {
+            SpellCastController.getFrozen().add(p.getUniqueId());
+        } else if (function.equalsIgnoreCase("unfreezePlayer")) {
+            SpellCastController.getFrozen().remove(p.getUniqueId());
+        } else if (function.equalsIgnoreCase("teleportToStoredLocation")) {
+            Location l = SpellCastController.getStoredLocations().get(p.getUniqueId()).add(0,1,0);
+            if (l == null)
+                p.sendMessage(ChatColor.RED + "Failed to find stored location!");
+            else
+                p.teleport(l);
         }
     }
 

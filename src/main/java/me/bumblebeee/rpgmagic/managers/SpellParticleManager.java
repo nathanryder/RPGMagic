@@ -88,7 +88,7 @@ public class SpellParticleManager {
             if (args[0].equalsIgnoreCase("target"))
                 helix.setLocation(targetLoc);
             else
-                helix.setLocation(p.getLocation());
+                helix.setLocation(p.getLocation().subtract(0,0.8,0));
 
             helix.start();
 

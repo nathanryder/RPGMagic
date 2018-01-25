@@ -10,6 +10,7 @@ me/bumblebeee/rpgmagic/utils/Utils.class
 me/bumblebeee/rpgmagic/listeners/AlterCraft.class
 me/bumblebeee/rpgmagic/utils/ParticleEffect$ParticleColor.class
 me/bumblebeee/rpgmagic/utils/ParticleEffect$ParticleData.class
+me/bumblebeee/rpgmagic/listeners/SpellCast$2.class
 me/bumblebeee/rpgmagic/Spell.class
 me/bumblebeee/rpgmagic/utils/ParticleEffect$ParticlePacket$PacketInstantiationException.class
 me/bumblebeee/rpgmagic/utils/Utils$1.class
@@ -65,6 +66,7 @@ me/bumblebeee/rpgmagic/utils/ParticleEffect.class
 me/bumblebeee/rpgmagic/managers/WandManager.class
 me/bumblebeee/rpgmagic/utils/ReflectionUtils$DataType.class
 me/bumblebeee/rpgmagic/managers/SpellCastController.class
+me/bumblebeee/rpgmagic/listeners/SpellCast$3.class
 me/bumblebeee/rpgmagic/events/ItemBuyEvent.class
 me/bumblebeee/rpgmagic/utils/ParticleEffect$BlockData.class
 me/bumblebeee/rpgmagic/utils/Storage.class

@@ -111,6 +111,18 @@ public class SpellActionManager {
                 p.sendMessage(ChatColor.RED + "Failed to find stored location!");
             else
                 p.teleport(l);
+        } else if (function.equalsIgnoreCase("playSoundAtLocation")) {
+            String[] locData = args[0].replace("{", "").replace("}", "").split(",");
+            int volume = Integer.parseInt(args[2]);
+            Sound sound = Sound.valueOf(args[1]);
+            Location l = getLocationFromData(p.getWorld(), locData);
+
+            if (sound == null) {
+                    RPGMagic.getInstance().getLogger().severe("FAILED TO FIND SOUND NAMED " + args[1]);
+                return;
+            }
+
+            l.getWorld().playSound(l, sound, volume, 1);
         }
     }
 

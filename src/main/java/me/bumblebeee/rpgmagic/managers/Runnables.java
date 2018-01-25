@@ -31,11 +31,13 @@ public class Runnables {
                             || p.getLocation().add(0, -0.5, 0).getBlock().getType().equals(Material.WATER))
                             && p.isFlying()) {
                         p.setFlying(false);
+                        p.setAllowFlight(false);
                         return;
                     }
 
                     if (p.getLocation().add(0, -1, 0).getBlock().getType().equals(Material.STATIONARY_WATER)
                             || p.getLocation().add(0, -1, 0).getBlock().getType().equals(Material.WATER)) {
+                        p.setAllowFlight(true);
                         p.setFlying(true);
                     }
                 }

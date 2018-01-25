@@ -1,9 +1,12 @@
 package me.bumblebeee.rpgmagic.listeners;
 
+import de.slikey.effectlib.EffectManager;
+import de.slikey.effectlib.effect.AtomEffect;
 import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.Spell;
 import me.bumblebeee.rpgmagic.events.SpellCastEvent;
 import me.bumblebeee.rpgmagic.managers.*;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -37,31 +40,33 @@ public class SpellCast implements Listener {
 
         int castTime = 3;
         SpellCastController controller = new SpellCastController(p, e.getWand());
-//        controller.startCasting();
-//
-//        EffectManager em = new EffectManager(RPGMagic.getInstance());
-//
-//        AtomEffect effect = new AtomEffect(em);
-//        effect.setLocation(p.getLocation().add(0,2,0));
-//        effect.particleNucleus = de.slikey.effectlib.util.ParticleEffect.PORTAL;
-//        effect.particleOrbital = de.slikey.effectlib.util.ParticleEffect.REDSTONE;
-//        effect.duration = 2800;
-//        effect.start();
-//
-//        Bukkit.getScheduler().runTaskLater(RPGMagic.getInstance(), new Runnable() {
-//            @Override
-//            public void run() {
-//                SpellCastController.getCasting().remove(p.getUniqueId());
-//                p.setFlying(false);
-//            }
-//        }, 20*castTime);
-//
-//        Bukkit.getScheduler().runTaskLater(RPGMagic.getInstance(), new Runnable() {
-//            @Override
-//            public void run() {
+        p.setAllowFlight(true);
+        controller.startCasting();
+
+        EffectManager em = new EffectManager(RPGMagic.getInstance());
+
+        AtomEffect effect = new AtomEffect(em);
+        effect.setLocation(p.getLocation().add(0,2,0));
+        effect.particleNucleus = de.slikey.effectlib.util.ParticleEffect.PORTAL;
+        effect.particleOrbital = de.slikey.effectlib.util.ParticleEffect.REDSTONE;
+        effect.duration = 2800;
+        effect.start();
+
+        Bukkit.getScheduler().runTaskLater(RPGMagic.getInstance(), new Runnable() {
+            @Override
+            public void run() {
+                SpellCastController.getFrozen().remove(p.getUniqueId());
+                p.setFlying(false);
+                p.setAllowFlight(false);
+            }
+        }, 20*castTime);
+
+        Bukkit.getScheduler().runTaskLater(RPGMagic.getInstance(), new Runnable() {
+            @Override
+            public void run() {
                 controller.process();
-//            }
-//        }, (20*castTime)+7);
+            }
+        }, (20*castTime)+6);
 
         mana.takeMana(p, spell.getMana());
         cooldowns.giveCooldown(p.getUniqueId(), spell.getName());

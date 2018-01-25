@@ -5,23 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="164d161e-3d3c-444e-9526-961b562e02a2" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/spells/teleport.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/spells/zeus.yml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/commands/MagicCommand.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/commands/MagicCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/SpellCast.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/SpellCast.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Runnables.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Runnables.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellActionManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellActionManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellCastController.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellCastController.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellManager.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellParticleManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellParticleManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spells/zeus.yml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/target/RPGMagic-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/RPGMagic-1.0-SNAPSHOT.jar" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config.yml" afterPath="$PROJECT_DIR$/target/classes/config.yml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/commands/MagicCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/commands/MagicCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/AlterCraft.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/AlterCraft.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/PlayerInteract.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/PlayerInteract.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/Messages.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/Messages.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/SpellCast$1.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/SpellCast$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/SpellCast.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/listeners/SpellCast.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/Runnables$1.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/Runnables$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/Runnables.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/Runnables.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/SpellActionManager$2.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/SpellActionManager$2.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/SpellActionManager.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/SpellActionManager.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/SpellCastController$1.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/SpellCastController$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/SpellCastController.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/SpellCastController.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/SpellManager.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/SpellManager.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/SpellParticleManager.class" afterPath="$PROJECT_DIR$/target/classes/me/bumblebeee/rpgmagic/managers/SpellParticleManager.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spells/zeus.yml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
     </list>
     <ignored path="RPGMagic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,38 +51,18 @@
       <file leaf-file-name="RPGMagic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/RPGMagic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="143" column="31" lean-forward="false" selection-start-line="143" selection-start-column="31" selection-end-line="143" selection-end-column="31" />
+            <state relative-caret-position="-8">
+              <caret line="45" column="24" lean-forward="false" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpellManager.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellManager.java">
+      <file leaf-file-name="MagicCommand.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/commands/MagicCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpellParticleManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellParticleManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="79" column="34" lean-forward="false" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpellActionManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellActionManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="102" column="48" lean-forward="true" selection-start-line="102" selection-start-column="48" selection-end-line="102" selection-end-column="48" />
+            <state relative-caret-position="351">
+              <caret line="261" column="25" lean-forward="true" selection-start-line="261" selection-start-column="25" selection-end-line="261" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -102,6 +88,8 @@
       <find>syste</find>
       <find>setVel</find>
       <find>storeLoca</find>
+      <find>soun</find>
+      <find>personalPaperText</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -128,9 +116,7 @@
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/events/SpellCastEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/InventoryClose.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/spells/Speed.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Runnables.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/RespectiveLocation.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spells/speed.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/spells/meteors.yml" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/Spell.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spells/missile.yml" />
@@ -142,7 +128,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/spells/control.yml" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/PlayerDamage.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spells/freeze.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/PlayerMove.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spells/wallhack.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/StructureManager.java" />
@@ -158,19 +143,22 @@
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/Storage.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/RPGMagic.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/Wand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellCastController.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/ShapeManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/SpellCast.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/commands/MagicCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/AlterCraft.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Messages.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/PlayerInteract.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellParticleManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellActionManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spells/zeus.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/spells/teleport.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/PlayerMove.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/SpellCast.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Runnables.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellActionManager.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spells/speed.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellCastController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/commands/MagicCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellParticleManager.java" />
       </list>
     </option>
   </component>
@@ -188,9 +176,26 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="1280" />
-    <option name="width" value="1280" />
-    <option name="height" value="1024" />
+    <option name="x" value="1366" />
+    <option name="width" value="1600" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Error handlingJava</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -315,10 +320,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -326,7 +331,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="settings.editor.splitter.proportion" value="0.22633003" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -616,12 +621,19 @@
       <workItem from="1516122740680" duration="275000" />
       <workItem from="1516131119796" duration="3072000" />
       <workItem from="1516134959855" duration="2062000" />
-      <workItem from="1516448064048" duration="1770000" />
+      <workItem from="1516448064048" duration="1857000" />
+      <workItem from="1516453048599" duration="33000" />
+      <workItem from="1516453116808" duration="1265000" />
+      <workItem from="1516459188310" duration="1943000" />
+      <workItem from="1516461604430" duration="25000" />
+      <workItem from="1516648729448" duration="2063000" />
+      <workItem from="1516731796100" duration="117000" />
+      <workItem from="1516888986589" duration="456000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7661000" />
+    <option name="totallyTimeSpent" value="13650000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -633,10 +645,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="0" width="1280" height="1024" extended-state="4" />
+    <frame x="1366" y="0" width="1600" height="900" extended-state="4" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257821" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32502708" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -644,12 +657,11 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30877572" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3066333" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22734375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.161875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -664,6 +676,7 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="117" y="149" width="1166" height="542" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Floobits" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -724,13 +737,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Runnables.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="45" column="37" lean-forward="false" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/utils/RespectiveLocation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -780,13 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/PlayerMove.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="16" column="23" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/NPCClick.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -826,13 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spells/speed.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -941,14 +933,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="84" column="59" lean-forward="false" selection-start-line="84" selection-start-column="59" selection-end-line="84" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/Wand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -961,15 +945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/SpellCast.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -977,7 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
           <caret line="40" column="32" lean-forward="true" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -985,7 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="567" column="53" lean-forward="true" selection-start-line="567" selection-start-column="53" selection-end-line="567" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -997,30 +970,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/commands/MagicCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="258" column="25" lean-forward="true" selection-start-line="254" selection-start-column="23" selection-end-line="258" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Messages.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#1041#1042#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1028,7 +981,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="25" column="47" lean-forward="false" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1040,58 +992,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellCastController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="87" column="46" lean-forward="false" selection-start-line="87" selection-start-column="46" selection-end-line="87" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellParticleManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="79" column="34" lean-forward="false" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellActionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="102" column="48" lean-forward="true" selection-start-line="102" selection-start-column="48" selection-end-line="102" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/RPGMagic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="143" column="31" lean-forward="false" selection-start-line="143" selection-start-column="31" selection-end-line="143" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spells/zeus.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spells/zeus.yml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/PlayerMove.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="22" />
+          <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spells/teleport.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/Runnables.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="51">
+          <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spells/speed.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellActionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="83" column="33" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellCastController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="164" column="0" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/listeners/SpellCast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="43" column="26" lean-forward="false" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/RPGMagic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="45" column="24" lean-forward="false" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spells/teleport.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="11" lean-forward="true" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/managers/SpellParticleManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="85" column="34" lean-forward="true" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bumblebeee/rpgmagic/commands/MagicCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="261" column="25" lean-forward="true" selection-start-line="261" selection-start-column="25" selection-end-line="261" selection-end-column="25" />
           <folding />
         </state>
       </provider>

@@ -4,10 +4,7 @@ import lombok.Getter;
 import me.bumblebeee.rpgmagic.RPGMagic;
 import me.bumblebeee.rpgmagic.Spell;
 import me.bumblebeee.rpgmagic.Wand;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -41,6 +38,8 @@ public class SpellCastController {
     }
 
     public void startCasting() {
+        player.getWorld().playSound(player.getLocation(), Sound.AMBIENT_CAVE, 10, 1);
+
         frozen.add(player.getUniqueId());
         player.setFlying(true);
         new BukkitRunnable() {
@@ -58,6 +57,7 @@ public class SpellCastController {
     }
 
     public void process() {
+        player.getWorld().playSound(player.getLocation(), Sound.BLOCK_END_PORTAL_FRAME_FILL, 10, 1);
         castLocation = player.getLocation();
         YamlConfiguration c = YamlConfiguration.loadConfiguration(spell.getFile());
 
@@ -151,6 +151,15 @@ public class SpellCastController {
                     }
 
                     action = action.replace("%" + variable + "%", locData);
+                    continue;
+                case "casterLoc":
+                    Location loc = player.getLocation();
+                    String lData = "null";
+                    if (loc != null) {
+                        lData = "{" + loc.getBlockX() + "," + loc.getBlockY() + "," + loc.getBlockZ() + "}";
+                    }
+
+                    action = action.replace("%" + variable + "%", lData);
                     continue;
             }
 

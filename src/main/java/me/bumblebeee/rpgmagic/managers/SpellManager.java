@@ -19,7 +19,7 @@ public class SpellManager {
 
     public void saveDefaultSpells() {
         saveDefaultSpell("speed.yml");
-        saveDefaultSpell("zeus.yml");
+        saveDefaultSpell("teleport.yml");
     }
 
     public void saveDefaultSpell(String spellFile) {

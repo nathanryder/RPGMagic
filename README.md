@@ -1,7 +1,3 @@
-# Welcome to StackEdit!
-
-Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. If you have finished with me, you can just create new files by opening the **file explorer** on the le**Depends on [RPGPlayerLeveling](https://www.spigotmc.org/resources/rpg-player-leveling.11096/) and [Citizens](https://www.spigotmc.org/resources/citizens.13811/)**
-
 # Table Of Contents
 <ul>
   <li><a href="#known-bugs">Known Bugs</a></li>
